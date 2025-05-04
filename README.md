@@ -1,6 +1,8 @@
-# 🚌 Bus ETA Backend
+# 🚌 Aigul
 
 A FastAPI-based backend for predicting and serving real-time bus arrival times, using SQLAlchemy and PostgreSQL. Designed to support IoT displays and mobile apps with accurate bus tracking data.
+
+For now, the project will be developed under name Aigul, inspired by a rare flower native to Batken region, south of Kyrgyzstan.
 
 ---
 
