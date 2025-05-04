@@ -1,0 +1,9 @@
+# Add comments like in Python
+# The following line excludes virtual environment from being tracked
+venv/
+
+# The following folder is meant to be used as scratch scrpits for testing deifferent parts of the application
+utils
+
+# This folder is extra and may not be traced
+__pycache__
