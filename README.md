@@ -1,4 +1,4 @@
-# 🚌 Aigul
+# 🚌 Bus Tracking System
 
 A FastAPI-based backend for predicting and serving real-time bus arrival times, using SQLAlchemy and PostgreSQL. Designed to support IoT displays and mobile apps with accurate bus tracking data.
 
