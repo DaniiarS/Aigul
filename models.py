@@ -35,6 +35,7 @@ class Route(Base):
 
     route_id = Column(Integer, primary_key=True, index=True)
     route_name = Column(String, index=True, unique=True)
+    route_type = Column(String, index=True)
 
     buses = relationship("Bus", back_populates="route")
     bus_stops = relationship("BusStop", secondary="bus_stop_route", back_populates="routes")
@@ -45,6 +46,7 @@ class BusStop(Base):
     __tablename__ = "bus_stop"
 
     bus_stop_id = Column(Integer, primary_key=True, index=True)
+    bus_stop_ref_id = Column(Integer, index=True)
     bus_stop_name = Column(String, index=True)
     bus_stop_addr = Column(String, index=True)
     bus_stop_lng = Column(Float)
@@ -78,7 +80,7 @@ class BusStopRoute(Base):
     bus_stop_route_id = Column(Integer, primary_key=True, index=True)
     bus_stop_id = Column(Integer, ForeignKey("bus_stop.bus_stop_id"))
     route_id = Column(Integer, ForeignKey("route.route_id"))
-    bus_stop_index = Column(Integer)
+    bus_stop_index = Column(Integer, autoincrement=True)
 
 class BusStopBus(Base):
     __tablename__ = "bus_stop_bus"

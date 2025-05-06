@@ -1,29 +1,37 @@
 from database import SessionLocal
-from models import BusStopRoute, Route
+from models import BusStopRoute, Route, BusStop
 import csv
 
 
 db = SessionLocal()
 
-# with open("utils/write_bus_stop_route.csv", "r") as rf:
-#     reader = csv.reader(rf)
-#     data = list(reader)
+def add_routes(file_path: str):
+    with open(file_path, "r") as rf:
+        routes = csv.reader(rf)
+        for route in routes:
+            route_name = route[0]
+            route_type = route[-1]
 
-#     for row in data:
-#         bus_stop_route = BusStopRoute(
-#             bus_stop_id = row[0],
-#             route_id = row[1],
-#             bus_stop_index = row[2]
-#         )
+            new_route_obj = Route(route_name=route_name, route_type=route_type)
+            db.add(new_route_obj)
+            db.commit()
+            db.refresh(new_route_obj)
+            db.close()
 
-#         db.add(bus_stop_route)
-#         db.commit()
-#         db.refresh(bus_stop_route)
-#         db.close()
+def add_bus_stops(file_path: str):
+    with open(file_path, "r") as rf:
+        bus_stops = csv.reader(rf)
+        for bus_stop in bus_stops:
+            bus_stop_ref_id = bus_stop[0]
+            bus_stop_name = bus_stop[1]
+            bus_stop_addr = bus_stop[2]
+            bus_stop_lng = bus_stop[3]
+            bus_stop_lat = bus_stop[4]
 
+            new_bus_stop_obj = BusStop(bus_stop_ref_id=bus_stop_ref_id, bus_stop_name=bus_stop_name, bus_stop_addr=bus_stop_addr, bus_stop_lng=bus_stop_lng, bus_stop_lat=bus_stop_lat)
 
-# new_route = Route(route_name = "7")
-# db.add(new_route)
-# db.commit()
-# db.refresh(new_route)
-# db.close()
+            db.add(new_bus_stop_obj)
+            db.commit()
+            db.refresh(new_bus_stop_obj)
+            db.close()
+    
