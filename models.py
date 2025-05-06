@@ -46,7 +46,6 @@ class BusStop(Base):
     __tablename__ = "bus_stop"
 
     bus_stop_id = Column(Integer, primary_key=True, index=True)
-    bus_stop_ref_id = Column(Integer, index=True)
     bus_stop_name = Column(String, index=True)
     bus_stop_addr = Column(String, index=True)
     bus_stop_lng = Column(Float)

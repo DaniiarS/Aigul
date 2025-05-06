@@ -1,7 +1,6 @@
 import folium
 import json
 import csv
-from objects import BusStop
 
 def sort(data: list) -> list:
     size = len(data)
@@ -29,9 +28,9 @@ with open("bus_7_names.csv", "r") as rf:
 
 # print(bus_stop_names)
 
-bus_stops = []
-for i, bus_stop in enumerate(bus_stops_data):
-    bus_stops.append(BusStop(bus_stop["id"], bus_stop["geometry"], bus_stop_names[i][0]))
+# bus_stops = []
+# for i, bus_stop in enumerate(bus_stops_data):
+#     bus_stops.append(BusStop(bus_stop["id"], bus_stop["geometry"], bus_stop_names[i][0]))
 
 
 # print(bus_stops) 
@@ -55,12 +54,12 @@ m = folium.Map(location=[42.8746, 74.5698], zoom_start=13)
 
 
 # Add markers
-for i, stop in enumerate(bus_stops):
-    folium.Marker(
-        [stop.lat, stop.lon],
-        popup=f"Bus Stop name: {stop.name}, Bus Stop id: {stop.id}",
-        # tooltip="Click me"
-    ).add_to(m)
+# for i, stop in enumerate(bus_stops):
+#     folium.Marker(
+#         [stop.lat, stop.lon],
+#         popup=f"Bus Stop name: {stop.name}, Bus Stop id: {stop.id}",
+#         # tooltip="Click me"
+#     ).add_to(m)
 
-# Save to HTML file
-m.save("bus_stops_map.html")
+# # Save to HTML file
+# m.save("bus_stops_map.html")
