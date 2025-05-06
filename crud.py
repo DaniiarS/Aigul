@@ -34,4 +34,34 @@ def add_bus_stops(file_path: str):
             db.refresh(new_bus_stop_obj)
             db.close()
 
+# Add check if the file extension is .csv
+def add_bus_stop_routes(file_path: str):
+    with open(file_path, "r") as rf:
+        bus_stop_indexes = list(csv.reader(rf))
+        bus_stop_objs = db.query(BusStop).filter(BusStop.bus_stop_name==f"{route_number}").all()
 
+        # for bus_stop in bus_stop_objs:
+        #     print(bus_stop)
+        route_obj = db.query(Route).filter(Route.route_name==f"{route_number}").first()
+        route_id = route_obj.route_id
+
+        CONST = 100
+        line = [0 for i in range(CONST)]
+
+        for i, bus_stop in enumerate(bus_stop_objs):
+            for row in bus_stop_indexes:
+                if row[2] == bus_stop.bus_stop_addr:
+                    if line[int(row[-1])] == 1:
+                        continue
+
+                    new_bus_stop_route_obj = BusStopRoute(bus_stop_id=bus_stop.bus_stop_id, route_id=route_id,bus_stop_index=int(row[-1]))
+                    line[int(row[-1])] = 1
+
+                    db.add(new_bus_stop_route_obj)
+                    db.commit()
+                    db.refresh(new_bus_stop_route_obj)
+    
+    db.close()
+
+route_number = "8"
+add_bus_stop_routes(f"data/bus_stops/{route_number}/bus_stops.csv")
