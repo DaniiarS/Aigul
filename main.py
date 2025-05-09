@@ -1,4 +1,5 @@
 from fastapi import FastAPI, Depends
+from fastapi.responses import FileResponse
 # import schema # from this folder import schema
 import schema, database, models
 from sqlalchemy.orm import Session
@@ -66,6 +67,10 @@ route_203 = models.Route(route_name = "203", bus_stops=[bs_1, bs_2])
 @app.get("/")
 def home():
     return {"message": "Welcome! Wish a good start!"}
+
+@app.get("/map/{route_id}")
+def get_map(route_id: str):
+    return FileResponse(f"data/bus_stops/{route_id}/bus_stops_map_{route_id}.html")
 
 @app.get("/bus_stop/{bus_stop_id}")
 def get_bus_stop(bus_stop_id: int, db: Session = Depends(get_db)):

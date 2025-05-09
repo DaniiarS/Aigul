@@ -2,9 +2,13 @@ from database import SessionLocal
 from models import BusStopRoute, Route, BusStop
 import csv
 
+from data.bus_stops.helper import ROUTE
 
 db = SessionLocal()
 
+#================================================================================
+# DEFINITIONS: add_routes(), add_bus_stops(), add_bus_stop_routes()
+#================================================================================
 def add_routes(file_path: str):
     with open(file_path, "r") as rf:
         routes = csv.reader(rf)
@@ -35,14 +39,14 @@ def add_bus_stops(file_path: str):
             db.close()
 
 # Add check if the file extension is .csv
-def add_bus_stop_routes(file_path: str):
+def add_bus_stop_routes(file_path: str, ROUTE: str):
     with open(file_path, "r") as rf:
         bus_stop_indexes = list(csv.reader(rf))
-        bus_stop_objs = db.query(BusStop).filter(BusStop.bus_stop_name==f"{route_number}").all()
+        bus_stop_objs = db.query(BusStop).filter(BusStop.bus_stop_name==f"{ROUTE}").all()
 
         # for bus_stop in bus_stop_objs:
         #     print(bus_stop)
-        route_obj = db.query(Route).filter(Route.route_name==f"{route_number}").first()
+        route_obj = db.query(Route).filter(Route.route_name==f"{ROUTE}").first()
         route_id = route_obj.route_id
 
         CONST = 100
@@ -50,8 +54,8 @@ def add_bus_stop_routes(file_path: str):
 
         for i, bus_stop in enumerate(bus_stop_objs):
             for row in bus_stop_indexes:
-                if row[2] == bus_stop.bus_stop_addr:
-                    if line[int(row[-1])] == 1:
+                if row[2] == bus_stop.bus_stop_addr: # row[2] - bus-stop's address
+                    if line[int(row[-1])] == 1:      # row[-1] - bus-stop's index
                         continue
 
                     new_bus_stop_route_obj = BusStopRoute(bus_stop_id=bus_stop.bus_stop_id, route_id=route_id,bus_stop_index=int(row[-1]))
@@ -63,5 +67,9 @@ def add_bus_stop_routes(file_path: str):
     
     db.close()
 
-route_number = "8"
-add_bus_stop_routes(f"data/bus_stops/{route_number}/bus_stops.csv")
+#================================================================================
+# EXECUTION:
+#================================================================================
+
+add_bus_stops(f"data/bus_stops/{ROUTE}/bus_stops.csv")
+add_bus_stop_routes(f"data/bus_stops/{ROUTE}/bus_stops.csv", ROUTE)
