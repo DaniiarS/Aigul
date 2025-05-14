@@ -4,7 +4,7 @@
 # ================================================================
 
 from database import Base
-from sqlalchemy import Table, Column
+from sqlalchemy import Column
 from sqlalchemy import Integer, String, Float, Boolean
 from sqlalchemy import ForeignKey
 from sqlalchemy.orm import relationship

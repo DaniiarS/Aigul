@@ -22,44 +22,6 @@ def get_db():
     finally:
         db.close()
 
-mock_bus_stops = [
-    {
-        "bus_stop_name": "Айни",
-        "bus_stop_addr": "ул. Айни",
-        "bus_stop_lng": 4.1212313421,
-        "bus_stop_lat": 5.123123124145
-    },
-    {
-        "bus_stop_name": "Азия Молл",
-        "bus_stop_addr": "ул. Айтматова 123",
-        "bus_stop_lng": 4.1213421,
-        "bus_stop_lat": 5.1231235
-    }
-]
-
-mock_routes = [
-    {
-        "route_name": 203
-    }
-]
-
-bs_1 = models.BusStop(
-    bus_stop_name = "Айни",
-    bus_stop_addr = "ул. Айни",
-    bus_stop_lng = mock_bus_stops[0]["bus_stop_lng"],
-    bus_stop_lat = mock_bus_stops[0]["bus_stop_lat"]
-)
-
-bs_2 = models.BusStop(
-    bus_stop_name = "Азия Молл",
-    bus_stop_addr = "ул. Айтматова 123",
-    bus_stop_lng = mock_bus_stops[1]["bus_stop_lng"],
-    bus_stop_lat = mock_bus_stops[1]["bus_stop_lat"]
-)
-
-route_203 = models.Route(route_name = "203", bus_stops=[bs_1, bs_2])
-
-
 # =========================================================
 # GET End-Points: Home, bus_stop, bus, route, segment
 # =========================================================
@@ -107,16 +69,16 @@ def get_segment(segment_id: int, db: Session = Depends(get_db)):
 @app.post("/route")
 def create_route(route: schema.Route, db: Session = Depends(get_db)):
 
-    new_route = models.Route(
-        route_name = route.route_name,
-        bus_stops = [bs_1, bs_2]
-    )
+    # new_route = models.Route(
+    #     route_name = route.route_name,
+    #     bus_stops = [bs_1, bs_2]
+    # )
 
-    db.add_all([new_route, bs_1, bs_2])
-    db.commit()
-    db.refresh(new_route)
+    # db.add_all([new_route, bs_1, bs_2])
+    # db.commit()
+    # db.refresh(new_route)
 
-    return new_route
+    return {"message": "Route added successfully"}
 
 @app.post("/bus_stop")
 def create_bus_stop(bus_stop: schema.BusStop, db: Session = Depends(get_db)):

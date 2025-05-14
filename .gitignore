@@ -7,3 +7,6 @@ venv/
 
 # This folder is extra and may not be traced
 __pycache__
+
+
+.DS_Store
