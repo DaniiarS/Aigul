@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_874a1faf23ce1d61781bd48710b18d67 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_874a1faf23ce1d61781bd48710b18d67" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_874a1faf23ce1d61781bd48710b18d67 = L.map(
+                "map_874a1faf23ce1d61781bd48710b18d67",
+                {
+                    center: [42.8746, 74.5698],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 13,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_0beef5964cb43f30e1fff17de4f2583b = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_0beef5964cb43f30e1fff17de4f2583b.addTo(map_874a1faf23ce1d61781bd48710b18d67);
+        
+    
+            var marker_1e21a1fb4d7c39529e9ae8677940e1a1 = L.marker(
+                [42.877282, 74.574078],
+                {
+}
+            ).addTo(map_874a1faf23ce1d61781bd48710b18d67);
+        
+    
+        var popup_df340d38d542c58d994c6b4728fc0875 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c95b0833d2297391f0bba89856699ce8 = $(`<div id="html_c95b0833d2297391f0bba89856699ce8" style="width: 100.0%; height: 100.0%;">Bus Stop addr: None, Bus Stop id: 5</div>`)[0];
+                popup_df340d38d542c58d994c6b4728fc0875.setContent(html_c95b0833d2297391f0bba89856699ce8);
+            
+        
+
+        marker_1e21a1fb4d7c39529e9ae8677940e1a1.bindPopup(popup_df340d38d542c58d994c6b4728fc0875)
+        ;
+
+        
+    
+    
+            var marker_83a1d77be4b1270dd160827f3c6e56c8 = L.marker(
+                [42.87987, 74.560931],
+                {
+}
+            ).addTo(map_874a1faf23ce1d61781bd48710b18d67);
+        
+    
+        var popup_b9d289b352f3d01f19f97a2084e47365 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_33b6699544c1cda37a1dca878ca5295f = $(`<div id="html_33b6699544c1cda37a1dca878ca5295f" style="width: 100.0%; height: 100.0%;">Bus Stop addr: None, Bus Stop id: 6</div>`)[0];
+                popup_b9d289b352f3d01f19f97a2084e47365.setContent(html_33b6699544c1cda37a1dca878ca5295f);
+            
+        
+
+        marker_83a1d77be4b1270dd160827f3c6e56c8.bindPopup(popup_b9d289b352f3d01f19f97a2084e47365)
+        ;
+
+        
+    
+    
+            var marker_9ad7789b3d7ed50fcd45cfb8df362221 = L.marker(
+                [42.868751, 74.587596],
+                {
+}
+            ).addTo(map_874a1faf23ce1d61781bd48710b18d67);
+        
+    
+        var popup_6f82bdf920ac927fa70b877c548eb731 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_050e6498fd986cb30ba079660c5bf4ec = $(`<div id="html_050e6498fd986cb30ba079660c5bf4ec" style="width: 100.0%; height: 100.0%;">Bus Stop addr: None, Bus Stop id: 7</div>`)[0];
+                popup_6f82bdf920ac927fa70b877c548eb731.setContent(html_050e6498fd986cb30ba079660c5bf4ec);
+            
+        
+
+        marker_9ad7789b3d7ed50fcd45cfb8df362221.bindPopup(popup_6f82bdf920ac927fa70b877c548eb731)
+        ;
+
+        
+    
+    
+            var marker_4f5c24ddc899eb933ce43c81b45f3e9b = L.marker(
+                [42.833541, 74.607853],
+                {
+}
+            ).addTo(map_874a1faf23ce1d61781bd48710b18d67);
+        
+    
+        var popup_5cca9a8af5d86cce55537eafd37ebcae = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_11816ffb7e422ea8771ceafd266531b4 = $(`<div id="html_11816ffb7e422ea8771ceafd266531b4" style="width: 100.0%; height: 100.0%;">Bus Stop addr: None, Bus Stop id: 8</div>`)[0];
+                popup_5cca9a8af5d86cce55537eafd37ebcae.setContent(html_11816ffb7e422ea8771ceafd266531b4);
+            
+        
+
+        marker_4f5c24ddc899eb933ce43c81b45f3e9b.bindPopup(popup_5cca9a8af5d86cce55537eafd37ebcae)
+        ;
+
+        
+    
+    
+            var marker_b85d95d78c742cbb5abfbac510e77515 = L.marker(
+                [42.843007, 74.607961],
+                {
+}
+            ).addTo(map_874a1faf23ce1d61781bd48710b18d67);
+        
+    
+        var popup_feb4dd9b2ca12170bcc7a50e70b2d16a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_18ffd4c04eb97db15730c979c25965ad = $(`<div id="html_18ffd4c04eb97db15730c979c25965ad" style="width: 100.0%; height: 100.0%;">Bus Stop addr: None, Bus Stop id: 9</div>`)[0];
+                popup_feb4dd9b2ca12170bcc7a50e70b2d16a.setContent(html_18ffd4c04eb97db15730c979c25965ad);
+            
+        
+
+        marker_b85d95d78c742cbb5abfbac510e77515.bindPopup(popup_feb4dd9b2ca12170bcc7a50e70b2d16a)
+        ;
+
+        
+    
+    
+            var marker_79cf74812e466b3b8c3e1993ca5307bf = L.marker(
+                [42.813791, 74.629013],
+                {
+}
+            ).addTo(map_874a1faf23ce1d61781bd48710b18d67);
+        
+    
+        var popup_65dfadd76d941a4f8ca639e832c43189 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_74e9b94ae128622fd84fe0c0baf69b6a = $(`<div id="html_74e9b94ae128622fd84fe0c0baf69b6a" style="width: 100.0%; height: 100.0%;">Bus Stop addr: None, Bus Stop id: 10</div>`)[0];
+                popup_65dfadd76d941a4f8ca639e832c43189.setContent(html_74e9b94ae128622fd84fe0c0baf69b6a);
+            
+        
+
+        marker_79cf74812e466b3b8c3e1993ca5307bf.bindPopup(popup_65dfadd76d941a4f8ca639e832c43189)
+        ;
+
+        
+    
+    
+            var marker_050c6d068aaf8a73f1fd6a9712251d32 = L.marker(
+                [42.876682, 74.586949],
+                {
+}
+            ).addTo(map_874a1faf23ce1d61781bd48710b18d67);
+        
+    
+        var popup_623fb4bfc7c0b4c8882f2bb9517d305a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_17991d68c975ed94e19a61639919b2eb = $(`<div id="html_17991d68c975ed94e19a61639919b2eb" style="width: 100.0%; height: 100.0%;">Bus Stop addr: None, Bus Stop id: 11</div>`)[0];
+                popup_623fb4bfc7c0b4c8882f2bb9517d305a.setContent(html_17991d68c975ed94e19a61639919b2eb);
+            
+        
+
+        marker_050c6d068aaf8a73f1fd6a9712251d32.bindPopup(popup_623fb4bfc7c0b4c8882f2bb9517d305a)
+        ;
+
+        
+    
+    
+            var marker_e39c6a384a9b3418a99bda94cc1430cb = L.marker(
+                [42.844296, 74.586146],
+                {
+}
+            ).addTo(map_874a1faf23ce1d61781bd48710b18d67);
+        
+    
+        var popup_8b04cb5b2df2be528e8a69113845aa9e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9ecbf95e451ff705714bf91f42c09050 = $(`<div id="html_9ecbf95e451ff705714bf91f42c09050" style="width: 100.0%; height: 100.0%;">Bus Stop addr: None, Bus Stop id: 12</div>`)[0];
+                popup_8b04cb5b2df2be528e8a69113845aa9e.setContent(html_9ecbf95e451ff705714bf91f42c09050);
+            
+        
+
+        marker_e39c6a384a9b3418a99bda94cc1430cb.bindPopup(popup_8b04cb5b2df2be528e8a69113845aa9e)
+        ;
+
+        
+    
+    
+            var marker_b4331226458978d7d610b8b32cc5bbd0 = L.marker(
+                [42.945764, 74.479916],
+                {
+}
+            ).addTo(map_874a1faf23ce1d61781bd48710b18d67);
+        
+    
+        var popup_2f96569e6c43bb684c9e2d4d43438f00 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8b327a5014b95e30a4a2891e17e2ee29 = $(`<div id="html_8b327a5014b95e30a4a2891e17e2ee29" style="width: 100.0%; height: 100.0%;">Bus Stop addr: None, Bus Stop id: 13</div>`)[0];
+                popup_2f96569e6c43bb684c9e2d4d43438f00.setContent(html_8b327a5014b95e30a4a2891e17e2ee29);
+            
+        
+
+        marker_b4331226458978d7d610b8b32cc5bbd0.bindPopup(popup_2f96569e6c43bb684c9e2d4d43438f00)
+        ;
+
+        
+    
+    
+            var marker_2fff7446e95cd291e86bcdca52a39aa8 = L.marker(
+                [42.994119, 74.438047],
+                {
+}
+            ).addTo(map_874a1faf23ce1d61781bd48710b18d67);
+        
+    
+        var popup_96ebc13acf09ba3504284d69546989fc = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6364c788440ad2c0e5ba83765f8e236f = $(`<div id="html_6364c788440ad2c0e5ba83765f8e236f" style="width: 100.0%; height: 100.0%;">Bus Stop addr: None, Bus Stop id: 14</div>`)[0];
+                popup_96ebc13acf09ba3504284d69546989fc.setContent(html_6364c788440ad2c0e5ba83765f8e236f);
+            
+        
+
+        marker_2fff7446e95cd291e86bcdca52a39aa8.bindPopup(popup_96ebc13acf09ba3504284d69546989fc)
+        ;
+
+        
+    
+    
+            var marker_292e8583b51ce60d10fe9bd34a930d4d = L.marker(
+                [43.053312, 74.470109],
+                {
+}
+            ).addTo(map_874a1faf23ce1d61781bd48710b18d67);
+        
+    
+        var popup_e7303be12d6a952101cc8f07fcb974f3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ff9259d1470d8621714d9c21b3801171 = $(`<div id="html_ff9259d1470d8621714d9c21b3801171" style="width: 100.0%; height: 100.0%;">Bus Stop addr: None, Bus Stop id: 15</div>`)[0];
+                popup_e7303be12d6a952101cc8f07fcb974f3.setContent(html_ff9259d1470d8621714d9c21b3801171);
+            
+        
+
+        marker_292e8583b51ce60d10fe9bd34a930d4d.bindPopup(popup_e7303be12d6a952101cc8f07fcb974f3)
+        ;
+
+        
+    
+    
+            var marker_ef9c2936c0970a932d8dbfe35849500f = L.marker(
+                [42.813543, 74.629852],
+                {
+}
+            ).addTo(map_874a1faf23ce1d61781bd48710b18d67);
+        
+    
+        var popup_e1462ca3a25aa774fc0f36f9d8b6482f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_81d98e65e76b791b02af89c2657903f3 = $(`<div id="html_81d98e65e76b791b02af89c2657903f3" style="width: 100.0%; height: 100.0%;">Bus Stop addr: None, Bus Stop id: 16</div>`)[0];
+                popup_e1462ca3a25aa774fc0f36f9d8b6482f.setContent(html_81d98e65e76b791b02af89c2657903f3);
+            
+        
+
+        marker_ef9c2936c0970a932d8dbfe35849500f.bindPopup(popup_e1462ca3a25aa774fc0f36f9d8b6482f)
+        ;
+
+        
+    
+</script>
+</html>

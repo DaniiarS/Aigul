@@ -1,6 +1,6 @@
 # ============================================================================
 # We are using SQLAlchemy, to utilize its ORM functionality
-# Which helps to map Python Classes into Actual database Datables
+# Which helps to map Python Classes into Actual database tables
 # Example: Class Bus -> BUS Table in the database
 # ============================================================================
 
@@ -21,9 +21,9 @@ SQL_ALCHEMY_DATABASE_URL = "sqlite:///aigul.db"
 Engine = create_engine(SQL_ALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False})
 
 # Step 3: We need to create a Session(which sets connection with the database and supports its operations) and bind the
-#         engine that we created above the Session
+#         engine that we created above to the Session
 SessionLocal = sessionmaker(bind=Engine, autocommit=False, autoflush=False)
 
-# Step 4: We need to create a Base. Base enables to create actual SQL Tables as Class SomeTable(Base)
+# Step 4: We need to create a Base. Base enables to create actual SQL Tables as Python classes. Example: Class SomeTable(Base)
 Base = declarative_base()
 
