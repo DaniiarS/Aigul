@@ -1,8 +1,9 @@
 from database import SessionLocal
-from models import BusStopRoute, Route, BusStop
+from models import BusStopRoute, Route, BusStop, Segment, RouteSegment
 import csv
 
-from data.bus_stops.helper import ROUTE
+from data.bus_stops.helper import BUS_STOP_ROUTE
+from data.segments.helper import SEGMENT_ROUTE
 
 db = SessionLocal()
 
@@ -67,9 +68,48 @@ def add_bus_stop_routes(file_path: str, ROUTE: str):
     
     db.close()
 
+def read_bus_stops(bus_stop_name: str):
+    bus_stops = db.query(BusStop).filter(BusStop.bus_stop_name==bus_stop_name).all()
+
+    return bus_stops
+
+def add_segment(file_path:str):
+    with open(file_path, "r") as rf:
+        reader = csv.reader(rf)
+        for line in reader:
+            segment = Segment(segment_length=line[-2], segment_street=line[1],segment_bus_stop_a=line[2],segment_bus_stop_b=line[3])
+            db.add(segment)
+            db.commit()
+            db.refresh(segment)
+    db.close()
+
+def add_route_segment(file_path: str, SEGMENT_ROUTE: str) -> None:
+    route = db.query(Route).filter(Route.route_name==SEGMENT_ROUTE).first()
+    route_id = route.route_id
+    segments = db.query(Segment).all()
+
+    # for segment in segments:
+    #     print(segment.segment_bus_stop_a, segment.segment_bus_stop_b)
+
+    with open(file_path, "r") as rf:
+        reader = list(csv.reader(rf))
+
+        for segment in segments:
+            for line in reader:
+                if segment.segment_bus_stop_a == line[2] and segment.segment_bus_stop_b == line[3]:
+                    route_segment = RouteSegment(route_id=route_id,segment_id = segment.segment_id, segment_index = line[-1])
+                    db.add(route_segment)
+                    db.commit()
+                    db.refresh(route_segment)
+    db.close()
+
+    return None
 #================================================================================
 # EXECUTION:
 #================================================================================
 
-add_bus_stops(f"data/bus_stops/{ROUTE}/bus_stops.csv")
-add_bus_stop_routes(f"data/bus_stops/{ROUTE}/bus_stops.csv", ROUTE)
+# add_bus_stops(f"data/bus_stops/{BUS_STOP_ROUTE}/bus_stops.csv")
+# add_bus_stop_routes(f"data/bus_stops/{BUS_STOP_ROUTE}/bus_stops.csv", ROUTE)
+
+# add_segment(f"data/segments/{SEGMENT_ROUTE}/segments.csv")
+add_route_segment(f"data/segments/{SEGMENT_ROUTE}/segments.csv", f"{SEGMENT_ROUTE}")
