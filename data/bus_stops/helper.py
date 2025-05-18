@@ -110,7 +110,7 @@ def read_bus_stops(ROUTE: str) -> list[BusStop]:
 # EXECUTION: Refine, Save local, Plot, Process and Save
 #==================================================================
 
-ROUTE = "254"
+BUS_STOP_ROUTE = "7"
 
 
 

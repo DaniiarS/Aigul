@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Load GeoJSON from File</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
+  <style>
+    #map {
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    // Initialize map
+    const map = L.map("map").setView([42.85, 74.75], 12);
+
+    // Add OpenStreetMap tile layer
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution: "&copy; OpenStreetMap contributors"
+    }).addTo(map);
+
+    // Load GeoJSON from file in same folder
+    fetch("segments-7.geojson")
+      .then((response) => response.json())
+      .then((geojsonData) => {
+        // Optional: assign a color to each line if missing
+        const colors = [
+          "#e6194b", "#3cb44b", "#ffe119", "#4363d8", "#f58231", "#911eb4",
+          "#46f0f0", "#f032e6", "#bcf60c", "#fabebe", "#008080", "#e6beff",
+          "#9a6324", "#fffac8", "#800000", "#aaffc3", "#808000", "#ffd8b1",
+          "#000075", "#808080", "#ffffff", "#000000", "#a83232", "#32a852",
+          "#3282a8", "#a832a8", "#82a832", "#a87c32", "#329ca8", "#8d32a8",
+          "#32a88d", "#a8325c", "#325ca8", "#5ca832", "#8ca832", "#a88c32",
+          "#327ca8"
+        ];
+
+        geojsonData.features.forEach((f, i) => {
+          if (!f.properties.color) {
+            f.properties.color = colors[i % colors.length];
+          }
+        });
+
+        L.geoJSON(geojsonData, {
+          style: (feature) => ({
+            color: feature.properties.color || "#3388ff",
+            weight: 4
+          })
+        }).addTo(map);
+      })
+      .catch((err) => {
+        console.error("Error loading GeoJSON:", err);
+      });
+  </script>
+</body>
+</html>

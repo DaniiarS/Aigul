@@ -6,7 +6,7 @@
 from database import Base
 from sqlalchemy import Column
 from sqlalchemy import Integer, String, Float, Boolean
-from sqlalchemy import ForeignKey
+from sqlalchemy import ForeignKey, UniqueConstraint
 from sqlalchemy.orm import relationship
 
 
@@ -56,15 +56,17 @@ class BusStop(Base):
 
 class Segment(Base):
     __tablename__ = "segment"
+    __table_args__ = (
+        UniqueConstraint("segment_bus_stop_a", "segment_bus_stop_b", name="unique_segment_bus_stop_a_segment_bus_stop_b"),
+    )
 
     segment_id = Column(Integer, primary_key=True, index=True)
     segment_length = Column(Float)
-    segment_speed = Column(Float)
-    segment_street = Column(String)
-    segment_bus_stop_a = Column(Integer)
-    segment_bus_stop_b = Column(Integer)
-    segment_bidirectional = Column(Boolean)
-    segment_eta = Column(Float)
+    segment_street = Column(String, default="N/A")
+    segment_bus_stop_a = Column(String(50))
+    segment_bus_stop_b = Column(String(50))
+    segment_eta = Column(Float,default=0.0)
+
 
     routes = relationship("Route", secondary="route_segment", back_populates="segments")
 
