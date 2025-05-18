@@ -1,5 +1,5 @@
-from fastapi import FastAPI, Depends
-from fastapi.responses import FileResponse
+from fastapi import FastAPI, Depends, HTTPException
+from fastapi.responses import FileResponse, JSONResponse
 # import schema # from this folder import schema
 import schema, database, models
 from sqlalchemy.orm import Session
@@ -55,13 +55,14 @@ def get_bus(bus_id: int, db: Session = Depends(get_db)):
     except:
         return {"message": "object is not found"}
 
-@app.get("/segment/{segement_id}")
+@app.get("/segment/{segment_id}", response_model=schema.Segment, response_class=JSONResponse)
 def get_segment(segment_id: int, db: Session = Depends(get_db)):
-    try:
-        db.query(models.Segment).filter(models.Segment.segment_id == segment_id).all()
-    except:
-        return {"message": "object is not found"}
-
+    segment = db.query(models.Segment).filter(models.Segment.segment_id == segment_id).first()
+    if segment is None:
+        raise HTTPException(status_code=404, detail="Segment is not found")
+    segment_data = schema.Segment.from_orm(segment).dict()
+    return JSONResponse(content=segment_data, media_type="application/json; charset=utf-8")
+    
 # =========================================================
 # POST End-Points: Route, Segment, Bus, Bus_Stop
 # =========================================================

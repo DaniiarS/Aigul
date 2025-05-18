@@ -3,7 +3,7 @@
 # Used for validation when doing requests and sending responses
 # ================================================================
 
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 from typing import Optional
 
 class Bus(BaseModel):
@@ -15,6 +15,7 @@ class Bus(BaseModel):
 
 class Route(BaseModel):
     route_name: str
+    route_type: str
 
 class BusStop(BaseModel):
     bus_stop_name: str
@@ -24,9 +25,10 @@ class BusStop(BaseModel):
 
 class Segment(BaseModel):
     segment_length: float
-    segment_speed: float
     segment_street: str
-    segment_bus_stop_a: int
-    segment_bus_stop_b: int
-    segment_bidirectional: Optional[bool] = None
-    segment_eta: float = 0
+    segment_bus_stop_a: str
+    segment_bus_stop_b: str
+    segment_eta: float = 0.0
+
+    class Config:
+        orm_mode = True

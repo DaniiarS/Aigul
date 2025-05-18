@@ -63,8 +63,8 @@ class Segment(Base):
     segment_id = Column(Integer, primary_key=True, index=True)
     segment_length = Column(Float)
     segment_street = Column(String, default="N/A")
-    segment_bus_stop_a = Column(Integer)
-    segment_bus_stop_b = Column(Integer)
+    segment_bus_stop_a = Column(String(50))
+    segment_bus_stop_b = Column(String(50))
     segment_eta = Column(Float,default=0.0)
 
 

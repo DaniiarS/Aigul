@@ -7,6 +7,6 @@ venv/
 
 # This folder is extra and may not be traced
 __pycache__
-
+.vscode
 *.patch
 .DS_Store
