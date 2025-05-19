@@ -30,9 +30,13 @@ def get_db():
 def home():
     return {"message": "Welcome! Wish a good start!"}
 
-@app.get("/map/{route_id}")
+@app.get("/map/route/{route_id}")
 def get_map(route_id: str):
     return FileResponse(f"data/bus_stops/{route_id}/bus_stops_map_{route_id}.html")
+
+@app.get("/map/segment/{route_id}")
+def get_segment_map(route_id: int):
+    return FileResponse(f"data/segments/{route_id}/map_linestrings_{route_id}.html")
 
 @app.get("/bus_stop/{bus_stop_id}")
 def get_bus_stop(bus_stop_id: int, db: Session = Depends(get_db)):

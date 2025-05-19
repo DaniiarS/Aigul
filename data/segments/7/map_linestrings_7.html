@@ -28,7 +28,7 @@
     }).addTo(map);
 
     // Load GeoJSON from file in same folder
-    fetch("segments-7.geojson")
+    fetch("./segments-7.geojson")
       .then((response) => response.json())
       .then((geojsonData) => {
         // Optional: assign a color to each line if missing

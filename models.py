@@ -70,6 +70,21 @@ class Segment(Base):
 
     routes = relationship("Route", secondary="route_segment", back_populates="segments")
 
+    def __repr__(self):
+        return f"Segment id:{self.segment_id},\tSegment street:{self.segment_street},\tSegment distance:{self.segment_length}"
+
+class Point(Base):
+    __tablename__ = "point"
+    __table_args__ = (
+        UniqueConstraint("route_name", "point_index", "segment_index", name="unique_route_name_point_index_segment_index"),
+    )
+
+    point_id = Column(Integer, primary_key=True, index=True)
+    route_name = Column(String, index=True)
+    longitude = Column(Float)
+    latitude = Column(Float)
+    point_index = Column(Integer)
+    segment_index = Column(Integer)
 
 # ====================================================
 # Assocciation Tables: Many-to-Many Relationships
