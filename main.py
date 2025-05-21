@@ -1,5 +1,4 @@
 from fastapi import FastAPI
-from fastapi.responses import FileResponse
 
 import app.db.database as database
 from app.api.endpoints import bus, bus_stop, route, segment, map
@@ -24,9 +23,9 @@ app.include_router(map.router, prefix="/map", tags=["Map"])
 # In the future, when the application is ready fo the production -> use Alembic, which is a "git" of databases
 database.Base.metadata.create_all(database.Engine)
 
-#=====================
+#==========================================================================================
 # Start Page
-#=====================
+#==========================================================================================
 @app.get("/")
 def home():
     return {"200": "Welcome! Wish a good start!"}
