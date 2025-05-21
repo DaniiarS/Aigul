@@ -4,10 +4,10 @@ import json
 import math
 
 from app.db.crud import db # - causes circular import error , need to solve
-from app.db.models import Route, Segment, RouteSegment
+from app.db.models import Route, Segment, RouteSegment, Point
 
 
-class Point:
+class PointCls:
     def __init__(self, lng: float | str, lat: float | str, point_index = -1, segment_index = -1, ROUTE = None):
         self.lng: float = float(lng)
         self.lat: float = float(lat)
@@ -20,6 +20,26 @@ class Point:
     
     def to_dict(self, ROUTE: str):
         return {"route_name": ROUTE, "longitude": self.lng, "latitude": self.lat, "point_index": self.point_index, "segment_index": self.segment_index}
+    
+    @classmethod
+    def raw_to_obj(cls, raw_point: dict):
+        return cls(
+            lng=float(raw_point["geometry"]["coordinates"][0]),
+            lat=float(raw_point["geometry"]["coordinates"][-1]),
+            point_index=int(raw_point["id"]),
+            segment_index=int(raw_point["properties"]["id"]) + 1,
+            ROUTE="7"
+        )
+    
+    @classmethod
+    def model_to_obj(cls, db_point: Point):
+        return cls(
+            lng=float(db_point.longitude),
+            lat=float(db_point.latitude),
+            point_index=int(db_point.point_index),
+            segment_index=int(db_point.segment_index),
+            ROUTE=str(db_point.route_name)
+        )
 
 #===============================================================================================
 # DEFINITION: plot_coords(), haversine(), get_segment_index()
@@ -42,7 +62,21 @@ def plot_coords(points: list, ROUTE: str):
 
     return None
 
-def haversine(point1: Point, point2: Point):
+def get_points(file_path: str) -> list[dict]:
+    """ Filters the GeoJson object leaving only raw_point objects """
+
+    with open(file_path, "r") as rf:
+        data_raw: list = json.load(rf)["features"]
+        points = []
+
+        for data in data_raw:
+            if data["geometry"]["type"] == "Point":
+                points.append(data)
+
+    return points
+
+def calc_distance(point1: Point, point2: Point) -> float:
+    """ Utilizes Haversine formula to calculate the distance between "point1" and "point2" in meters """
     EARTH_R = 6371000 # Earth's radius in meters
 
     # convert degrees to radians
@@ -60,35 +94,16 @@ def haversine(point1: Point, point2: Point):
 
     return round(distance,2)
 
-def format_point(coord: str) -> Point:
-    # Turns "(74.123123, 43.2349203)" into Point() object
-    lng, lat = coord[1:-1].split(",")
-
-    return Point(lng=lng, lat=lat)
-
-def get_points(file_path: str) -> list:
-    """ Clears the GeoJson object leaving only points objects """
-
-    with open(file_path, "r") as rf:
-        data_raw: list = json.load(rf)["features"]
-        points = []
-
-        for data in data_raw:
-            if data["geometry"]["type"] == "Point":
-                points.append(data)
-
-    return points
-
 def get_segment(current: Point, ROUTE:str):
+    """ Identifies to which segment does the "current" point belong to """
     segment = None
     ROUTE_ID = db.query(Route).filter(Route.route_name==ROUTE).first().route_id
 
-    points = db.query(Point)
+    db_points = db.query(Point).filter(Point.route_name==ROUTE).all()
+    points = [PointCls.model_to_obj(db_point) for db_point in db_points]
 
-    # print(ROUTE_ID)
-    # route_segments: list[RouteSegment] = db.query(RouteSegment).filter(RouteSegment.route_id==ROUTE_ID).all()
     for point in points:
-        if abs(haversine(current, point)) < 50:
+        if abs(calc_distance(current, point)) < 35:
             segment_id: int = db.query(RouteSegment).filter((RouteSegment.segment_index==point.segment_index) & (RouteSegment.route_id == ROUTE_ID)).first().segment_id
             segment: Segment = db.query(Segment).filter(Segment.segment_id==segment_id).first()
             break
@@ -98,28 +113,21 @@ def get_segment(current: Point, ROUTE:str):
 #===============================================================================================
 # EXECUTION:
 #===============================================================================================
-points = get_points("app/utils/map-7-for-test.geojson") # raw points
 ROUTE = "7"
-segment_index = 0
-point_objs: list[Point] = []
-
-for point in points:
-    print(point)
-
-#==========
-# Stopped here to test the if the chosen points return correct segment index
-#==========
-
-# for point in points:
-#     segment_index = get_segment()
-
-# for point_index, point in enumerate(points):
-#     """ Cretes a list of Assistant-Point objects - helps dentify segment_index given the coordinates of the transport """
-
-#     if point["properties"].get("flag"):
-#         segment_index += 1
-#     point_objs.append(Point(lng=point["geometry"]["coordinates"][0], lat=point["geometry"]["coordinates"][-1], point_index=point_index,segment_index=segment_index, ROUTE=ROUTE))
-
-# current_points = [Point(lng="74.6909", lat="42.8666"), Point(lng="74.6574", lat="42.8557"), Point(lng="74.5726", lat="42.8773"), Point(lng="74.5694", lat="42.8801"), Point(lng="74.5643", lat="42.8845")]
-# segments: list[Segment] = [get_segment(current, point_objs, "7") for current in current_points]
-# print([segment.segment_street for segment in segments])
+# get_segment(Point(""))
+# points = get_points("app/utils/map-7-for-test.geojson") 
+# """ points consists of the following type of raw_point objects """
+#      {
+#             "type": "Feature",
+#             "properties": {
+#                 "id": 38
+#             },
+#             "geometry": {
+#                 "coordinates": [
+#                     74.50887286454531,
+#                     42.93679223807791
+#                 ],
+#                 "type": "Point"
+#             },
+#             "id": 140
+#      }    
