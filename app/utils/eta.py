@@ -3,8 +3,8 @@ import json
 # from points import points_raw
 import math
 
-# from crud import db - causes circular import error , need to solve
-from models import Route, Segment, RouteSegment
+from app.db.crud import db # - causes circular import error , need to solve
+from app.db.models import Route, Segment, RouteSegment
 
 
 class Point:
@@ -67,6 +67,8 @@ def format_point(coord: str) -> Point:
     return Point(lng=lng, lat=lat)
 
 def get_points(file_path: str) -> list:
+    """ Clears the GeoJson object leaving only points objects """
+
     with open(file_path, "r") as rf:
         data_raw: list = json.load(rf)["features"]
         points = []
@@ -77,33 +79,46 @@ def get_points(file_path: str) -> list:
 
     return points
 
-# def get_segment(current: Point, points: list[Point], ROUTE:str):
-#     segment = None
-#     ROUTE_ID = db.query(Route).filter(Route.route_name==ROUTE).first().route_id
-#     # print(ROUTE_ID)
-#     # route_segments: list[RouteSegment] = db.query(RouteSegment).filter(RouteSegment.route_id==ROUTE_ID).all()
-#     for point in points:
-#         if abs(haversine(current, point)) < 50:
-#             segment_id: int = db.query(RouteSegment).filter((RouteSegment.segment_index==point.segment_index) & (RouteSegment.route_id == ROUTE_ID)).first().segment_id
-#             segment: Segment = db.query(Segment).filter(Segment.segment_id==segment_id).first()
-#             break
-#     return segment
+def get_segment(current: Point, ROUTE:str):
+    segment = None
+    ROUTE_ID = db.query(Route).filter(Route.route_name==ROUTE).first().route_id
+
+    points = db.query(Point)
+
+    # print(ROUTE_ID)
+    # route_segments: list[RouteSegment] = db.query(RouteSegment).filter(RouteSegment.route_id==ROUTE_ID).all()
+    for point in points:
+        if abs(haversine(current, point)) < 50:
+            segment_id: int = db.query(RouteSegment).filter((RouteSegment.segment_index==point.segment_index) & (RouteSegment.route_id == ROUTE_ID)).first().segment_id
+            segment: Segment = db.query(Segment).filter(Segment.segment_id==segment_id).first()
+            break
+    return segment
     
 
 #===============================================================================================
 # EXECUTION:
 #===============================================================================================
-points = get_points("utils/map-4.geojson") # raw points
+points = get_points("app/utils/map-7-for-test.geojson") # raw points
 ROUTE = "7"
 segment_index = 0
 point_objs: list[Point] = []
 
-# Cretes a list of Assistant-Point objects
-# Assistant-Points - points that are used to identify segment_index given the coordinates of the transport
-for point_index, point in enumerate(points):
-    if point["properties"].get("flag"):
-        segment_index += 1
-    point_objs.append(Point(lng=point["geometry"]["coordinates"][0], lat=point["geometry"]["coordinates"][-1], point_index=point_index,segment_index=segment_index, ROUTE=ROUTE))
+for point in points:
+    print(point)
+
+#==========
+# Stopped here to test the if the chosen points return correct segment index
+#==========
+
+# for point in points:
+#     segment_index = get_segment()
+
+# for point_index, point in enumerate(points):
+#     """ Cretes a list of Assistant-Point objects - helps dentify segment_index given the coordinates of the transport """
+
+#     if point["properties"].get("flag"):
+#         segment_index += 1
+#     point_objs.append(Point(lng=point["geometry"]["coordinates"][0], lat=point["geometry"]["coordinates"][-1], point_index=point_index,segment_index=segment_index, ROUTE=ROUTE))
 
 # current_points = [Point(lng="74.6909", lat="42.8666"), Point(lng="74.6574", lat="42.8557"), Point(lng="74.5726", lat="42.8773"), Point(lng="74.5694", lat="42.8801"), Point(lng="74.5643", lat="42.8845")]
 # segments: list[Segment] = [get_segment(current, point_objs, "7") for current in current_points]

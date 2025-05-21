@@ -32,3 +32,10 @@ class Segment(BaseModel):
 
     class Config:
         orm_mode = True
+
+class Point(BaseModel):
+    route_name: str
+    longitude: float
+    latitude: float
+    point_index: int
+    segment_index: int

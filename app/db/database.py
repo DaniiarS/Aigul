@@ -27,3 +27,11 @@ SessionLocal = sessionmaker(bind=Engine, autocommit=False, autoflush=False)
 # Step 4: We need to create a Base. Base enables to create actual SQL Tables as Python classes. Example: Class SomeTable(Base)
 Base = declarative_base()
 
+
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+

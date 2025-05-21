@@ -1,11 +1,11 @@
-from database import SessionLocal
-from models import BusStopRoute, Route, BusStop, Segment, RouteSegment, Point
+from app.db.database import SessionLocal
+from app.db.models import BusStopRoute, Route, BusStop, Segment, RouteSegment, Point
 import csv
 
-from data.bus_stops.helper import BUS_STOP_ROUTE
-from data.segments.helper import SEGMENT_ROUTE
+from app.data.bus_stops.helper import BUS_STOP_ROUTE
+from app.data.segments.helper import SEGMENT_ROUTE
 
-from utils.eta import point_objs
+# from utils.eta import point_objs
 
 db = SessionLocal()
 
@@ -125,4 +125,4 @@ def add_point(point_objs: list):
 # add_segment(f"data/segments/{SEGMENT_ROUTE}/segments.csv")
 # add_route_segment(f"data/segments/{SEGMENT_ROUTE}/segments.csv", f"{SEGMENT_ROUTE}")
 
-add_point(point_objs)
+# add_point(point_objs)

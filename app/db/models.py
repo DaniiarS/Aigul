@@ -3,7 +3,7 @@
 # Used for validation when doing requests and sending responses
 # ================================================================
 
-from database import Base
+from app.db.database import Base
 from sqlalchemy import Column
 from sqlalchemy import Integer, String, Float, Boolean
 from sqlalchemy import ForeignKey, UniqueConstraint

@@ -1,0 +1,6 @@
+main.py
+  ↓
+api/endpoints → schemas
+         ↓         ↓
+      services → db/crud → db/models
+                       → db/database
