@@ -5,8 +5,6 @@ import csv
 from app.data.bus_stops.helper import BUS_STOP_ROUTE
 from app.data.segments.helper import SEGMENT_ROUTE
 
-# from utils.eta import point_objs
-
 db = SessionLocal()
 
 #================================================================================
