@@ -3,17 +3,17 @@ import csv
 import folium
 
 #====================================================================================
-# DEFINITION: BusStop: cls, read_json(), read_csv, read_bus_stops_raw, write_json
+# DEFINITION: BusStopEntity: cls, read_json(), read_csv, read_bus_stops_raw, write_json
 #====================================================================================
 
-class BusStop:
-    def __init__(self, id: str, point: str, name: str = None, addr: str = None, index: int = 0):
+class BusStopEntity:
+    def __init__(self, id: str, lat: str, lng: str, name: str = None, addr: str = None, index: int = 0):
         self.id = str(id)
-        self.lat = self.get_coord(point)["lat"]
-        self.lng = self.get_coord(point)["lon"]
+        self.lat = lat
+        self.lng = lng
         self.name = name
         self.addr = addr
-        self.index = 0
+        self.index = index
     
     def get_coord(self, point: str):
         coordinates = ""
@@ -32,6 +32,17 @@ class BusStop:
         coord_split = coordinates.split()
         return {"lon": coord_split[0], "lat": coord_split[1]}
     
+    @classmethod
+    def model_to_obj(cls, model_object):
+        return cls(
+            id = model_object.bus_stop_id,
+            lat = model_object.bus_stop_lat,
+            lng = model_object.bus_stop_lng,
+            name = model_object.bus_stop_name,
+            addr = model_object.bus_stop_addr,
+            index = None
+        )
+
     def to_list(self):
         return [self.id, self.name, self.addr, self.lng, self.lat, self.index]
     
@@ -83,26 +94,26 @@ def enumerate_address(addresses_file: str, enumerated_file: str):
     
     return None
 
-def plot_bus_stops(bus_stops: BusStop, ROUTE: str):
+def plot_bus_stops(bus_stops: tuple[BusStopEntity, str], ROUTE: str, save_to_file_path: str):
     BISHKEK_COORDS = [42.8746, 74.5698]
     m = folium.Map(location=BISHKEK_COORDS, zoom_start=13)
     
     # Add markers
-    for bus_stop in bus_stops:
+    for bus_stop, color in bus_stops:
         folium.Marker(
-            [bus_stop.lat, bus_stop.lng],
+            [bus_stop.lat, bus_stop.lng], icon=folium.Icon(color=color),
             popup=f"Bus Stop addr: {bus_stop.addr}, Bus Stop id: {bus_stop.id}",
             # tooltip="Click me"
         ).add_to(m)
 
     # Save to HTML file
-    m.save(f"{ROUTE}/bus_stops_map_{ROUTE}.html")
+    m.save(f"{save_to_file_path}/bus_stops_map_{ROUTE}.html") # NOTE: Change the path
 
     return None
 
-def read_bus_stops(ROUTE: str) -> list[BusStop]:
-    bus_stops_raw = read_json(f"{ROUTE}/bus_stops_raw.json")
-    bus_stops = [BusStop(bus_stop["id"], bus_stop["geometry"], name=f"{ROUTE}", index=0) for bus_stop in bus_stops_raw]
+def read_bus_stops(ROUTE: str) -> list[BusStopEntity]:
+    bus_stops_raw = read_json(f"{ROUTE}/bus_stops_raw.json") # NOTE: change the path
+    bus_stops = [BusStopEntity(bus_stop["id"], bus_stop["geometry"], name=f"{ROUTE}", index=0) for bus_stop in bus_stops_raw]
 
     return bus_stops
 
@@ -137,7 +148,7 @@ BUS_STOP_ROUTE = "7"
 
 # # Reads parsed json coordinates into a dict object
 
-# # #Creates a list of BusStop objects
+# # #Creates a list of BusStopEntity objects
 
 # #==================================================================
 # # Plot points on a map

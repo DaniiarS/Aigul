@@ -1,5 +1,4 @@
 import csv
-from ..bus_stops.helper import BusStop
 #===============================================================
 # DEFINITIONS: read_segments(), write_segments()
 #===============================================================

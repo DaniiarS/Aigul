@@ -1,12 +1,26 @@
 from app.db import models
 from app.api.schemas import schema
 from app.db.database import get_db
+from app.utils.eta import search_segment
+from app.core.point import PointEntity
 
 from fastapi import Depends, HTTPException, APIRouter
 from fastapi.responses import JSONResponse
 from sqlalchemy.orm import Session
 
 router = APIRouter()
+
+#==================================================================================================
+# GET endpoints: get_segmnet()
+#==================================================================================================
+
+@router.post("/current-segment")
+def get_current_segment(coordinates: schema.Coordinates):
+    try:
+        segment = search_segment(PointEntity(lng=coordinates.longitude, lat=coordinates.latitude), "7")
+    except Exception as e:
+        return {"e": f"{e}"}
+    return segment
 
 @router.get("/{segment_id}", response_model=schema.Segment, response_class=JSONResponse)
 def get_segment(segment_id: int, db: Session = Depends(get_db)):

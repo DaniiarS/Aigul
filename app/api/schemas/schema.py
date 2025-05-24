@@ -39,3 +39,7 @@ class Point(BaseModel):
     latitude: float
     point_index: int
     segment_index: int
+
+class Coordinates(BaseModel):
+    longitude: float
+    latitude: float

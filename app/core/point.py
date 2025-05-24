@@ -4,7 +4,7 @@ from app.db.models import Point
 import json
 import folium
 
-class PointCls:
+class PointEntity:
     def __init__(self, lng: float | str, lat: float | str, point_index = -1, segment_index = -1, ROUTE = None):
         self.lng: float = float(lng)
         self.lat: float = float(lat)
@@ -72,7 +72,6 @@ def plot_points(points: list, ROUTE: str):
 
     return None
 
-from app.db.crud import db, add_point
 #=======================================================================
 # EXECUTION:
 #=======================================================================
