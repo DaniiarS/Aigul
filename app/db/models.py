@@ -45,14 +45,17 @@ class Route(Base):
 class BusStop(Base):
     __tablename__ = "bus_stop"
 
-    bus_stop_id = Column(Integer, primary_key=True, index=True)
-    bus_stop_name = Column(String, index=True)
-    bus_stop_addr = Column(String, index=True)
-    bus_stop_lng = Column(Float)
-    bus_stop_lat = Column(Float)
+    id = Column(Integer, primary_key=True, index=True)
+    route = Column(String, index=True)
+    name = Column(String, index=True)
+    lon = Column(Float)
+    lat = Column(Float)
 
     routes = relationship("Route", secondary="bus_stop_route", back_populates="bus_stops")
     buses = relationship("Bus", secondary="bus_stop_bus", back_populates="bus_stops")
+
+    def __repr__(self):
+        return f"name:{self.name} lat:{self.lat} lon:{self.lon}"
 
 class Segment(Base):
     __tablename__ = "segment"
@@ -65,27 +68,45 @@ class Segment(Base):
     segment_street = Column(String, default="N/A")
     segment_bus_stop_a = Column(String(50))
     segment_bus_stop_b = Column(String(50))
-    segment_eta = Column(Float,default=0.0)
-
 
     routes = relationship("Route", secondary="route_segment", back_populates="segments")
 
+    @property
+    def lat_a(self):
+        return self.segment_bus_stop_a[1:-1].split(",")[1]
+
+    @property
+    def lon_a(self):
+        return self.segment_bus_stop_a[1:-1].split(",")[0]
+    
+    @property
+    def lat_b(self):
+        return self.segment_bus_stop_b[1:-1].split(",")[1]
+
+    @property
+    def lon_b(self):
+        return self.segment_bus_stop_b[1:-1].split(",")[0]
+    
+
     def __repr__(self):
-        return f"Segment id:{self.segment_id},\tSegment street:{self.segment_street},\tSegment distance:{self.segment_length}"
+        return f"Segment id:{self.segment_id},\tSegment street:{self.segment_street},\tSegment distance:{self.segment_length},\ta:{self.segment_bus_stop_a},\tb:{self.segment_bus_stop_b}"
 
 class Point(Base):
     __tablename__ = "point"
-    __table_args__ = (
-        UniqueConstraint("route_name", "point_index", "segment_index", name="unique_route_name_point_index_segment_index"),
-    )
+    # __table_args__ = (
+    #     UniqueConstraint("route_name", "point_index", "segment_index", name="unique_route_name_point_index_segment_index"),
+    # )
 
-    point_id = Column(Integer, primary_key=True, index=True)
-    route_name = Column(String, index=True)
-    longitude = Column(Float)
-    latitude = Column(Float)
-    point_index = Column(Integer)
-    segment_index = Column(Integer)
+    id = Column(Integer, primary_key=True, index=True)
+    lat = Column(Float)
+    lon = Column(Float)
+    l_delta = Column(Float)
+    l_sum = Column(Float)
+    index = Column(Integer)
+    segment_id = Column(Integer, ForeignKey("segment.segment_id"))
 
+    def __repr__(self):
+        return f"lat:{self.lat}, lon:{self.lon}, l_delta:{self.l_delta}, l_sum:{self.l_sum}, index:{self.index}, segment_id:{self.segment_id}"
 # ====================================================
 # Assocciation Tables: Many-to-Many Relationships
 # ====================================================
@@ -94,7 +115,7 @@ class BusStopRoute(Base):
     __tablename__ = "bus_stop_route"
 
     bus_stop_route_id = Column(Integer, primary_key=True, index=True)
-    bus_stop_id = Column(Integer, ForeignKey("bus_stop.bus_stop_id"))
+    bus_stop_id = Column(Integer, ForeignKey("bus_stop.id"))
     route_id = Column(Integer, ForeignKey("route.route_id"))
     bus_stop_index = Column(Integer, autoincrement=True)
 
@@ -102,7 +123,7 @@ class BusStopBus(Base):
     __tablename__ = "bus_stop_bus"
 
     bus_stop_bus_id = Column(Integer, primary_key=True, index=True)
-    bus_stop_id = Column(Integer, ForeignKey("bus_stop.bus_stop_id"))
+    bus_stop_id = Column(Integer, ForeignKey("bus_stop.id"))
     bus_id = Column(Integer, ForeignKey("bus.bus_id"))
 
 class RouteSegment(Base):

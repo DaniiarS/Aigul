@@ -1,0 +1,1606 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_2a47a4321e5b05bd2a6ef4d0b9d77c68 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_2a47a4321e5b05bd2a6ef4d0b9d77c68" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_2a47a4321e5b05bd2a6ef4d0b9d77c68 = L.map(
+                "map_2a47a4321e5b05bd2a6ef4d0b9d77c68",
+                {
+                    center: [42.8746, 74.5698],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 13,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_6547c937609a7695e9c1a732174859b5 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_6547c937609a7695e9c1a732174859b5.addTo(map_2a47a4321e5b05bd2a6ef4d0b9d77c68);
+        
+    
+            var marker_10f3078868aa54ebc6522edf42feaf1c = L.marker(
+                [42.864292, 74.690892],
+                {
+}
+            ).addTo(map_2a47a4321e5b05bd2a6ef4d0b9d77c68);
+        
+    
+            var icon_97e1e3229992b54c8388662b6353fb68 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_110ac287c77466b5d191beceeeac690f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7347db9c3b6cf1ed745b82e3a98abd63 = $(`<div id="html_7347db9c3b6cf1ed745b82e3a98abd63" style="width: 100.0%; height: 100.0%;">Bus Stop addr: Нефтебаза, Bus Stop id: 1</div>`)[0];
+                popup_110ac287c77466b5d191beceeeac690f.setContent(html_7347db9c3b6cf1ed745b82e3a98abd63);
+            
+        
+
+        marker_10f3078868aa54ebc6522edf42feaf1c.bindPopup(popup_110ac287c77466b5d191beceeeac690f)
+        ;
+
+        
+    
+    
+                marker_10f3078868aa54ebc6522edf42feaf1c.setIcon(icon_97e1e3229992b54c8388662b6353fb68);
+            
+    
+            var marker_550eac5c507a7d38cdabb1f5dc02acd4 = L.marker(
+                [42.875143, 74.634925],
+                {
+}
+            ).addTo(map_2a47a4321e5b05bd2a6ef4d0b9d77c68);
+        
+    
+            var icon_4a23a68f9885696d5330a359e70dc36c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_84cc8ad536601b37f888ec254eaa6ed2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4206e80f16cb5ec881f2bc5944daf54d = $(`<div id="html_4206e80f16cb5ec881f2bc5944daf54d" style="width: 100.0%; height: 100.0%;">Bus Stop addr: Свердловская районная администрация, Bus Stop id: 2</div>`)[0];
+                popup_84cc8ad536601b37f888ec254eaa6ed2.setContent(html_4206e80f16cb5ec881f2bc5944daf54d);
+            
+        
+
+        marker_550eac5c507a7d38cdabb1f5dc02acd4.bindPopup(popup_84cc8ad536601b37f888ec254eaa6ed2)
+        ;
+
+        
+    
+    
+                marker_550eac5c507a7d38cdabb1f5dc02acd4.setIcon(icon_4a23a68f9885696d5330a359e70dc36c);
+            
+    
+            var marker_66864479417185646356128a7afce8a3 = L.marker(
+                [42.899281, 74.536206],
+                {
+}
+            ).addTo(map_2a47a4321e5b05bd2a6ef4d0b9d77c68);
+        
+    
+            var icon_c2300761a97d8d95d4ceabe1840ffef7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2002c24f13b710f03e204b417a11fa6e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d069abccfbf958299ae036d64a51ef32 = $(`<div id="html_d069abccfbf958299ae036d64a51ef32" style="width: 100.0%; height: 100.0%;">Bus Stop addr: Улица Дорожная, Bus Stop id: 3</div>`)[0];
+                popup_2002c24f13b710f03e204b417a11fa6e.setContent(html_d069abccfbf958299ae036d64a51ef32);
+            
+        
+
+        marker_66864479417185646356128a7afce8a3.bindPopup(popup_2002c24f13b710f03e204b417a11fa6e)
+        ;
+
+        
+    
+    
+                marker_66864479417185646356128a7afce8a3.setIcon(icon_c2300761a97d8d95d4ceabe1840ffef7);
+            
+    
+            var marker_8f49e6e9d9e65f5e3eeac2c6b46aad26 = L.marker(
+                [42.905295, 74.529012],
+                {
+}
+            ).addTo(map_2a47a4321e5b05bd2a6ef4d0b9d77c68);
+        
+    
+            var icon_d3bfa78e92e55cdd28e5981f1573134b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_58fdd206dfb4f3f42beaa79f40064db1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_494ab75f9228f69dd4eab9ca5b8e2d09 = $(`<div id="html_494ab75f9228f69dd4eab9ca5b8e2d09" style="width: 100.0%; height: 100.0%;">Bus Stop addr: Серёгина, Bus Stop id: 4</div>`)[0];
+                popup_58fdd206dfb4f3f42beaa79f40064db1.setContent(html_494ab75f9228f69dd4eab9ca5b8e2d09);
+            
+        
+
+        marker_8f49e6e9d9e65f5e3eeac2c6b46aad26.bindPopup(popup_58fdd206dfb4f3f42beaa79f40064db1)
+        ;
+
+        
+    
+    
+                marker_8f49e6e9d9e65f5e3eeac2c6b46aad26.setIcon(icon_d3bfa78e92e55cdd28e5981f1573134b);
+            
+    
+            var marker_d9bb49d85170f1aa7d4d492462c16a3b = L.marker(
+                [42.877282, 74.574078],
+                {
+}
+            ).addTo(map_2a47a4321e5b05bd2a6ef4d0b9d77c68);
+        
+    
+            var icon_c18b57dd1d34ce1fa80a8f4f3c8a5d93 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d9776ea66b14e8d9bcabcdfac79769f4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_579d3df4d756c4c4c289cabcbf63ae89 = $(`<div id="html_579d3df4d756c4c4c289cabcbf63ae89" style="width: 100.0%; height: 100.0%;">Bus Stop addr: Бейшеналиевой, Bus Stop id: 5</div>`)[0];
+                popup_d9776ea66b14e8d9bcabcdfac79769f4.setContent(html_579d3df4d756c4c4c289cabcbf63ae89);
+            
+        
+
+        marker_d9bb49d85170f1aa7d4d492462c16a3b.bindPopup(popup_d9776ea66b14e8d9bcabcdfac79769f4)
+        ;
+
+        
+    
+    
+                marker_d9bb49d85170f1aa7d4d492462c16a3b.setIcon(icon_c18b57dd1d34ce1fa80a8f4f3c8a5d93);
+            
+    
+            var marker_b03bcd39b014c5998eb41cb47369b8d4 = L.marker(
+                [42.883992, 74.557264],
+                {
+}
+            ).addTo(map_2a47a4321e5b05bd2a6ef4d0b9d77c68);
+        
+    
+            var icon_b904055f9693e34beab5f9d4b5d99f59 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e802e4c54bc253532f7ade41d20fbf0f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ca23e7870dc517394676f62d013feed4 = $(`<div id="html_ca23e7870dc517394676f62d013feed4" style="width: 100.0%; height: 100.0%;">Bus Stop addr: Улица Коммунаров, Bus Stop id: 6</div>`)[0];
+                popup_e802e4c54bc253532f7ade41d20fbf0f.setContent(html_ca23e7870dc517394676f62d013feed4);
+            
+        
+
+        marker_b03bcd39b014c5998eb41cb47369b8d4.bindPopup(popup_e802e4c54bc253532f7ade41d20fbf0f)
+        ;
+
+        
+    
+    
+                marker_b03bcd39b014c5998eb41cb47369b8d4.setIcon(icon_b904055f9693e34beab5f9d4b5d99f59);
+            
+    
+            var marker_a67c42403ef54bee3c21423686ebb134 = L.marker(
+                [42.875198, 74.627283],
+                {
+}
+            ).addTo(map_2a47a4321e5b05bd2a6ef4d0b9d77c68);
+        
+    
+            var icon_d6be24019aac72b76ac41abd8e266b24 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f90ec3c09c73423b19c4b54e2b6a86b9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3900313aa71bc19d4337f85ec30dabc9 = $(`<div id="html_3900313aa71bc19d4337f85ec30dabc9" style="width: 100.0%; height: 100.0%;">Bus Stop addr: Рынок Таалай, Bus Stop id: 7</div>`)[0];
+                popup_f90ec3c09c73423b19c4b54e2b6a86b9.setContent(html_3900313aa71bc19d4337f85ec30dabc9);
+            
+        
+
+        marker_a67c42403ef54bee3c21423686ebb134.bindPopup(popup_f90ec3c09c73423b19c4b54e2b6a86b9)
+        ;
+
+        
+    
+    
+                marker_a67c42403ef54bee3c21423686ebb134.setIcon(icon_d6be24019aac72b76ac41abd8e266b24);
+            
+    
+            var marker_bfeca766963dc77ee667616da54284bc = L.marker(
+                [42.873901, 74.689965],
+                {
+}
+            ).addTo(map_2a47a4321e5b05bd2a6ef4d0b9d77c68);
+        
+    
+            var icon_aa1fe50e822f055c34e1218e202b68b4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_12039d083ea7954c4b66b1cc17930810 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3d9ab8f5dbb537d112ccc075aef43a99 = $(`<div id="html_3d9ab8f5dbb537d112ccc075aef43a99" style="width: 100.0%; height: 100.0%;">Bus Stop addr: Аламедин-1, Bus Stop id: 8</div>`)[0];
+                popup_12039d083ea7954c4b66b1cc17930810.setContent(html_3d9ab8f5dbb537d112ccc075aef43a99);
+            
+        
+
+        marker_bfeca766963dc77ee667616da54284bc.bindPopup(popup_12039d083ea7954c4b66b1cc17930810)
+        ;
+
+        
+    
+    
+                marker_bfeca766963dc77ee667616da54284bc.setIcon(icon_aa1fe50e822f055c34e1218e202b68b4);
+            
+    
+            var marker_fdbe0610431aa288c07f134ab06ca721 = L.marker(
+                [42.871642, 74.637077],
+                {
+}
+            ).addTo(map_2a47a4321e5b05bd2a6ef4d0b9d77c68);
+        
+    
+            var icon_a6c87e35769bba9ac9c740ffcd33d4ca = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b0bfe724a98207c115f1281511af65ea = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4f25e61f053730abc467af0d99dccffb = $(`<div id="html_4f25e61f053730abc467af0d99dccffb" style="width: 100.0%; height: 100.0%;">Bus Stop addr: Рынок Мадина, Bus Stop id: 9</div>`)[0];
+                popup_b0bfe724a98207c115f1281511af65ea.setContent(html_4f25e61f053730abc467af0d99dccffb);
+            
+        
+
+        marker_fdbe0610431aa288c07f134ab06ca721.bindPopup(popup_b0bfe724a98207c115f1281511af65ea)
+        ;
+
+        
+    
+    
+                marker_fdbe0610431aa288c07f134ab06ca721.setIcon(icon_a6c87e35769bba9ac9c740ffcd33d4ca);
+            
+    
+            var marker_da4b0233df4ee7727088fa6d5cc0115e = L.marker(
+                [42.861592, 74.636716],
+                {
+}
+            ).addTo(map_2a47a4321e5b05bd2a6ef4d0b9d77c68);
+        
+    
+            var icon_4985fd22ca45aa26340a8eac5ab7a995 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_675205b451cd2c798d455899a431cc6b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c6bfe7c27ceab70872c3f97fbcb226e1 = $(`<div id="html_c6bfe7c27ceab70872c3f97fbcb226e1" style="width: 100.0%; height: 100.0%;">Bus Stop addr: Завод Айнур, Bus Stop id: 10</div>`)[0];
+                popup_675205b451cd2c798d455899a431cc6b.setContent(html_c6bfe7c27ceab70872c3f97fbcb226e1);
+            
+        
+
+        marker_da4b0233df4ee7727088fa6d5cc0115e.bindPopup(popup_675205b451cd2c798d455899a431cc6b)
+        ;
+
+        
+    
+    
+                marker_da4b0233df4ee7727088fa6d5cc0115e.setIcon(icon_4985fd22ca45aa26340a8eac5ab7a995);
+            
+    
+            var marker_335681a27c46f10a3ffc78e05d90d606 = L.marker(
+                [42.855422, 74.650626],
+                {
+}
+            ).addTo(map_2a47a4321e5b05bd2a6ef4d0b9d77c68);
+        
+    
+            var icon_b22049bb006ed2eb9d0dc30377f6ee44 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_91ad8c96a90ccd064c309ba89b29fd5c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d99c58389c6e0713ad0eb7ee8aebb7ce = $(`<div id="html_d99c58389c6e0713ad0eb7ee8aebb7ce" style="width: 100.0%; height: 100.0%;">Bus Stop addr: Достоевского, Bus Stop id: 11</div>`)[0];
+                popup_91ad8c96a90ccd064c309ba89b29fd5c.setContent(html_d99c58389c6e0713ad0eb7ee8aebb7ce);
+            
+        
+
+        marker_335681a27c46f10a3ffc78e05d90d606.bindPopup(popup_91ad8c96a90ccd064c309ba89b29fd5c)
+        ;
+
+        
+    
+    
+                marker_335681a27c46f10a3ffc78e05d90d606.setIcon(icon_b22049bb006ed2eb9d0dc30377f6ee44);
+            
+    
+            var marker_9585b6dad8b52bb8ae563bbdba85e882 = L.marker(
+                [42.855696, 74.656167],
+                {
+}
+            ).addTo(map_2a47a4321e5b05bd2a6ef4d0b9d77c68);
+        
+    
+            var icon_68199e283a7ebb35ed47bc77237ba8f7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_37549d33a05c92ffa9d13e97e884af33 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6c964de7ae50cbfcc868d94341dbdf0d = $(`<div id="html_6c964de7ae50cbfcc868d94341dbdf0d" style="width: 100.0%; height: 100.0%;">Bus Stop addr: Дордой, Bus Stop id: 12</div>`)[0];
+                popup_37549d33a05c92ffa9d13e97e884af33.setContent(html_6c964de7ae50cbfcc868d94341dbdf0d);
+            
+        
+
+        marker_9585b6dad8b52bb8ae563bbdba85e882.bindPopup(popup_37549d33a05c92ffa9d13e97e884af33)
+        ;
+
+        
+    
+    
+                marker_9585b6dad8b52bb8ae563bbdba85e882.setIcon(icon_68199e283a7ebb35ed47bc77237ba8f7);
+            
+    
+            var marker_bf2ac907225f434cff09ff5e97cad287 = L.marker(
+                [42.875777, 74.617577],
+                {
+}
+            ).addTo(map_2a47a4321e5b05bd2a6ef4d0b9d77c68);
+        
+    
+            var icon_fcfdea5e273c30df575df6eec9035624 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9a9fa63072abcdc03e8b253044e98a7c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_787a10fa27ff07eba96906e6f6d1f02f = $(`<div id="html_787a10fa27ff07eba96906e6f6d1f02f" style="width: 100.0%; height: 100.0%;">Bus Stop addr: Правды (проспект Чуй), Bus Stop id: 298</div>`)[0];
+                popup_9a9fa63072abcdc03e8b253044e98a7c.setContent(html_787a10fa27ff07eba96906e6f6d1f02f);
+            
+        
+
+        marker_bf2ac907225f434cff09ff5e97cad287.bindPopup(popup_9a9fa63072abcdc03e8b253044e98a7c)
+        ;
+
+        
+    
+    
+                marker_bf2ac907225f434cff09ff5e97cad287.setIcon(icon_fcfdea5e273c30df575df6eec9035624);
+            
+    
+            var marker_967d13ff5cac0ea4f065e1a95226abaf = L.marker(
+                [42.85561, 74.658718],
+                {
+}
+            ).addTo(map_2a47a4321e5b05bd2a6ef4d0b9d77c68);
+        
+    
+            var icon_4cdf8299e52889f8e4e676b117cf37c4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_33740aff3d1df411fbf1d6e88226e7e7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f86e86be05fc7c4818b57984929e19f1 = $(`<div id="html_f86e86be05fc7c4818b57984929e19f1" style="width: 100.0%; height: 100.0%;">Bus Stop addr: Улица Оберон, Bus Stop id: 14</div>`)[0];
+                popup_33740aff3d1df411fbf1d6e88226e7e7.setContent(html_f86e86be05fc7c4818b57984929e19f1);
+            
+        
+
+        marker_967d13ff5cac0ea4f065e1a95226abaf.bindPopup(popup_33740aff3d1df411fbf1d6e88226e7e7)
+        ;
+
+        
+    
+    
+                marker_967d13ff5cac0ea4f065e1a95226abaf.setIcon(icon_4cdf8299e52889f8e4e676b117cf37c4);
+            
+    
+            var marker_f3db55001973b6ad155eb9243da585f8 = L.marker(
+                [42.886612, 74.552367],
+                {
+}
+            ).addTo(map_2a47a4321e5b05bd2a6ef4d0b9d77c68);
+        
+    
+            var icon_f06ee2901e6d336a73f9b57b77ca8790 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4271352fea8559f94639189f35289323 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b7fcdd6856da26f5c34c3dad2da246c9 = $(`<div id="html_b7fcdd6856da26f5c34c3dad2da246c9" style="width: 100.0%; height: 100.0%;">Bus Stop addr: Ленская, Bus Stop id: 15</div>`)[0];
+                popup_4271352fea8559f94639189f35289323.setContent(html_b7fcdd6856da26f5c34c3dad2da246c9);
+            
+        
+
+        marker_f3db55001973b6ad155eb9243da585f8.bindPopup(popup_4271352fea8559f94639189f35289323)
+        ;
+
+        
+    
+    
+                marker_f3db55001973b6ad155eb9243da585f8.setIcon(icon_f06ee2901e6d336a73f9b57b77ca8790);
+            
+    
+            var marker_a6b84e233ff60cdaf2ce6ef67e02834a = L.marker(
+                [42.855072, 74.663386],
+                {
+}
+            ).addTo(map_2a47a4321e5b05bd2a6ef4d0b9d77c68);
+        
+    
+            var icon_e96f002c18fa5ca5ac348587baafdf98 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6816ffba9e7c36f6442149747c3d669b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1d033df0fbf9ac1157cde1cac9254435 = $(`<div id="html_1d033df0fbf9ac1157cde1cac9254435" style="width: 100.0%; height: 100.0%;">Bus Stop addr: Алтын Ордо, Bus Stop id: 16</div>`)[0];
+                popup_6816ffba9e7c36f6442149747c3d669b.setContent(html_1d033df0fbf9ac1157cde1cac9254435);
+            
+        
+
+        marker_a6b84e233ff60cdaf2ce6ef67e02834a.bindPopup(popup_6816ffba9e7c36f6442149747c3d669b)
+        ;
+
+        
+    
+    
+                marker_a6b84e233ff60cdaf2ce6ef67e02834a.setIcon(icon_e96f002c18fa5ca5ac348587baafdf98);
+            
+    
+            var marker_abf94b64225cac01d008325840d35c51 = L.marker(
+                [42.856029, 74.668879],
+                {
+}
+            ).addTo(map_2a47a4321e5b05bd2a6ef4d0b9d77c68);
+        
+    
+            var icon_0b5c18a088e66feb565de7b509dae2e5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8b0679acca2747d79c28829e1534fb64 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_af8a8d14ce7b8ea912dc0d42d505409f = $(`<div id="html_af8a8d14ce7b8ea912dc0d42d505409f" style="width: 100.0%; height: 100.0%;">Bus Stop addr: АГЗС, Bus Stop id: 17</div>`)[0];
+                popup_8b0679acca2747d79c28829e1534fb64.setContent(html_af8a8d14ce7b8ea912dc0d42d505409f);
+            
+        
+
+        marker_abf94b64225cac01d008325840d35c51.bindPopup(popup_8b0679acca2747d79c28829e1534fb64)
+        ;
+
+        
+    
+    
+                marker_abf94b64225cac01d008325840d35c51.setIcon(icon_0b5c18a088e66feb565de7b509dae2e5);
+            
+    
+            var marker_2e3ad785585bf2e9c98e8ef747048c60 = L.marker(
+                [42.855674, 74.677683],
+                {
+}
+            ).addTo(map_2a47a4321e5b05bd2a6ef4d0b9d77c68);
+        
+    
+            var icon_0610b34b17099ba7813ea3ff27e3beb2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4c89914d9c6e6fa0b63430e87cab2943 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_64ae68d62c4d6f9a1b7df945e2c1a8eb = $(`<div id="html_64ae68d62c4d6f9a1b7df945e2c1a8eb" style="width: 100.0%; height: 100.0%;">Bus Stop addr: Университет Ала-Тоо, Bus Stop id: 18</div>`)[0];
+                popup_4c89914d9c6e6fa0b63430e87cab2943.setContent(html_64ae68d62c4d6f9a1b7df945e2c1a8eb);
+            
+        
+
+        marker_2e3ad785585bf2e9c98e8ef747048c60.bindPopup(popup_4c89914d9c6e6fa0b63430e87cab2943)
+        ;
+
+        
+    
+    
+                marker_2e3ad785585bf2e9c98e8ef747048c60.setIcon(icon_0610b34b17099ba7813ea3ff27e3beb2);
+            
+    
+            var marker_8fe9f3279a062cd45e1cd20d6d874f69 = L.marker(
+                [42.855208, 74.689595],
+                {
+}
+            ).addTo(map_2a47a4321e5b05bd2a6ef4d0b9d77c68);
+        
+    
+            var icon_230228b916763fdfc6a1d764ea9a70ae = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_bde91528fce507e8b17073ba7070be1e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8b2f5a4373002ce6c291c72a94519398 = $(`<div id="html_8b2f5a4373002ce6c291c72a94519398" style="width: 100.0%; height: 100.0%;">Bus Stop addr: Микрорайон Тунгуч, Bus Stop id: 19</div>`)[0];
+                popup_bde91528fce507e8b17073ba7070be1e.setContent(html_8b2f5a4373002ce6c291c72a94519398);
+            
+        
+
+        marker_8fe9f3279a062cd45e1cd20d6d874f69.bindPopup(popup_bde91528fce507e8b17073ba7070be1e)
+        ;
+
+        
+    
+    
+                marker_8fe9f3279a062cd45e1cd20d6d874f69.setIcon(icon_230228b916763fdfc6a1d764ea9a70ae);
+            
+    
+            var marker_64db82f5853f796e4b41f4f9a55527e5 = L.marker(
+                [42.855493, 74.682126],
+                {
+}
+            ).addTo(map_2a47a4321e5b05bd2a6ef4d0b9d77c68);
+        
+    
+            var icon_c27c71994bcd71e811094969d05dd59c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_648350a68f485a5be3b6d2ee078811c4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0463d686ef42f5d9424f931e2d21698a = $(`<div id="html_0463d686ef42f5d9424f931e2d21698a" style="width: 100.0%; height: 100.0%;">Bus Stop addr: Микрорайон Тунгуч-1, Bus Stop id: 20</div>`)[0];
+                popup_648350a68f485a5be3b6d2ee078811c4.setContent(html_0463d686ef42f5d9424f931e2d21698a);
+            
+        
+
+        marker_64db82f5853f796e4b41f4f9a55527e5.bindPopup(popup_648350a68f485a5be3b6d2ee078811c4)
+        ;
+
+        
+    
+    
+                marker_64db82f5853f796e4b41f4f9a55527e5.setIcon(icon_c27c71994bcd71e811094969d05dd59c);
+            
+    
+            var marker_f24051f95b22591f661b5850b7889035 = L.marker(
+                [42.855814, 74.674339],
+                {
+}
+            ).addTo(map_2a47a4321e5b05bd2a6ef4d0b9d77c68);
+        
+    
+            var icon_0084ea1ed4efc1ce3eb9dc9f61671b3a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_14c73300dcd74b9738f2fe461df2edcd = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b95ba1adbcbe37255ccb9585af0cafda = $(`<div id="html_b95ba1adbcbe37255ccb9585af0cafda" style="width: 100.0%; height: 100.0%;">Bus Stop addr: Республиканское ГАИ, Bus Stop id: 21</div>`)[0];
+                popup_14c73300dcd74b9738f2fe461df2edcd.setContent(html_b95ba1adbcbe37255ccb9585af0cafda);
+            
+        
+
+        marker_f24051f95b22591f661b5850b7889035.bindPopup(popup_14c73300dcd74b9738f2fe461df2edcd)
+        ;
+
+        
+    
+    
+                marker_f24051f95b22591f661b5850b7889035.setIcon(icon_0084ea1ed4efc1ce3eb9dc9f61671b3a);
+            
+    
+            var marker_e3889a7768a66c1d8daa83157b23a1d1 = L.marker(
+                [42.856183, 74.643469],
+                {
+}
+            ).addTo(map_2a47a4321e5b05bd2a6ef4d0b9d77c68);
+        
+    
+            var icon_61af168b8a109d32f6e0c175c6aff17f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5e06308d838668557f46af160ee367e1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_137559573880fce46a4f3e055957b395 = $(`<div id="html_137559573880fce46a4f3e055957b395" style="width: 100.0%; height: 100.0%;">Bus Stop addr: Октябрьская, Bus Stop id: 22</div>`)[0];
+                popup_5e06308d838668557f46af160ee367e1.setContent(html_137559573880fce46a4f3e055957b395);
+            
+        
+
+        marker_e3889a7768a66c1d8daa83157b23a1d1.bindPopup(popup_5e06308d838668557f46af160ee367e1)
+        ;
+
+        
+    
+    
+                marker_e3889a7768a66c1d8daa83157b23a1d1.setIcon(icon_61af168b8a109d32f6e0c175c6aff17f);
+            
+    
+            var marker_aea1a8a230edbe0f0063998cc72f5dd8 = L.marker(
+                [42.876682, 74.586949],
+                {
+}
+            ).addTo(map_2a47a4321e5b05bd2a6ef4d0b9d77c68);
+        
+    
+            var icon_9d49643b0d9a3274da43f5fe0d9ba577 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7d9534845531667ec0f19bf527a30656 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_61805b517066111ec85af2758677cbbe = $(`<div id="html_61805b517066111ec85af2758677cbbe" style="width: 100.0%; height: 100.0%;">Bus Stop addr: Кыргызская национальная филармония им. Токтогула Сатылганова, Bus Stop id: 23</div>`)[0];
+                popup_7d9534845531667ec0f19bf527a30656.setContent(html_61805b517066111ec85af2758677cbbe);
+            
+        
+
+        marker_aea1a8a230edbe0f0063998cc72f5dd8.bindPopup(popup_7d9534845531667ec0f19bf527a30656)
+        ;
+
+        
+    
+    
+                marker_aea1a8a230edbe0f0063998cc72f5dd8.setIcon(icon_9d49643b0d9a3274da43f5fe0d9ba577);
+            
+    
+            var marker_fcb75776383a0ed3d6a990439a6fa06a = L.marker(
+                [42.868851, 74.690522],
+                {
+}
+            ).addTo(map_2a47a4321e5b05bd2a6ef4d0b9d77c68);
+        
+    
+            var icon_f9f76a164c52455953518225508115a9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7681a96c44467e9ea80bcee37c5a6e62 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1b7b63f9c756fda156b5876b242b6892 = $(`<div id="html_1b7b63f9c756fda156b5876b242b6892" style="width: 100.0%; height: 100.0%;">Bus Stop addr: Строительная фирма Азат, Bus Stop id: 24</div>`)[0];
+                popup_7681a96c44467e9ea80bcee37c5a6e62.setContent(html_1b7b63f9c756fda156b5876b242b6892);
+            
+        
+
+        marker_fcb75776383a0ed3d6a990439a6fa06a.bindPopup(popup_7681a96c44467e9ea80bcee37c5a6e62)
+        ;
+
+        
+    
+    
+                marker_fcb75776383a0ed3d6a990439a6fa06a.setIcon(icon_f9f76a164c52455953518225508115a9);
+            
+    
+            var marker_e447454198debdcb9db87aa09e499e69 = L.marker(
+                [42.858785, 74.691626],
+                {
+}
+            ).addTo(map_2a47a4321e5b05bd2a6ef4d0b9d77c68);
+        
+    
+            var icon_5a1b7279ff0979a40be7e78da6b2d058 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e583ee1a3a3a6c8ba67b9ff05a6516e3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d95f54723d30afc2157f37230ecc178b = $(`<div id="html_d95f54723d30afc2157f37230ecc178b" style="width: 100.0%; height: 100.0%;">Bus Stop addr: Улица Кырман, Bus Stop id: 25</div>`)[0];
+                popup_e583ee1a3a3a6c8ba67b9ff05a6516e3.setContent(html_d95f54723d30afc2157f37230ecc178b);
+            
+        
+
+        marker_e447454198debdcb9db87aa09e499e69.bindPopup(popup_e583ee1a3a3a6c8ba67b9ff05a6516e3)
+        ;
+
+        
+    
+    
+                marker_e447454198debdcb9db87aa09e499e69.setIcon(icon_5a1b7279ff0979a40be7e78da6b2d058);
+            
+    
+            var marker_a2d795edb885be96cb933c64ced6ca07 = L.marker(
+                [42.875459, 74.619229],
+                {
+}
+            ).addTo(map_2a47a4321e5b05bd2a6ef4d0b9d77c68);
+        
+    
+            var icon_8996042857b7ec12dc03f8776addc6f7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e975ed62e76c6a6e5a16a1259b5ce5af = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_71f7f136912f3c0b32fc18245053373f = $(`<div id="html_71f7f136912f3c0b32fc18245053373f" style="width: 100.0%; height: 100.0%;">Bus Stop addr: Детский мир, Bus Stop id: 26</div>`)[0];
+                popup_e975ed62e76c6a6e5a16a1259b5ce5af.setContent(html_71f7f136912f3c0b32fc18245053373f);
+            
+        
+
+        marker_a2d795edb885be96cb933c64ced6ca07.bindPopup(popup_e975ed62e76c6a6e5a16a1259b5ce5af)
+        ;
+
+        
+    
+    
+                marker_a2d795edb885be96cb933c64ced6ca07.setIcon(icon_8996042857b7ec12dc03f8776addc6f7);
+            
+    
+            var marker_76eea76917761d2b99de5db3de0b94ce = L.marker(
+                [42.876317, 74.594479],
+                {
+}
+            ).addTo(map_2a47a4321e5b05bd2a6ef4d0b9d77c68);
+        
+    
+            var icon_0bb633b6da21802755677a236a5bc76b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a025527764b72f033c49f1c5406f1e61 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e3cd481a5d29fcdf14c562bf169dd16b = $(`<div id="html_e3cd481a5d29fcdf14c562bf169dd16b" style="width: 100.0%; height: 100.0%;">Bus Stop addr: Кинотеатр Россия, Bus Stop id: 27</div>`)[0];
+                popup_a025527764b72f033c49f1c5406f1e61.setContent(html_e3cd481a5d29fcdf14c562bf169dd16b);
+            
+        
+
+        marker_76eea76917761d2b99de5db3de0b94ce.bindPopup(popup_a025527764b72f033c49f1c5406f1e61)
+        ;
+
+        
+    
+    
+                marker_76eea76917761d2b99de5db3de0b94ce.setIcon(icon_0bb633b6da21802755677a236a5bc76b);
+            
+    
+            var marker_b1a3dbbe65aced245894637dd431f9ec = L.marker(
+                [42.88006, 74.611697],
+                {
+}
+            ).addTo(map_2a47a4321e5b05bd2a6ef4d0b9d77c68);
+        
+    
+            var icon_5e487d1773101e99ac0eb03ace4b02ac = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2bb74c52c094fbffc85fd6035b958bb0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f766c81994299b3498b8a5de0b19484d = $(`<div id="html_f766c81994299b3498b8a5de0b19484d" style="width: 100.0%; height: 100.0%;">Bus Stop addr: Цирк, Bus Stop id: 299</div>`)[0];
+                popup_2bb74c52c094fbffc85fd6035b958bb0.setContent(html_f766c81994299b3498b8a5de0b19484d);
+            
+        
+
+        marker_b1a3dbbe65aced245894637dd431f9ec.bindPopup(popup_2bb74c52c094fbffc85fd6035b958bb0)
+        ;
+
+        
+    
+    
+                marker_b1a3dbbe65aced245894637dd431f9ec.setIcon(icon_5e487d1773101e99ac0eb03ace4b02ac);
+            
+    
+            var marker_0033323a8cb9b1f2d691f890c69d6522 = L.marker(
+                [42.875154, 74.630957],
+                {
+}
+            ).addTo(map_2a47a4321e5b05bd2a6ef4d0b9d77c68);
+        
+    
+            var icon_95ac7828f5a93971130c595501dc7a06 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7886885202f9aed90059a64308871bfe = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c5c12e0da7989b2f03f521c2366c8269 = $(`<div id="html_c5c12e0da7989b2f03f521c2366c8269" style="width: 100.0%; height: 100.0%;">Bus Stop addr: м-н Восток-5, Bus Stop id: 29</div>`)[0];
+                popup_7886885202f9aed90059a64308871bfe.setContent(html_c5c12e0da7989b2f03f521c2366c8269);
+            
+        
+
+        marker_0033323a8cb9b1f2d691f890c69d6522.bindPopup(popup_7886885202f9aed90059a64308871bfe)
+        ;
+
+        
+    
+    
+                marker_0033323a8cb9b1f2d691f890c69d6522.setIcon(icon_95ac7828f5a93971130c595501dc7a06);
+            
+    
+            var marker_efbb94c2287f6ac9cf932dad999ad383 = L.marker(
+                [42.877177, 74.579595],
+                {
+}
+            ).addTo(map_2a47a4321e5b05bd2a6ef4d0b9d77c68);
+        
+    
+            var icon_8796310f65a370e32d705f1bbbb629dd = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_65c70411415b6b70019b202d85e6f64c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5da0bd3803c045a7886451fa4b6a27e8 = $(`<div id="html_5da0bd3803c045a7886451fa4b6a27e8" style="width: 100.0%; height: 100.0%;">Bus Stop addr: Национальная академия наук Кыргызской Республики, Bus Stop id: 30</div>`)[0];
+                popup_65c70411415b6b70019b202d85e6f64c.setContent(html_5da0bd3803c045a7886451fa4b6a27e8);
+            
+        
+
+        marker_efbb94c2287f6ac9cf932dad999ad383.bindPopup(popup_65c70411415b6b70019b202d85e6f64c)
+        ;
+
+        
+    
+    
+                marker_efbb94c2287f6ac9cf932dad999ad383.setIcon(icon_8796310f65a370e32d705f1bbbb629dd);
+            
+    
+            var marker_1bf7c2543b62b1a6242b7826cba7a801 = L.marker(
+                [42.938032, 74.488702],
+                {
+}
+            ).addTo(map_2a47a4321e5b05bd2a6ef4d0b9d77c68);
+        
+    
+            var icon_66c62ea62e033455252b7458f67ad802 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_58a9822ff844700473f53c4ca3e9e00d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d4cb7e96856d8d04ec39cac7deed775a = $(`<div id="html_d4cb7e96856d8d04ec39cac7deed775a" style="width: 100.0%; height: 100.0%;">Bus Stop addr: Ак-Жол пост ГАИ, Bus Stop id: 31</div>`)[0];
+                popup_58a9822ff844700473f53c4ca3e9e00d.setContent(html_d4cb7e96856d8d04ec39cac7deed775a);
+            
+        
+
+        marker_1bf7c2543b62b1a6242b7826cba7a801.bindPopup(popup_58a9822ff844700473f53c4ca3e9e00d)
+        ;
+
+        
+    
+    
+                marker_1bf7c2543b62b1a6242b7826cba7a801.setIcon(icon_66c62ea62e033455252b7458f67ad802);
+            
+    
+            var marker_7839685d49e2126600578cda77c684f2 = L.marker(
+                [42.937205, 74.489425],
+                {
+}
+            ).addTo(map_2a47a4321e5b05bd2a6ef4d0b9d77c68);
+        
+    
+            var icon_c00bdb7e5e9ca2d904e2a4c6af2ab0d5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8b8b830ecc4e258c4df05a7e230ba2f8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_949d1f878efae101852f10bb27e4e847 = $(`<div id="html_949d1f878efae101852f10bb27e4e847" style="width: 100.0%; height: 100.0%;">Bus Stop addr: Ак-Жол пост ГАИ, Bus Stop id: 34</div>`)[0];
+                popup_8b8b830ecc4e258c4df05a7e230ba2f8.setContent(html_949d1f878efae101852f10bb27e4e847);
+            
+        
+
+        marker_7839685d49e2126600578cda77c684f2.bindPopup(popup_8b8b830ecc4e258c4df05a7e230ba2f8)
+        ;
+
+        
+    
+    
+                marker_7839685d49e2126600578cda77c684f2.setIcon(icon_c00bdb7e5e9ca2d904e2a4c6af2ab0d5);
+            
+    
+            var marker_c5ae2d618e97cdfb919337ed2ea10dd8 = L.marker(
+                [42.945764, 74.479916],
+                {
+}
+            ).addTo(map_2a47a4321e5b05bd2a6ef4d0b9d77c68);
+        
+    
+            var icon_d111a48ca2e7bb338b2230c8a7eb3566 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ec57742467d6ce670a169fb4777f394c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_50f572ba62cef72890ef98403f551536 = $(`<div id="html_50f572ba62cef72890ef98403f551536" style="width: 100.0%; height: 100.0%;">Bus Stop addr: Ак-Жол, Bus Stop id: 32</div>`)[0];
+                popup_ec57742467d6ce670a169fb4777f394c.setContent(html_50f572ba62cef72890ef98403f551536);
+            
+        
+
+        marker_c5ae2d618e97cdfb919337ed2ea10dd8.bindPopup(popup_ec57742467d6ce670a169fb4777f394c)
+        ;
+
+        
+    
+    
+                marker_c5ae2d618e97cdfb919337ed2ea10dd8.setIcon(icon_d111a48ca2e7bb338b2230c8a7eb3566);
+            
+    
+            var marker_58b84d642d83fda51fc0bc1a3e366b00 = L.marker(
+                [42.946951, 74.478363],
+                {
+}
+            ).addTo(map_2a47a4321e5b05bd2a6ef4d0b9d77c68);
+        
+    
+            var icon_2f576cdc0efbed995f2665092cc75f97 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_416bfd5c08d250e1d2ef64480c59eed4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3d947cd1e8c4967dba28ef3c72efffbf = $(`<div id="html_3d947cd1e8c4967dba28ef3c72efffbf" style="width: 100.0%; height: 100.0%;">Bus Stop addr: Ак-Жол, Bus Stop id: 33</div>`)[0];
+                popup_416bfd5c08d250e1d2ef64480c59eed4.setContent(html_3d947cd1e8c4967dba28ef3c72efffbf);
+            
+        
+
+        marker_58b84d642d83fda51fc0bc1a3e366b00.bindPopup(popup_416bfd5c08d250e1d2ef64480c59eed4)
+        ;
+
+        
+    
+    
+                marker_58b84d642d83fda51fc0bc1a3e366b00.setIcon(icon_2f576cdc0efbed995f2665092cc75f97);
+            
+    
+            var marker_4f81cb880b7d30bf0ef9d7beb68ec971 = L.marker(
+                [42.891072, 74.546654],
+                {
+}
+            ).addTo(map_2a47a4321e5b05bd2a6ef4d0b9d77c68);
+        
+    
+            var icon_ba31e729f18319d1b81102866d385f47 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d69e290fa633cd9d5415697ab1ace8f9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_78eb954139f0d9f2d71bade80bdc2167 = $(`<div id="html_78eb954139f0d9f2d71bade80bdc2167" style="width: 100.0%; height: 100.0%;">Bus Stop addr: Школа №54, Bus Stop id: 35</div>`)[0];
+                popup_d69e290fa633cd9d5415697ab1ace8f9.setContent(html_78eb954139f0d9f2d71bade80bdc2167);
+            
+        
+
+        marker_4f81cb880b7d30bf0ef9d7beb68ec971.bindPopup(popup_d69e290fa633cd9d5415697ab1ace8f9)
+        ;
+
+        
+    
+    
+                marker_4f81cb880b7d30bf0ef9d7beb68ec971.setIcon(icon_ba31e729f18319d1b81102866d385f47);
+            
+    
+            var marker_4236164f09d60c855b26b8e449dbd012 = L.marker(
+                [42.893051, 74.54413],
+                {
+}
+            ).addTo(map_2a47a4321e5b05bd2a6ef4d0b9d77c68);
+        
+    
+            var icon_e0186448bc256e60170300aec8dd1f5c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_fa94235dd59d9a8b485f80d5c3412205 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_aeba240970fb697e21a0eafa4c362617 = $(`<div id="html_aeba240970fb697e21a0eafa4c362617" style="width: 100.0%; height: 100.0%;">Bus Stop addr: Стадион Динамо, Bus Stop id: 36</div>`)[0];
+                popup_fa94235dd59d9a8b485f80d5c3412205.setContent(html_aeba240970fb697e21a0eafa4c362617);
+            
+        
+
+        marker_4236164f09d60c855b26b8e449dbd012.bindPopup(popup_fa94235dd59d9a8b485f80d5c3412205)
+        ;
+
+        
+    
+    
+                marker_4236164f09d60c855b26b8e449dbd012.setIcon(icon_e0186448bc256e60170300aec8dd1f5c);
+            
+    
+            var marker_cc97da016b1d17fa39ecb759e84e2fe6 = L.marker(
+                [42.937765, 74.513976],
+                {
+}
+            ).addTo(map_2a47a4321e5b05bd2a6ef4d0b9d77c68);
+        
+    
+            var icon_d864b29384d33eb06f308beee84b4fd8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6790e6c407ab29cfa2a09295c6a420bc = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9393141cb3cbda8a9dc0f2a2939ecbfe = $(`<div id="html_9393141cb3cbda8a9dc0f2a2939ecbfe" style="width: 100.0%; height: 100.0%;">Bus Stop addr: с. Степное, Bus Stop id: 37</div>`)[0];
+                popup_6790e6c407ab29cfa2a09295c6a420bc.setContent(html_9393141cb3cbda8a9dc0f2a2939ecbfe);
+            
+        
+
+        marker_cc97da016b1d17fa39ecb759e84e2fe6.bindPopup(popup_6790e6c407ab29cfa2a09295c6a420bc)
+        ;
+
+        
+    
+    
+                marker_cc97da016b1d17fa39ecb759e84e2fe6.setIcon(icon_d864b29384d33eb06f308beee84b4fd8);
+            
+    
+            var marker_9db30b33149df2f49d8f394066817f75 = L.marker(
+                [42.88437, 74.563161],
+                {
+}
+            ).addTo(map_2a47a4321e5b05bd2a6ef4d0b9d77c68);
+        
+    
+            var icon_fa089b2a2c807ac569fc1f3ae1e20762 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3f020b7dde4064fb2ddf2cab3295c766 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d38c1ae328e969ca17daa71522940e3e = $(`<div id="html_d38c1ae328e969ca17daa71522940e3e" style="width: 100.0%; height: 100.0%;">Bus Stop addr: Киностудия Айтыш Фильм, Bus Stop id: 38</div>`)[0];
+                popup_3f020b7dde4064fb2ddf2cab3295c766.setContent(html_d38c1ae328e969ca17daa71522940e3e);
+            
+        
+
+        marker_9db30b33149df2f49d8f394066817f75.bindPopup(popup_3f020b7dde4064fb2ddf2cab3295c766)
+        ;
+
+        
+    
+    
+                marker_9db30b33149df2f49d8f394066817f75.setIcon(icon_fa089b2a2c807ac569fc1f3ae1e20762);
+            
+    
+            var marker_dd7c49838a2856b14cc84b46ceca6816 = L.marker(
+                [42.887585, 74.551074],
+                {
+}
+            ).addTo(map_2a47a4321e5b05bd2a6ef4d0b9d77c68);
+        
+    
+            var icon_192e1ec9f933c1433b9b10ff6a0e0480 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_834b5c540e22940192503cef690d7321 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6d2d096662d32bfaeb902c4939aef07c = $(`<div id="html_6d2d096662d32bfaeb902c4939aef07c" style="width: 100.0%; height: 100.0%;">Bus Stop addr: Сергея Лазо, Bus Stop id: 39</div>`)[0];
+                popup_834b5c540e22940192503cef690d7321.setContent(html_6d2d096662d32bfaeb902c4939aef07c);
+            
+        
+
+        marker_dd7c49838a2856b14cc84b46ceca6816.bindPopup(popup_834b5c540e22940192503cef690d7321)
+        ;
+
+        
+    
+    
+                marker_dd7c49838a2856b14cc84b46ceca6816.setIcon(icon_192e1ec9f933c1433b9b10ff6a0e0480);
+            
+    
+            var marker_1f44c49b3bc22fbf940462060ba4b288 = L.marker(
+                [42.875859, 74.608258],
+                {
+}
+            ).addTo(map_2a47a4321e5b05bd2a6ef4d0b9d77c68);
+        
+    
+            var icon_96df797993641e2bcb756d9e3bcc2c24 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b3a264e04fa85ba3dfb656b6d6e94471 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_652a83585206d756198b38b01a2f7f11 = $(`<div id="html_652a83585206d756198b38b01a2f7f11" style="width: 100.0%; height: 100.0%;">Bus Stop addr: Кинотеатр Ала-Тоо, Bus Stop id: 28</div>`)[0];
+                popup_b3a264e04fa85ba3dfb656b6d6e94471.setContent(html_652a83585206d756198b38b01a2f7f11);
+            
+        
+
+        marker_1f44c49b3bc22fbf940462060ba4b288.bindPopup(popup_b3a264e04fa85ba3dfb656b6d6e94471)
+        ;
+
+        
+    
+    
+                marker_1f44c49b3bc22fbf940462060ba4b288.setIcon(icon_96df797993641e2bcb756d9e3bcc2c24);
+            
+</script>
+</html>

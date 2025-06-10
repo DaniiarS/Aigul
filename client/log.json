@@ -1,0 +1,92 @@
+{
+    "last_segment_index": "0",
+    "last_modified": "2025-06-02 19:36:42.010374",
+    "current_segment_index": "0",
+    "speed": "0.6",
+    "route": "7",
+    "first_modified": "2025-06-02 19:36:42.010370",
+    "current_segment_name": "Аламедин-1 -- Строительная фирма Азат",
+    "bus_id": "1",
+    "lon": "74.69",
+    "lat": "42.8739",
+    "last_segment_name": "Аламедин-1 -- Строительная фирма Азат"
+}
+{
+    "current_segment_index": "0",
+    "speed": "0.71",
+    "route": "7",
+    "first_modified": "2025-06-02 19:36:42.010370",
+    "last_segment_index": "0",
+    "current_segment_name": "Аламедин-1 -- Строительная фирма Азат",
+    "bus_id": "1",
+    "lon": "74.6905",
+    "lat": "42.8739",
+    "last_segment_name": "Аламедин-1 -- Строительная фирма Азат",
+    "last_modified": "2025-06-02 19:36:47.039394"
+}
+{
+    "current_segment_index": "0",
+    "speed": "0.81",
+    "route": "7",
+    "first_modified": "2025-06-02 19:36:42.010370",
+    "last_segment_index": "0",
+    "current_segment_name": "Аламедин-1 -- Строительная фирма Азат",
+    "bus_id": "1",
+    "lon": "74.6906",
+    "lat": "42.872",
+    "last_segment_name": "Аламедин-1 -- Строительная фирма Азат",
+    "last_modified": "2025-06-02 19:36:52.059060"
+}
+{
+    "current_segment_index": "0",
+    "speed": "0.84",
+    "route": "7",
+    "first_modified": "2025-06-02 19:36:42.010370",
+    "last_segment_index": "0",
+    "current_segment_name": "Аламедин-1 -- Строительная фирма Азат",
+    "bus_id": "1",
+    "lon": "74.6906",
+    "lat": "42.8704",
+    "last_segment_name": "Аламедин-1 -- Строительная фирма Азат",
+    "last_modified": "2025-06-02 19:36:57.077605"
+}
+{
+    "current_segment_index": "1",
+    "speed": "0.3",
+    "route": "7",
+    "first_modified": "2025-06-02 19:36:50.672786",
+    "last_segment_index": "1",
+    "current_segment_name": "Строительная фирма Азат -- Нефтебаза",
+    "bus_id": "1",
+    "lon": "74.6906",
+    "lat": "42.8676",
+    "last_segment_name": "Аламедин-1 -- Строительная фирма Азат",
+    "last_modified": "2025-06-02 19:37:02.096653"
+}
+{
+    "current_segment_index": "1",
+    "speed": "0.02",
+    "route": "7",
+    "first_modified": "2025-06-02 19:36:50.672786",
+    "last_segment_index": "1",
+    "current_segment_name": "Строительная фирма Азат -- Нефтебаза",
+    "bus_id": "1",
+    "lon": "74.6907",
+    "lat": "42.8656",
+    "last_segment_name": "Аламедин-1 -- Строительная фирма Азат",
+    "last_modified": "2025-06-02 19:37:07.116698"
+}
+{
+    "current_segment_index": "2",
+    "speed": "0.6",
+    "route": "7",
+    "first_modified": "2025-06-02 19:36:50.672786",
+    "last_segment_index": "1",
+    "current_segment_name": "Нефтебаза -- Улица Кырман",
+    "bus_id": "1",
+    "lon": "74.6909",
+    "lat": "42.8643",
+    "last_start_segment": "2",
+    "last_segment_name": "Аламедин-1 -- Строительная фирма Азат",
+    "last_modified": "2025-06-02 19:37:12.139470"
+}

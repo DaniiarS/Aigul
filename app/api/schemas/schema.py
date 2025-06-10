@@ -43,3 +43,9 @@ class Point(BaseModel):
 class Coordinates(BaseModel):
     longitude: float
     latitude: float
+
+class BusInfo(BaseModel):
+    id: int
+    lat: float
+    lon: float
+    speed: float

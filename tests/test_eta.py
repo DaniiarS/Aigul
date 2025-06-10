@@ -92,7 +92,6 @@ def test_is_bus_stop(sample_points: list[PointEntity], ROUTE: str):
 # EXECUTION:
 #========================================================================
 
-
 """ Preprocessing data to perform tests """
 # ROUTE = "7"
 # CWD_PATH = "tests/"

@@ -1,0 +1,1892 @@
+[
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 0,
+            "l": 6.55,
+            "l_sum": 6.55,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69003056371369,
+                42.87393527132315
+            ],
+            "type": "Point"
+        },
+        "id": 250
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 1,
+            "l": "8.20",
+            "l_sum": 14.75,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69012954189643,
+                42.87391719102871
+            ],
+            "type": "Point"
+        },
+        "id": 251
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 2,
+            "l": 10.01,
+            "l_sum": 24.76,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69024849204655,
+                42.87389243816821
+            ],
+            "type": "Point"
+        },
+        "id": 252
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 3,
+            "l": "9.30",
+            "l_sum": 34.06,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69036098068935,
+                42.8738722054008
+            ],
+            "type": "Point"
+        },
+        "id": 253
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 4,
+            "l": "9.20",
+            "l_sum": 43.26,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69047200077804,
+                42.87389179241515
+            ],
+            "type": "Point"
+        },
+        "id": 254
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 5,
+            "l": 3.56,
+            "l_sum": 46.82,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69051701244493,
+                42.87389148249056
+            ],
+            "type": "Point"
+        },
+        "id": 255
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 6,
+            "l": 5.27,
+            "l_sum": 52.09,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69051345001392,
+                42.8738430613719
+            ],
+            "type": "Point"
+        },
+        "id": 256
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 7,
+            "l": 5,
+            "l_sum": 57.09,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.6905146066087,
+                42.87379782202305
+            ],
+            "type": "Point"
+        },
+        "id": 257
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 8,
+            "l": 5.77,
+            "l_sum": 62.86,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69051352616933,
+                42.87374560709867
+            ],
+            "type": "Point"
+        },
+        "id": 258
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 9,
+            "l": 6.33,
+            "l_sum": 69.19,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69051488594738,
+                42.87368870083114
+            ],
+            "type": "Point"
+        },
+        "id": 259
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 10,
+            "l": "6.10",
+            "l_sum": 75.29,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.6905161193447,
+                42.873634101320675
+            ],
+            "type": "Point"
+        },
+        "id": 260
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 11,
+            "l": "5.80",
+            "l_sum": 81.09,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.6905164767739,
+                42.8735823438947
+            ],
+            "type": "Point"
+        },
+        "id": 261
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 12,
+            "l": 4.75,
+            "l_sum": 85.84,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69051791834886,
+                42.87353961035535
+            ],
+            "type": "Point"
+        },
+        "id": 262
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 13,
+            "l": 4.36,
+            "l_sum": 90.2,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69051930069719,
+                42.87350110924021
+            ],
+            "type": "Point"
+        },
+        "id": 263
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 14,
+            "l": 4.07,
+            "l_sum": 94.27,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69052055898445,
+                42.87346479092071
+            ],
+            "type": "Point"
+        },
+        "id": 264
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 15,
+            "l": 3.98,
+            "l_sum": 98.25,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69051937164264,
+                42.87342867642491
+            ],
+            "type": "Point"
+        },
+        "id": 265
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 16,
+            "l": 3.99,
+            "l_sum": 102.24,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69051675108369,
+                42.87339205067562
+            ],
+            "type": "Point"
+        },
+        "id": 266
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 17,
+            "l": "3.90",
+            "l_sum": 106.14,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69051742021495,
+                42.8733560621622
+            ],
+            "type": "Point"
+        },
+        "id": 267
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 18,
+            "l": "2.90",
+            "l_sum": 109.04,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69051607911518,
+                42.87332768262755
+            ],
+            "type": "Point"
+        },
+        "id": 268
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 19,
+            "l": 3.33,
+            "l_sum": 112.37,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69051500343599,
+                42.87329803368917
+            ],
+            "type": "Point"
+        },
+        "id": 269
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 20,
+            "l": 3.33,
+            "l_sum": 115.7,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69051509127519,
+                42.87326841964847
+            ],
+            "type": "Point"
+        },
+        "id": 270
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 21,
+            "l": 3.62,
+            "l_sum": 119.32,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69051666029836,
+                42.87323519727684
+            ],
+            "type": "Point"
+        },
+        "id": 271
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 22,
+            "l": 2.67,
+            "l_sum": 121.99,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69051678206739,
+                42.873209711208176
+            ],
+            "type": "Point"
+        },
+        "id": 272
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 23,
+            "l": 2.71,
+            "l_sum": 124.7,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69051706556502,
+                42.87318442376281
+            ],
+            "type": "Point"
+        },
+        "id": 273
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 24,
+            "l": 2.71,
+            "l_sum": 127.41,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69051750443805,
+                42.87315803724019
+            ],
+            "type": "Point"
+        },
+        "id": 274
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 25,
+            "l": 3.14,
+            "l_sum": 130.55,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69051821832664,
+                42.873128963949114
+            ],
+            "type": "Point"
+        },
+        "id": 275
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 26,
+            "l": 3.13,
+            "l_sum": 133.68,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69051993161781,
+                42.873097945728034
+            ],
+            "type": "Point"
+        },
+        "id": 276
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 27,
+            "l": 3.61,
+            "l_sum": 137.29,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.6905204345301,
+                42.8730652661165
+            ],
+            "type": "Point"
+        },
+        "id": 277
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 28,
+            "l": 2.71,
+            "l_sum": 140.0,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69052043453397,
+                42.873037640454015
+            ],
+            "type": "Point"
+        },
+        "id": 278
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 29,
+            "l": 3.71,
+            "l_sum": 143.71,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69051992099091,
+                42.87300306535039
+            ],
+            "type": "Point"
+        },
+        "id": 279
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 30,
+            "l": 3.94,
+            "l_sum": 147.65,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69052046012925,
+                42.87296844715479
+            ],
+            "type": "Point"
+        },
+        "id": 280
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 31,
+            "l": "3.00",
+            "l_sum": 150.65,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69052097203846,
+                42.87293956282409
+            ],
+            "type": "Point"
+        },
+        "id": 281
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 32,
+            "l": 3.32,
+            "l_sum": 153.97,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69052130731481,
+                42.87290984896413
+            ],
+            "type": "Point"
+        },
+        "id": 282
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 33,
+            "l": 4.03,
+            "l_sum": 158.0,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69052137841865,
+                42.87287378028148
+            ],
+            "type": "Point"
+        },
+        "id": 283
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 34,
+            "l": 3.99,
+            "l_sum": 161.99,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69052254141855,
+                42.87283822875659
+            ],
+            "type": "Point"
+        },
+        "id": 284
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 35,
+            "l": 3.71,
+            "l_sum": 165.7,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69052253165077,
+                42.87280504277334
+            ],
+            "type": "Point"
+        },
+        "id": 285
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 36,
+            "l": 3.99,
+            "l_sum": 169.69,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69052437566651,
+                42.87276658879185
+            ],
+            "type": "Point"
+        },
+        "id": 286
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 37,
+            "l": 4.17,
+            "l_sum": 173.86,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69052471093983,
+                42.87272838048267
+            ],
+            "type": "Point"
+        },
+        "id": 287
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 38,
+            "l": 3.32,
+            "l_sum": 177.18,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69052504620527,
+                42.87269803502289
+            ],
+            "type": "Point"
+        },
+        "id": 288
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 39,
+            "l": 3.46,
+            "l_sum": 180.64,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69052571408488,
+                42.872666513546534
+            ],
+            "type": "Point"
+        },
+        "id": 289
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 40,
+            "l": 2.94,
+            "l_sum": 183.58,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69052705517169,
+                42.87263837944192
+            ],
+            "type": "Point"
+        },
+        "id": 290
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 41,
+            "l": 4.07,
+            "l_sum": 187.65,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69052722280324,
+                42.87260103105061
+            ],
+            "type": "Point"
+        },
+        "id": 291
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 42,
+            "l": 3.46,
+            "l_sum": 191.11,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69052866044044,
+                42.87256740571138
+            ],
+            "type": "Point"
+        },
+        "id": 292
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 43,
+            "l": 4.13,
+            "l_sum": 195.24,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69052966620112,
+                42.87252932023034
+            ],
+            "type": "Point"
+        },
+        "id": 293
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 44,
+            "l": 3.46,
+            "l_sum": 198.7,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69053086220589,
+                42.87249682940197
+            ],
+            "type": "Point"
+        },
+        "id": 294
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 45,
+            "l": 3.74,
+            "l_sum": 202.44,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.6905311974742,
+                42.87246255239802
+            ],
+            "type": "Point"
+        },
+        "id": 295
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 46,
+            "l": 3.74,
+            "l_sum": 206.18,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69053069456035,
+                42.87242925817003
+            ],
+            "type": "Point"
+        },
+        "id": 296
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 47,
+            "l": 3.74,
+            "l_sum": 209.92,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69053035927385,
+                42.872394858249976
+            ],
+            "type": "Point"
+        },
+        "id": 297
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 48,
+            "l": 3.41,
+            "l_sum": 213.33,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69053033911993,
+                42.87236378535613
+            ],
+            "type": "Point"
+        },
+        "id": 298
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 49,
+            "l": "3.70",
+            "l_sum": 217.03,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69053106233366,
+                42.87233021842735
+            ],
+            "type": "Point"
+        },
+        "id": 299
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 50,
+            "l": 4.17,
+            "l_sum": 221.2,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69053122999136,
+                42.87229188697194
+            ],
+            "type": "Point"
+        },
+        "id": 300
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 51,
+            "l": 3.98,
+            "l_sum": 225.18,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69053206822088,
+                42.87225650406964
+            ],
+            "type": "Point"
+        },
+        "id": 301
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 52,
+            "l": 4.38,
+            "l_sum": 229.56,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.6905356501731,
+                42.87221625978327
+            ],
+            "type": "Point"
+        },
+        "id": 302
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 53,
+            "l": "5.40",
+            "l_sum": 234.96,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69053636373337,
+                42.87216649348005
+            ],
+            "type": "Point"
+        },
+        "id": 303
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 54,
+            "l": 6.06,
+            "l_sum": 241.02,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69053727361293,
+                42.872111823231876
+            ],
+            "type": "Point"
+        },
+        "id": 304
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 55,
+            "l": 4.84,
+            "l_sum": 245.86,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69053964791925,
+                42.87206917115546
+            ],
+            "type": "Point"
+        },
+        "id": 305
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 56,
+            "l": 4.73,
+            "l_sum": 250.59,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69054066856629,
+                42.872026534581096
+            ],
+            "type": "Point"
+        },
+        "id": 306
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 57,
+            "l": 4.19,
+            "l_sum": 254.78,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69054168921002,
+                42.871988984437735
+            ],
+            "type": "Point"
+        },
+        "id": 307
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 58,
+            "l": 4.57,
+            "l_sum": 259.35,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69054257524846,
+                42.87194843577004
+            ],
+            "type": "Point"
+        },
+        "id": 308
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 59,
+            "l": 4.82,
+            "l_sum": 264.17,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69054477583055,
+                42.87190419782067
+            ],
+            "type": "Point"
+        },
+        "id": 309
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 60,
+            "l": 4.97,
+            "l_sum": 269.14,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69054510952361,
+                42.871859386090506
+            ],
+            "type": "Point"
+        },
+        "id": 310
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 61,
+            "l": 4.72,
+            "l_sum": 273.86,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69054551777936,
+                42.871816749397595
+            ],
+            "type": "Point"
+        },
+        "id": 311
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 62,
+            "l": 4.35,
+            "l_sum": 278.21,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69054546492902,
+                42.87177722096783
+            ],
+            "type": "Point"
+        },
+        "id": 312
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 63,
+            "l": 3.73,
+            "l_sum": 281.94,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69054492130127,
+                42.87174345341688
+            ],
+            "type": "Point"
+        },
+        "id": 313
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 64,
+            "l": 3.58,
+            "l_sum": 285.52,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69054839151647,
+                42.87171233603985
+            ],
+            "type": "Point"
+        },
+        "id": 314
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 65,
+            "l": 5.18,
+            "l_sum": 290.7,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.6905469626007,
+                42.871665154689765
+            ],
+            "type": "Point"
+        },
+        "id": 315
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 66,
+            "l": 5.31,
+            "l_sum": 296.01,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69054888087933,
+                42.871617641428145
+            ],
+            "type": "Point"
+        },
+        "id": 316
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 67,
+            "l": 6.22,
+            "l_sum": 302.23,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.6905473426041,
+                42.87156185016616
+            ],
+            "type": "Point"
+        },
+        "id": 317
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 68,
+            "l": 5.84,
+            "l_sum": 308.07,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69054803914531,
+                42.87150642117024
+            ],
+            "type": "Point"
+        },
+        "id": 318
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 69,
+            "l": 5.97,
+            "l_sum": 314.04,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69054789818571,
+                42.87145463354824
+            ],
+            "type": "Point"
+        },
+        "id": 319
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 70,
+            "l": 6.46,
+            "l_sum": 320.5,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69054728581372,
+                42.87139395695357
+            ],
+            "type": "Point"
+        },
+        "id": 320
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 71,
+            "l": 6.59,
+            "l_sum": 327.09,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69054790581117,
+                42.871334203624684
+            ],
+            "type": "Point"
+        },
+        "id": 321
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 72,
+            "l": 7.75,
+            "l_sum": 334.84,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69054946873914,
+                42.871264343211635
+            ],
+            "type": "Point"
+        },
+        "id": 322
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 73,
+            "l": 5.17,
+            "l_sum": 340.01,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69054938368473,
+                42.871215647832145
+            ],
+            "type": "Point"
+        },
+        "id": 323
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 74,
+            "l": 7.04,
+            "l_sum": 347.05,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69055060847188,
+                42.87115236529604
+            ],
+            "type": "Point"
+        },
+        "id": 324
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 75,
+            "l": 7.25,
+            "l_sum": 354.3,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69055183950468,
+                42.871085618920375
+            ],
+            "type": "Point"
+        },
+        "id": 325
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 76,
+            "l": 6.09,
+            "l_sum": 360.39,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69055265600446,
+                42.87103130782026
+            ],
+            "type": "Point"
+        },
+        "id": 326
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 77,
+            "l": 5.92,
+            "l_sum": 366.31,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69055348375537,
+                42.870977118074904
+            ],
+            "type": "Point"
+        },
+        "id": 327
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 78,
+            "l": 6.34,
+            "l_sum": 372.65,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69055450437037,
+                42.870919071618914
+            ],
+            "type": "Point"
+        },
+        "id": 328
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 79,
+            "l": 5.92,
+            "l_sum": 378.57,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69055654565793,
+                42.870866410784885
+            ],
+            "type": "Point"
+        },
+        "id": 329
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 80,
+            "l": "6.50",
+            "l_sum": 385.07,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69055695388639,
+                42.87080731691336
+            ],
+            "type": "Point"
+        },
+        "id": 330
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 81,
+            "l": 5.47,
+            "l_sum": 390.54,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69055532075757,
+                42.87075794749191
+            ],
+            "type": "Point"
+        },
+        "id": 331
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 82,
+            "l": 6.62,
+            "l_sum": 397.16,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69055610091175,
+                42.87069802898736
+            ],
+            "type": "Point"
+        },
+        "id": 332
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 83,
+            "l": 5.46,
+            "l_sum": 402.62,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69055650911562,
+                42.870648958669506
+            ],
+            "type": "Point"
+        },
+        "id": 333
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 84,
+            "l": 6.83,
+            "l_sum": 409.45,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69055895869266,
+                42.870587770018744
+            ],
+            "type": "Point"
+        },
+        "id": 334
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 85,
+            "l": "12.80",
+            "l_sum": 422.25,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69055966119876,
+                42.870472448061946
+            ],
+            "type": "Point"
+        },
+        "id": 335
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 86,
+            "l": 10.03,
+            "l_sum": 432.28,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69056545231297,
+                42.8703809735359
+            ],
+            "type": "Point"
+        },
+        "id": 336
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 87,
+            "l": 10.52,
+            "l_sum": 442.8,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69057581447464,
+                42.87028589528677
+            ],
+            "type": "Point"
+        },
+        "id": 337
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 88,
+            "l": 10.52,
+            "l_sum": 453.32,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69058515158645,
+                42.870190744616366
+            ],
+            "type": "Point"
+        },
+        "id": 338
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 89,
+            "l": 9.81,
+            "l_sum": 463.13,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69059499860214,
+                42.87010334163136
+            ],
+            "type": "Point"
+        },
+        "id": 339
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 90,
+            "l": 9.61,
+            "l_sum": 472.74,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69060393148712,
+                42.87001613077754
+            ],
+            "type": "Point"
+        },
+        "id": 340
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 91,
+            "l": 9.75,
+            "l_sum": 482.49,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.690613313167,
+                42.869928321
+            ],
+            "type": "Point"
+        },
+        "id": 341
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 92,
+            "l": 10.52,
+            "l_sum": 493.01,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.6906180779136,
+                42.86983367992187
+            ],
+            "type": "Point"
+        },
+        "id": 342
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 93,
+            "l": "9.50",
+            "l_sum": 502.51,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69062017596684,
+                42.86974807354903
+            ],
+            "type": "Point"
+        },
+        "id": 343
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 94,
+            "l": 8.87,
+            "l_sum": 511.38,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69062043611939,
+                42.86966503251011
+            ],
+            "type": "Point"
+        },
+        "id": 344
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 95,
+            "l": 7.47,
+            "l_sum": 518.85,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69062075376772,
+                42.86959885283139
+            ],
+            "type": "Point"
+        },
+        "id": 345
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 96,
+            "l": 10.71,
+            "l_sum": 529.56,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69062043609503,
+                42.869500992967545
+            ],
+            "type": "Point"
+        },
+        "id": 346
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 97,
+            "l": 9.13,
+            "l_sum": 538.69,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69061471297775,
+                42.86941626294629
+            ],
+            "type": "Point"
+        },
+        "id": 347
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 98,
+            "l": 8.61,
+            "l_sum": 547.3,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69060665485506,
+                42.869336153711686
+            ],
+            "type": "Point"
+        },
+        "id": 348
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 99,
+            "l": 8.84,
+            "l_sum": 556.14,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.6906050667408,
+                42.86925721516255
+            ],
+            "type": "Point"
+        },
+        "id": 349
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 100,
+            "l": "7.30",
+            "l_sum": 563.44,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69060385078359,
+                42.86919053376619
+            ],
+            "type": "Point"
+        },
+        "id": 350
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 101,
+            "l": 8.11,
+            "l_sum": 571.55,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69059857533333,
+                42.869117271120984
+            ],
+            "type": "Point"
+        },
+        "id": 351
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 102,
+            "l": 9.45,
+            "l_sum": 581.0,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69059508121916,
+                42.86903206364505
+            ],
+            "type": "Point"
+        },
+        "id": 352
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 103,
+            "l": 9.46,
+            "l_sum": 590.46,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69058904586046,
+                42.86894685599782
+            ],
+            "type": "Point"
+        },
+        "id": 353
+    },
+    {
+        "type": "Feature",
+        "properties": {
+            "assistant-point": "true",
+            "index": 104,
+            "l": 6.46,
+            "l_sum": 596.92,
+            "segment_id": 1
+        },
+        "geometry": {
+            "coordinates": [
+                74.69058012278472,
+                42.868889670378394
+            ],
+            "type": "Point"
+        },
+        "id": 354
+    }
+]

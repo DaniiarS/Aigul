@@ -1,8 +1,20 @@
 import csv
+from app.db.database import SessionLocal
+from app.db import models
 #===============================================================
 # DEFINITIONS: read_segments(), write_segments()
 #===============================================================
 
+def add_segment_db(segment: models.Segment):
+    db = SessionLocal()
+    try:
+        db.add(segment)
+        db.commit()
+        db.refresh(segment)
+    except Exception as e:
+        print(f"{e}")
+    finally:
+        db.close()
 
         
 

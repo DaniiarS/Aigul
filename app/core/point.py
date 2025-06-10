@@ -38,6 +38,25 @@ class PointEntity:
             ROUTE=str(db_point.route_name)
         )
 
+
+class AssistantPoint:
+    def __init__(self,index, length, segment_index, route):
+        self.index = index
+        self.length = length
+        self.segment_index = segment_index
+        self.route = route
+    
+    def __repr__(self):
+        return {"index": self.index, "length": self.length, "segment_index": self.segment_index, "route": self.route}
+
+class Coord:
+    def __init__(self, lat, lon):
+        self.lat = lat
+        self.lon = lon
+    
+    def __repr__(self):
+        return {"lon": self.lon, "lat": self.lat}
+
 #=======================================================================
 # DEFINITIONS: filter_points(), plot_points()
 #=======================================================================
@@ -62,15 +81,25 @@ def plot_points(points: list, ROUTE: str):
     # Add markers
     for i, point in enumerate(points):
         folium.Marker(
-            [point["lat"], point["lng"]],
-            popup=f"lng:{point['lng']}, lat:{point['lat']}, index={i}",
+            [point.lat, point.lon],
+            popup=f"lat:{point.lat}, lon:{point.lon}, segment_id={point.segment_id}",
             # tooltip="Click me"
         ).add_to(m)
 
     # Save to HTML file
-    m.save(f"points_map_{ROUTE}-2.html")
+    m.save(f"points_map_{ROUTE}.html")
 
     return None
+
+def plot_point(point: Coord):
+    BISHKEK_COORDS = [42.8746, 74.5698]
+    m = folium.Map(location=BISHKEK_COORDS, zoom_start=13)
+
+    folium.Marker([point.lat, point.lon], popup=f"lat:{point.lat}, lon:{point.lon}").add_to(m)
+    m.save(f"point-map.html")
+
+    return None
+    
 
 #=======================================================================
 # EXECUTION:

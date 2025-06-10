@@ -33,14 +33,14 @@ class BusStopEntity:
         return {"lon": coord_split[0], "lat": coord_split[1]}
     
     @classmethod
-    def model_to_obj(cls, model_object):
+    def model_to_obj(cls, model_object, bus_stop_index):
         return cls(
             id = model_object.bus_stop_id,
             lat = model_object.bus_stop_lat,
             lng = model_object.bus_stop_lng,
             name = model_object.bus_stop_name,
             addr = model_object.bus_stop_addr,
-            index = None
+            index = bus_stop_index
         )
 
     def to_list(self):
@@ -94,25 +94,25 @@ def enumerate_address(addresses_file: str, enumerated_file: str):
     
     return None
 
-def plot_bus_stops(bus_stops: tuple[BusStopEntity, str], ROUTE: str, save_to_file_path: str):
+def plot_bus_stops(bus_stops, ROUTE: str):
     BISHKEK_COORDS = [42.8746, 74.5698]
     m = folium.Map(location=BISHKEK_COORDS, zoom_start=13)
     
     # Add markers
-    for bus_stop, color in bus_stops:
+    for bus_stop in bus_stops:
         folium.Marker(
-            [bus_stop.lat, bus_stop.lng], icon=folium.Icon(color=color),
-            popup=f"Bus Stop addr: {bus_stop.addr}, Bus Stop id: {bus_stop.id}",
+            [bus_stop.lat, bus_stop.lon], icon=folium.Icon(color="blue"),
+            popup=f"Bus Stop addr: {bus_stop.name}, Bus Stop id: {bus_stop.id}",
             # tooltip="Click me"
         ).add_to(m)
 
     # Save to HTML file
-    m.save(f"{save_to_file_path}/bus_stops_map_{ROUTE}.html") # NOTE: Change the path
+    m.save(f"bus_stops_map_{ROUTE}.html") # NOTE: Change the path
 
     return None
 
-def read_bus_stops(ROUTE: str) -> list[BusStopEntity]:
-    bus_stops_raw = read_json(f"{ROUTE}/bus_stops_raw.json") # NOTE: change the path
+def read_bus_stops(json_file_path: str, ROUTE: str) -> list[BusStopEntity]:
+    bus_stops_raw = read_json(json_file_path)
     bus_stops = [BusStopEntity(bus_stop["id"], bus_stop["geometry"], name=f"{ROUTE}", index=0) for bus_stop in bus_stops_raw]
 
     return bus_stops
