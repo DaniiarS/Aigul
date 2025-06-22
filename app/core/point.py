@@ -51,8 +51,8 @@ class AssistantPoint:
 
 class Coord:
     def __init__(self, lat, lon):
-        self.lat = lat
-        self.lon = lon
+        self.lat = float(lat)
+        self.lon = float(lon)
     
     def __repr__(self):
         return {"lon": self.lon, "lat": self.lat}

@@ -24,6 +24,15 @@
             popupAnchor:  [1, -34],
             shadowSize:   [41, 41]
         });
+
+        const blueIcon = L.icon({
+            iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-blue.png',
+            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+            iconSize:     [25, 41],
+            iconAnchor:   [12, 41],
+            popupAnchor:  [1, -34],
+            shadowSize:   [41, 41]
+        });
         
         const points = [
             [42.864292, 74.690892],
@@ -78,6 +87,9 @@
             L.marker([lat, lon], {icon: greenIcon}).addTo(map);
         });
 
+        const busMarkers = {};
+        const routeLines = {};
+
         const marker = L.marker([42.8746, 74.6122]).addTo(map);
         const route = [];
         const polyline = L.polyline(route, {color: 'blue'}).addTo(map);
@@ -89,17 +101,35 @@
         
         socket.onmessage = function (event) {
             try {
-                const data = JSON.parse(event.data);
-                if (data.lat && data.lon) {
-                    marker.setLatLng([data.lat, data.lon]);
-                    route.push([data.lat, data.lon]);
-                    polyline.setLatLngs(route);
-                    map.panTo([data.lat, data.lon]);
+                console.log("Raw WebSocket data:", event.data);
+                        const data = JSON.parse(event.data);
+                        const id = String(data.id);  // normalize
+                        const lat = data.lat;
+                        const lon = data.lon;
+
+                // if (!id || !lat || !lon) return;
+
+                // If this bus does not have a marker yet, create one
+                if (!busMarkers[id]) {
+                    console.log(`Creating new marker for bus ${id}`);
+                    busMarkers[id] = L.marker([lat, lon], { icon: blueIcon }).addTo(map);
+                    routeLines[id] = L.polyline([[lat, lon]], { color: 'blue' }).addTo(map);
+                } else {
+                    console.log(`Else statement for bus ${id}`);
+                    busMarkers[id].setLatLng([lat, lon]);
+                    const route = routeLines[id].getLatLngs();
+                    route.push([lat, lon]);
+                    routeLines[id].setLatLngs(route);
                 }
 
+                // // Optional: pan map to follow a specific bus, like ID 1
+                // if (id === 1) {
+                //     map.panTo([lat, lon]);
+                // }
+
             } catch (e) {
-                console.warn("Non-JSON message received:", event.data);
-                console.log("Raw message:", event.data);
+                console.warn("Invalid message:", event.data);
+                console.log("Parse error:", e);
             }
         };
 

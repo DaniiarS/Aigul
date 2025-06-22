@@ -135,15 +135,15 @@ def printl(array: list) -> None:
     for item in array:
         print(item)
 
-# the last long segment is left -> segment id is 38
-SEGMENT_ID = 38
-assistant_points = filter_assistant_points(f"app/data/points/7/assistant_points/assistant-points-raw-7-{SEGMENT_ID}.geojson", SEGMENT_ID)
-# printl(assistant_points)
+# # the last long segment is left -> segment id is 38
+# SEGMENT_ID = 38
+# assistant_points = filter_assistant_points(f"app/data/points/7/assistant_points/assistant-points-raw-7-{SEGMENT_ID}.geojson", SEGMENT_ID)
+# # printl(assistant_points)
 
-filtered_line_strings = filter_line_strings(f"app/data/points/7/assistant_points/assistant-points-raw-7-{SEGMENT_ID}.geojson")
-# printl(filtered_line_strings)
+# filtered_line_strings = filter_line_strings(f"app/data/points/7/assistant_points/assistant-points-raw-7-{SEGMENT_ID}.geojson")
+# # printl(filtered_line_strings)
 
-result = set_l_sum(assistant_points, filtered_line_strings)
-# printl(result)
+# result = set_l_sum(assistant_points, filtered_line_strings)
+# # printl(result)
 
-ap_to_db(result)
+# ap_to_db(result)

@@ -30,49 +30,53 @@ def calc_distance(point1: Coord, point2: Coord) -> float:
 
     return round(distance,2)
 
-def search_segment(current: Coord, ROUTE:str) -> Segment:
+def search_segment(current: Coord, ROUTE:str) -> tuple[Segment, Point]:
     """ Identifies to which segment does the "current" point belong to """
 
     db = SessionLocal()
     segment = None
     point = None
+    DELTA = 15
     try:
-        ROUTE_ID = db.query(Route).filter(Route.route_name==ROUTE).first().route_id
+        ROUTE_ID = db.query(Route).filter(Route.name==ROUTE).first().id
         segments = db.query(RouteSegment).filter(RouteSegment.route_id==ROUTE_ID).all()
 
         for route_segment in segments:
             points = db.query(Point).filter(Point.segment_id==route_segment.segment_id).all()
             for p in points:
-                if abs(calc_distance(current, Coord(p.lat, p.lon))) <= 15:
-                    segment: Segment = db.query(Segment).filter(Segment.segment_id==p.segment_id).first()
+                if abs(calc_distance(current, Coord(p.lat, p.lon))) <= DELTA:
+                    segment: Segment = db.query(Segment).filter(Segment.id==p.segment_id).first()
                     point: Point = p
                     break
     except SQLAlchemyError as e:
         print(f"{e}")
-    finally:        
+    finally:
         db.close()
 
     return (segment, point)
 
-def is_bus_stop(current: Coord, ROUTE: str) -> tuple[bool,BusStop]:
-    """ Checks if the current location is the bus stop """
+def is_bus_stop(current: Coord, ROUTE: str) -> tuple[bool,BusStop, BusStopRoute]:
+    """ Checks if the current location is a BusStop """
 
     db = SessionLocal()
-    result = False
+    found = False
     target_bus_stop = None
     target_bus_stop_route = None
+    DELTA = 30
     try:
-        bus_stops = db.query(BusStop).filter(BusStop.route==ROUTE).all()
+        ROUTE_ID: int = db.query(Route).filter(Route.name==ROUTE).first().id
+        # Check this logic: maybe it is better to search in BusStopRoute
+        bus_stop_route = db.query(BusStopRoute).filter(BusStopRoute.route_id==ROUTE_ID).all()
+        bus_stops = [db.query(BusStop).filter(BusStop.id==bsr.bus_stop_id).first() for bsr in bus_stop_route]
     except Exception as e:
         print(f"Error trying to query the database: {e}")
-        return result
+        return found
     finally:
         db.close()
     
-    # bus_stop_objects = [BusStopEntity.model_to_obj(m_object) for m_object in bus_stops]
     for bus_stop in bus_stops:
-        if calc_distance(current, Coord(bus_stop.lat, bus_stop.lon)) <= 15:
-            result = True
+        if calc_distance(current, Coord(bus_stop.lat, bus_stop.lon)) <= DELTA:
+            found = True
             target_bus_stop = bus_stop
             try:
                 target_bus_stop_route = db.query(BusStopRoute).filter(BusStopRoute.bus_stop_id==bus_stop.id).first()
@@ -80,22 +84,22 @@ def is_bus_stop(current: Coord, ROUTE: str) -> tuple[bool,BusStop]:
                 print(f"{e}")
             finally:
                 break
-    return (result, target_bus_stop, target_bus_stop_route)
+    return (found, target_bus_stop, target_bus_stop_route)
 
-def update_ETA(bus_stop: BusStop, time_traveled: float) -> bool:
-    db = SessionLocal()
-    result = False
-    try:
-        segment_to_update = db.query(Segment).filter((Segment.lat_b == bus_stop.lat) & (Segment.lon_b == bus_stop.lon)).first()
-        segment_to_update.segment_eta  = (segment_to_update.segment_eta + time_traveled)/(segment_to_update.updated_times + 1)
-        db.commit()
-        result = True
-    except Exception as e:
-        print(f"{e}")
-    finally:
-        db.close()
+# def update_ETA(bus_stop: BusStop, time_traveled: float) -> bool:
+#     db = SessionLocal()
+#     result = False
+#     try:
+#         segment_to_update = db.query(Segment).filter((Segment.lat_b == bus_stop.lat) & (Segment.lon_b == bus_stop.lon)).first()
+#         segment_to_update.segment_eta  = (segment_to_update.segment_eta + time_traveled)/(segment_to_update.updated_times + 1)
+#         db.commit()
+#         result = True
+#     except Exception as e:
+#         print(f"{e}")
+#     finally:
+#         db.close()
     
-    return result
+#     return result
 
 #===============================================================================================
 # EXECUTION:

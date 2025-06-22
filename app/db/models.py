@@ -18,38 +18,37 @@ from sqlalchemy.orm import relationship
 class Bus(Base):
     __tablename__ = "bus"
 
-    bus_id = Column(Integer, primary_key=True, index=True)
-    bus_lng = Column(Float)  # 5.123769843    
-    bus_lat = Column(Float)  # 4.123123123
-    bus_gov_num = Column(String, index=True)    # Example: 01-123-ABC
-    bus_current_segment = Column(Integer)      # id of the current segment
+    id = Column(Integer, primary_key=True, index=True)
+    gov_num = Column(String, index=True)    # Example: 01-123-ABC
 
-    route_name = Column(String, ForeignKey("route.route_name"))
+    route_name = Column(String, ForeignKey("route.name"))
 
     route = relationship("Route", back_populates="buses")
     bus_stops = relationship("BusStop", secondary="bus_stop_bus", back_populates="buses")
     
 
-class Route(Base):
+class Route(Base): # Done
     __tablename__ = "route"
 
-    route_id = Column(Integer, primary_key=True, index=True)
-    route_name = Column(String, index=True, unique=True)
-    route_type = Column(String, index=True)
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String, index=True, unique=True)
+    type = Column(String, index=True)
 
     buses = relationship("Bus", back_populates="route")
+
     bus_stops = relationship("BusStop", secondary="bus_stop_route", back_populates="routes")
     segments = relationship("Segment", secondary="route_segment", back_populates="routes")
 
+    def __repr__(self):
+        return f"type: {type(self)}, id:{self.id}, name:{self.name}"
 
-class BusStop(Base):
+class BusStop(Base): # Done
     __tablename__ = "bus_stop"
 
     id = Column(Integer, primary_key=True, index=True)
-    route = Column(String, index=True)
     name = Column(String, index=True)
-    lon = Column(Float)
-    lat = Column(Float)
+    lon = Column(String)
+    lat = Column(String)
 
     routes = relationship("Route", secondary="bus_stop_route", back_populates="bus_stops")
     buses = relationship("Bus", secondary="bus_stop_bus", back_populates="bus_stops")
@@ -60,36 +59,24 @@ class BusStop(Base):
 class Segment(Base):
     __tablename__ = "segment"
     __table_args__ = (
-        UniqueConstraint("segment_bus_stop_a", "segment_bus_stop_b", name="unique_segment_bus_stop_a_segment_bus_stop_b"),
+        UniqueConstraint("bus_stop_a", "bus_stop_b", name="unique_bus_stop_a_bus_stop_b"),
     )
 
-    segment_id = Column(Integer, primary_key=True, index=True)
-    segment_length = Column(Float)
-    segment_street = Column(String, default="N/A")
-    segment_bus_stop_a = Column(String(50))
-    segment_bus_stop_b = Column(String(50))
+    id = Column(Integer, primary_key=True, index=True)
+    length = Column(Float)
+    street = Column(String, default="N/A")
+    bus_stop_a = Column(Integer, ForeignKey("bus_stop.id"), nullable=False)
+    bus_stop_b = Column(Integer, ForeignKey("bus_stop.id"), nullable=False)
+
+
+    # Relationships for convenient access (optional)
+    start_stop = relationship("BusStop", foreign_keys=[bus_stop_a])
+    end_stop = relationship("BusStop", foreign_keys=[bus_stop_b])
 
     routes = relationship("Route", secondary="route_segment", back_populates="segments")
 
-    @property
-    def lat_a(self):
-        return self.segment_bus_stop_a[1:-1].split(",")[1]
-
-    @property
-    def lon_a(self):
-        return self.segment_bus_stop_a[1:-1].split(",")[0]
-    
-    @property
-    def lat_b(self):
-        return self.segment_bus_stop_b[1:-1].split(",")[1]
-
-    @property
-    def lon_b(self):
-        return self.segment_bus_stop_b[1:-1].split(",")[0]
-    
-
     def __repr__(self):
-        return f"Segment id:{self.segment_id},\tSegment street:{self.segment_street},\tSegment distance:{self.segment_length},\ta:{self.segment_bus_stop_a},\tb:{self.segment_bus_stop_b}"
+        return f"Segment id:{self.id},\tSegment street:{self.street},\tSegment distance:{self.length},\ta:{self.bus_stop_a},\tb:{self.bus_stop_b}"
 
 class Point(Base):
     __tablename__ = "point"
@@ -98,12 +85,12 @@ class Point(Base):
     # )
 
     id = Column(Integer, primary_key=True, index=True)
-    lat = Column(Float)
-    lon = Column(Float)
+    lat = Column(String)
+    lon = Column(String)
     l_delta = Column(Float)
     l_sum = Column(Float)
     index = Column(Integer)
-    segment_id = Column(Integer, ForeignKey("segment.segment_id"))
+    segment_id = Column(Integer, ForeignKey("segment.id"), nullable=False)
 
     def __repr__(self):
         return f"lat:{self.lat}, lon:{self.lon}, l_delta:{self.l_delta}, l_sum:{self.l_sum}, index:{self.index}, segment_id:{self.segment_id}"
@@ -114,22 +101,22 @@ class Point(Base):
 class BusStopRoute(Base):
     __tablename__ = "bus_stop_route"
 
-    bus_stop_route_id = Column(Integer, primary_key=True, index=True)
+    id = Column(Integer, primary_key=True, index=True)
     bus_stop_id = Column(Integer, ForeignKey("bus_stop.id"))
-    route_id = Column(Integer, ForeignKey("route.route_id"))
+    route_id = Column(Integer, ForeignKey("route.id"))
     bus_stop_index = Column(Integer, autoincrement=True)
 
 class BusStopBus(Base):
     __tablename__ = "bus_stop_bus"
 
-    bus_stop_bus_id = Column(Integer, primary_key=True, index=True)
+    id = Column(Integer, primary_key=True, index=True)
     bus_stop_id = Column(Integer, ForeignKey("bus_stop.id"))
-    bus_id = Column(Integer, ForeignKey("bus.bus_id"))
+    bus_id = Column(Integer, ForeignKey("bus.id"))
 
 class RouteSegment(Base):
     __tablename__ = "route_segment"
 
-    route_segment_id = Column(Integer, primary_key=True, index=True)
-    route_id = Column(Integer, ForeignKey("route.route_id"))
-    segment_id = Column(Integer, ForeignKey("segment.segment_id"))
+    id = Column(Integer, primary_key=True, index=True)
+    route_id = Column(Integer, ForeignKey("route.id"))
+    segment_id = Column(Integer, ForeignKey("segment.id"))
     segment_index = Column(Integer)

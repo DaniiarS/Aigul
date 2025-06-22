@@ -1,0 +1,289 @@
+[
+  {
+    "segment_id": 1,
+    "segment_length": 596.92,
+    "segment_street": "Аламедин-1 -- Строительная фирма Азат",
+    "segment_bus_stop_a": 8,
+    "segment_bus_stop_b": 24
+  },
+  {
+    "segment_id": 2,
+    "segment_length": 493.77,
+    "segment_street": "Строительная фирма Азат -- Нефтебаза",
+    "segment_bus_stop_a": 24,
+    "segment_bus_stop_b": 1
+  },
+  {
+    "segment_id": 3,
+    "segment_length": 624.5,
+    "segment_street": "Нефтебаза -- Улица Кырман",
+    "segment_bus_stop_a": 1,
+    "segment_bus_stop_b": 25
+  },
+  {
+    "segment_id": 4,
+    "segment_length": 629.62,
+    "segment_street": "Улица Кырман -- Микрорайон Тунгуч",
+    "segment_bus_stop_a": 25,
+    "segment_bus_stop_b": 19
+  },
+  {
+    "segment_id": 5,
+    "segment_length": 566.11,
+    "segment_street": "Микрорайон Тунгуч -- Микрорайон Тунгуч-1",
+    "segment_bus_stop_a": 19,
+    "segment_bus_stop_b": 20
+  },
+  {
+    "segment_id": 6,
+    "segment_length": 386.4,
+    "segment_street": "Микрорайон Тунгуч-1 -- Университет Ала-Тоо",
+    "segment_bus_stop_a": 20,
+    "segment_bus_stop_b": 18
+  },
+  {
+    "segment_id": 7,
+    "segment_length": 280.84,
+    "segment_street": "Университет Ала-Тоо -- Республиканское ГАИ",
+    "segment_bus_stop_a": 18,
+    "segment_bus_stop_b": 21
+  },
+  {
+    "segment_id": 8,
+    "segment_length": 447.94,
+    "segment_street": "Республиканское ГАИ -- АГЗС",
+    "segment_bus_stop_a": 21,
+    "segment_bus_stop_b": 17
+  },
+  {
+    "segment_id": 9,
+    "segment_length": 489.34,
+    "segment_street": "АГЗС -- Алтын Ордо",
+    "segment_bus_stop_a": 17,
+    "segment_bus_stop_b": 16
+  },
+  {
+    "segment_id": 10,
+    "segment_length": 400.69,
+    "segment_street": "Алтын Ордо -- Улица Оберон",
+    "segment_bus_stop_a": 16,
+    "segment_bus_stop_b": 14
+  },
+  {
+    "segment_id": 11,
+    "segment_length": 168.89,
+    "segment_street": "Улица Оберон -- Дордой",
+    "segment_bus_stop_a": 14,
+    "segment_bus_stop_b": 12
+  },
+  {
+    "segment_id": 12,
+    "segment_length": 508.37,
+    "segment_street": "Дордой -- Достоевского",
+    "segment_bus_stop_a": 12,
+    "segment_bus_stop_b": 11
+  },
+  {
+    "segment_id": 13,
+    "segment_length": 543.4,
+    "segment_street": "Достоевского -- Октябрьская",
+    "segment_bus_stop_a": 11,
+    "segment_bus_stop_b": 22
+  },
+  {
+    "segment_id": 14,
+    "segment_length": 1252.69,
+    "segment_street": "Октябрьская -- Завод Айнур",
+    "segment_bus_stop_a": 22,
+    "segment_bus_stop_b": 10
+  },
+  {
+    "segment_id": 15,
+    "segment_length": 1104.04,
+    "segment_street": "Завод Айнур -- Рынок Мадина",
+    "segment_bus_stop_a": 10,
+    "segment_bus_stop_b": 9
+  },
+  {
+    "segment_id": 16,
+    "segment_length": 588.06,
+    "segment_street": "Рынок Мадина -- Свердловская районная администрация",
+    "segment_bus_stop_a": 9,
+    "segment_bus_stop_b": 2
+  },
+  {
+    "segment_id": 17,
+    "segment_length": 325.41,
+    "segment_street": "Свердловская районная администрация -- м-н Восток-5",
+    "segment_bus_stop_a": 2,
+    "segment_bus_stop_b": 29
+  },
+  {
+    "segment_id": 18,
+    "segment_length": 309.93,
+    "segment_street": "м-н Восток-5 -- Рынок Таалай",
+    "segment_bus_stop_a": 29,
+    "segment_bus_stop_b": 7
+  },
+  {
+    "segment_id": 19,
+    "segment_length": 652.52,
+    "segment_street": "Рынок Таалай -- Детский мир",
+    "segment_bus_stop_a": 7,
+    "segment_bus_stop_b": 26
+  },
+  {
+    "segment_id": 20,
+    "segment_length": 527.25,
+    "segment_street": "Детский мир -- ЦУМ Айчурек",
+    "segment_bus_stop_a": 26,
+    "segment_bus_stop_b": 13
+  },
+  {
+    "segment_id": 21,
+    "segment_length": 372.3,
+    "segment_street": "ЦУМ Айчурек -- Кинотеатр Ала-Тоо",
+    "segment_bus_stop_a": 13,
+    "segment_bus_stop_b": 28
+  },
+  {
+    "segment_id": 22,
+    "segment_length": 1112.13,
+    "segment_street": "Кинотеатр Ала-Тоо -- Кинотеатр Россия",
+    "segment_bus_stop_a": 28,
+    "segment_bus_stop_b": 27
+  },
+  {
+    "segment_id": 23,
+    "segment_length": 652.93,
+    "segment_street": "Кинотеатр Россия -- Кыргызская национальная филармония им. Токтогула Сатылганова",
+    "segment_bus_stop_a": 27,
+    "segment_bus_stop_b": 23
+  },
+  {
+    "segment_id": 24,
+    "segment_length": 592.61,
+    "segment_street": "Кыргызская национальная филармония им. Токтогула Сатылганова -- Национальная академия наук Кыргызской Республики",
+    "segment_bus_stop_a": 23,
+    "segment_bus_stop_b": 30
+  },
+  {
+    "segment_id": 25,
+    "segment_length": 465.78,
+    "segment_street": "Национальная академия наук Кыргызской Республики -- Бейшеналиевой",
+    "segment_bus_stop_a": 30,
+    "segment_bus_stop_b": 5
+  },
+  {
+    "segment_id": 26,
+    "segment_length": 1762.55,
+    "segment_street": "Бейшеналиевой -- Киностудия Айтыш Фильм",
+    "segment_bus_stop_a": 5,
+    "segment_bus_stop_b": 38
+  },
+  {
+    "segment_id": 27,
+    "segment_length": 497.72,
+    "segment_street": "Киностудия Айтыш Фильм -- Улица Коммунаров",
+    "segment_bus_stop_a": 38,
+    "segment_bus_stop_b": 6
+  },
+  {
+    "segment_id": 28,
+    "segment_length": 523.34,
+    "segment_street": "Улица Коммунаров -- Ленская",
+    "segment_bus_stop_a": 6,
+    "segment_bus_stop_b": 15
+  },
+  {
+    "segment_id": 29,
+    "segment_length": 146.33,
+    "segment_street": "Ленская -- Сергея Лазо",
+    "segment_bus_stop_a": 15,
+    "segment_bus_stop_b": 39
+  },
+  {
+    "segment_id": 30,
+    "segment_length": 535.87,
+    "segment_street": "Сергея Лазо -- Школа №54",
+    "segment_bus_stop_a": 39,
+    "segment_bus_stop_b": 35
+  },
+  {
+    "segment_id": 31,
+    "segment_length": 325.93,
+    "segment_street": "Школа №54 -- Стадион Динамо",
+    "segment_bus_stop_a": 35,
+    "segment_bus_stop_b": 36
+  },
+  {
+    "segment_id": 32,
+    "segment_length": 905.6,
+    "segment_street": "Стадион Динамо -- Улица Дорожная",
+    "segment_bus_stop_a": 36,
+    "segment_bus_stop_b": 3
+  },
+  {
+    "segment_id": 33,
+    "segment_length": 930.24,
+    "segment_street": "Улица Дорожная -- Серёгина",
+    "segment_bus_stop_a": 3,
+    "segment_bus_stop_b": 4
+  },
+  {
+    "segment_id": 34,
+    "segment_length": 4910.45,
+    "segment_street": "Серёгина -- Ак-Жол пост ГАИ",
+    "segment_bus_stop_a": 4,
+    "segment_bus_stop_b": 31
+  },
+  {
+    "segment_id": 35,
+    "segment_length": 1098.11,
+    "segment_street": "Ак-Жол пост ГАИ -- Ак-Жол",
+    "segment_bus_stop_a": 31,
+    "segment_bus_stop_b": 32
+  },
+  {
+    "segment_id": 36,
+    "segment_length": 376.99,
+    "segment_street": "Ак-Жол -- Ак-Жол",
+    "segment_bus_stop_a": 32,
+    "segment_bus_stop_b": 33
+  },
+  {
+    "segment_id": 37,
+    "segment_length": 1406.22,
+    "segment_street": "Ак-Жол -- Ак-Жол пост ГАИ",
+    "segment_bus_stop_a": 33,
+    "segment_bus_stop_b": 34
+  },
+  {
+    "segment_id": 38,
+    "segment_length": 2575.72,
+    "segment_street": "Ак-Жол пост ГАИ -- с. Степное",
+    "segment_bus_stop_a": 34,
+    "segment_bus_stop_b": 37
+  },
+  {
+    "segment_id": 39,
+    "segment_length": 180.75,
+    "segment_street": "Детский мир -- Правды (проспект Чуй)",
+    "segment_bus_stop_a": 26,
+    "segment_bus_stop_b": 227
+  },
+  {
+    "segment_id": 40,
+    "segment_length": 1073.5,
+    "segment_street": "Правды (проспект Чуй) -- Цирк",
+    "segment_bus_stop_a": 227,
+    "segment_bus_stop_b": 140
+  },
+  {
+    "segment_id": 41,
+    "segment_length": 759.54,
+    "segment_street": "Цирк -- Кинотеатр Ала-Тоо",
+    "segment_bus_stop_a": 140,
+    "segment_bus_stop_b": 28
+  }
+]

@@ -49,7 +49,6 @@ class BusStopEntity:
     def __repr__(self):
         return f"id: {self.id}, name: {self.name}, address: {self.addr} lat: {self.lat}, lng: {self.lng}, index: {self.index}"
 
-
 def read_json(file_path:str):
     with open(file_path, "r") as rf:
         data = json.load(rf)

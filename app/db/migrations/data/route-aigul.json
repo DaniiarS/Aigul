@@ -1,0 +1,547 @@
+[
+  {
+    "route_id": 1,
+    "route_name": "1",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 2,
+    "route_name": "4",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 3,
+    "route_name": "5",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 4,
+    "route_name": "6",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 5,
+    "route_name": "7",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 6,
+    "route_name": "8",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 7,
+    "route_name": "9",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 8,
+    "route_name": "10",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 9,
+    "route_name": "11",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 10,
+    "route_name": "12",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 11,
+    "route_name": "13",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 12,
+    "route_name": "15",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 13,
+    "route_name": "16",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 14,
+    "route_name": "17",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 15,
+    "route_name": "18",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 16,
+    "route_name": "21",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 17,
+    "route_name": "23",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 18,
+    "route_name": "25",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 19,
+    "route_name": "28",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 20,
+    "route_name": "29",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 21,
+    "route_name": "30",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 22,
+    "route_name": "32",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 23,
+    "route_name": "34",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 24,
+    "route_name": "35",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 25,
+    "route_name": "36",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 26,
+    "route_name": "38",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 27,
+    "route_name": "40",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 28,
+    "route_name": "41",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 29,
+    "route_name": "42",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 30,
+    "route_name": "45",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 31,
+    "route_name": "48",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 32,
+    "route_name": "49",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 33,
+    "route_name": "50",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 34,
+    "route_name": "51",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 35,
+    "route_name": "52",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 36,
+    "route_name": "55",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 37,
+    "route_name": "56",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 38,
+    "route_name": "58",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 39,
+    "route_name": "61",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 40,
+    "route_name": "64",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 41,
+    "route_name": "71",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 42,
+    "route_name": "72",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 43,
+    "route_name": "77",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 44,
+    "route_name": "80",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 45,
+    "route_name": "100",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 46,
+    "route_name": "101",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 47,
+    "route_name": "102",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 48,
+    "route_name": "103",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 49,
+    "route_name": "104",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 50,
+    "route_name": "105",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 51,
+    "route_name": "107",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 52,
+    "route_name": "118",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 53,
+    "route_name": "129",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 54,
+    "route_name": "135",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 55,
+    "route_name": "145",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 56,
+    "route_name": "146",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 57,
+    "route_name": "152",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 58,
+    "route_name": "153",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 59,
+    "route_name": "162",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 60,
+    "route_name": "166",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 61,
+    "route_name": "169",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 62,
+    "route_name": "175",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 63,
+    "route_name": "195",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 64,
+    "route_name": "203",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 65,
+    "route_name": "212",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 66,
+    "route_name": "215",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 67,
+    "route_name": "216",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 68,
+    "route_name": "222",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 69,
+    "route_name": "226",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 70,
+    "route_name": "227",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 71,
+    "route_name": "243",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 72,
+    "route_name": "254",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 73,
+    "route_name": "7T",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 74,
+    "route_name": "8T",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 75,
+    "route_name": "10T",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 76,
+    "route_name": "14T",
+    "route_type": "bus"
+  },
+  {
+    "route_id": 77,
+    "route_name": "106",
+    "route_type": "micro_bus"
+  },
+  {
+    "route_id": 78,
+    "route_name": "117",
+    "route_type": "micro_bus"
+  },
+  {
+    "route_id": 79,
+    "route_name": "120",
+    "route_type": "micro_bus"
+  },
+  {
+    "route_id": 80,
+    "route_name": "123",
+    "route_type": "micro_bus"
+  },
+  {
+    "route_id": 81,
+    "route_name": "128",
+    "route_type": "micro_bus"
+  },
+  {
+    "route_id": 82,
+    "route_name": "130",
+    "route_type": "micro_bus"
+  },
+  {
+    "route_id": 83,
+    "route_name": "131",
+    "route_type": "micro_bus"
+  },
+  {
+    "route_id": 84,
+    "route_name": "132",
+    "route_type": "micro_bus"
+  },
+  {
+    "route_id": 85,
+    "route_name": "133",
+    "route_type": "micro_bus"
+  },
+  {
+    "route_id": 86,
+    "route_name": "134",
+    "route_type": "micro_bus"
+  },
+  {
+    "route_id": 87,
+    "route_name": "137",
+    "route_type": "micro_bus"
+  },
+  {
+    "route_id": 88,
+    "route_name": "143",
+    "route_type": "micro_bus"
+  },
+  {
+    "route_id": 89,
+    "route_name": "161",
+    "route_type": "micro_bus"
+  },
+  {
+    "route_id": 90,
+    "route_name": "173",
+    "route_type": "micro_bus"
+  },
+  {
+    "route_id": 91,
+    "route_name": "176",
+    "route_type": "micro_bus"
+  },
+  {
+    "route_id": 92,
+    "route_name": "185",
+    "route_type": "micro_bus"
+  },
+  {
+    "route_id": 93,
+    "route_name": "193",
+    "route_type": "micro_bus"
+  },
+  {
+    "route_id": 94,
+    "route_name": "200",
+    "route_type": "micro_bus"
+  },
+  {
+    "route_id": 95,
+    "route_name": "204",
+    "route_type": "micro_bus"
+  },
+  {
+    "route_id": 96,
+    "route_name": "218",
+    "route_type": "micro_bus"
+  },
+  {
+    "route_id": 97,
+    "route_name": "229",
+    "route_type": "micro_bus"
+  },
+  {
+    "route_id": 98,
+    "route_name": "230",
+    "route_type": "micro_bus"
+  },
+  {
+    "route_id": 99,
+    "route_name": "234",
+    "route_type": "micro_bus"
+  },
+  {
+    "route_id": 100,
+    "route_name": "244",
+    "route_type": "micro_bus"
+  },
+  {
+    "route_id": 101,
+    "route_name": "251",
+    "route_type": "micro_bus"
+  },
+  {
+    "route_id": 102,
+    "route_name": "257",
+    "route_type": "micro_bus"
+  },
+  {
+    "route_id": 103,
+    "route_name": "260",
+    "route_type": "micro_bus"
+  },
+  {
+    "route_id": 104,
+    "route_name": "265",
+    "route_type": "micro_bus"
+  },
+  {
+    "route_id": 105,
+    "route_name": "266",
+    "route_type": "micro_bus"
+  },
+  {
+    "route_id": 106,
+    "route_name": "285",
+    "route_type": "micro_bus"
+  },
+  {
+    "route_id": 107,
+    "route_name": "288",
+    "route_type": "micro_bus"
+  },
+  {
+    "route_id": 108,
+    "route_name": "290",
+    "route_type": "micro_bus"
+  },
+  {
+    "route_id": 109,
+    "route_name": "295",
+    "route_type": "micro_bus"
+  }
+]
