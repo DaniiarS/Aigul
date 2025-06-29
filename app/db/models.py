@@ -100,6 +100,9 @@ class Point(Base):
 
 class BusStopRoute(Base):
     __tablename__ = "bus_stop_route"
+    __table_args__ = (
+        UniqueConstraint("bus_stop_id", "route_id", "bus_stop_index", name="unique_bus_stop_id_route_id_bus_stop_index"),
+    )
 
     id = Column(Integer, primary_key=True, index=True)
     bus_stop_id = Column(Integer, ForeignKey("bus_stop.id"))
@@ -115,7 +118,10 @@ class BusStopBus(Base):
 
 class RouteSegment(Base):
     __tablename__ = "route_segment"
-
+    __table_args__ = (
+        UniqueConstraint("route_id", "segment_id", "segment_index", name="unique_route_id_segment_id_segment_index"),
+    )
+    
     id = Column(Integer, primary_key=True, index=True)
     route_id = Column(Integer, ForeignKey("route.id"))
     segment_id = Column(Integer, ForeignKey("segment.id"))

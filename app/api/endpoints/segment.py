@@ -75,7 +75,7 @@ def eta(busInfo: schema.BusInfo, db: Session = Depends(get_db)):
     #=========================================================================================================
     # PRE-INITIALIZATION REDIS:
     #=========================================================================================================
-    ALLOWED_SPEED = 40 * 1000 / 3600
+    ALLOWED_SPEED = 25 * 1000 / 3600
     DATETIME_FORMAT: str = "%Y-%m-%d %H:%M:%S.%f"
     CURRENT_SEGMENT = None
     BUS = None
@@ -116,6 +116,7 @@ def eta(busInfo: schema.BusInfo, db: Session = Depends(get_db)):
         # If the BUS does NOT EXIST exist in Redis -> initialize new one
         data = {
             "bus_id": busInfo.id,
+            "gov_num": BUS.gov_num, # This line may be cause inconsistency with busInfo.id. It's better to use either BUS or busInfo
             "lat": busInfo.lat,
             "lon": busInfo.lon,
             "speed": round(float(busInfo.speed),2),
@@ -143,9 +144,9 @@ def eta(busInfo: schema.BusInfo, db: Session = Depends(get_db)):
         for bs in BUS_STOPS:
             try:
                 bsr_index = db.query(models.BusStopRoute).filter((models.BusStopRoute.bus_stop_id==bs.id) & (models.BusStopRoute.route_id==ROUTE.id)).first().bus_stop_index
-                r.rpush(f"BusStopClient:{bs.id}:{bs.name}:{ROUTE.name}:{bsr_index}", BUS.gov_num)
+                r.rpush(f"BusStopClient:{bs.id}:{bs.name}:{ROUTE.name}:{bsr_index}", BUS.gov_num) # Think of storing BUS.id(or consider serializing into json)
             except Exception as e:
-                print(f"In Redis Initialization, bus: {e}")     
+                print(f"In Redis Initialization, bus: {e}")  
     else:
         # If the BUS DO EXIST in Redis -> update coordinates, its speed, and received time
         updated_data = {
@@ -162,21 +163,27 @@ def eta(busInfo: schema.BusInfo, db: Session = Depends(get_db)):
         # Set flag to the current segment
         r.lset(f"{R_BUS_NAME}:segment_flags", CURRENT_SEGMENT_INDEX, 1)
 
-
+    
     # Initialize Default Segment ETA values to all of the segments on the route
-    for segment in SEGMENTS:
+    for i, segment in enumerate(SEGMENTS):
         # Check segment existence:
         r_segment_name = f"segment:{segment.id}"
         # segment = db.query(models.Segment).filter(models.Segment.id==segment.segment_id).first()
         if not r.exists(r_segment_name):
+            if i == 0:
+                eta_sum = segment.length/ALLOWED_SPEED
+            else:
+                eta_sum = float(r.hget(f"segment:{prev_id}", "eta_sum")) + segment.length/ALLOWED_SPEED
             r.hset(r_segment_name, mapping={
                                         "id": segment.id,
                                         "name": segment.street,
-                                        "eta": segment.length/ALLOWED_SPEED, 
+                                        "eta": segment.length/ALLOWED_SPEED,
+                                        "eta_sum": eta_sum,
                                         "first_modified": str(datetime.now()), 
                                         "last_modified": str(datetime.now()),
                                         "length": segment.length,
                                         "counter": 0})
+        prev_id = segment.id
 
     #=========================================================================================================
     # SEGMENT and BUS ETA UPDATE LOGIC:
@@ -190,7 +197,6 @@ def eta(busInfo: schema.BusInfo, db: Session = Depends(get_db)):
     is_near_bus_stop, bus_stop_obj, bus_stop_route = is_bus_stop(Coord(busInfo.lat, busInfo.lon), ROUTE.name)
     if is_near_bus_stop:
         print(f"Arrived to BusStop: {bus_stop_obj}, {bus_stop_route.bus_stop_index}")
-        print(len(SEGMENTS))
         # If BusStop object is NOT found -> throw error
         if bus_stop_obj is None:
             return {"msg": "Error ocurred while executing is_bus_stop(): bus_stop_obj is 'None'"}
@@ -202,6 +208,7 @@ def eta(busInfo: schema.BusInfo, db: Session = Depends(get_db)):
         # QUEUE: bus_stop_id, route_name, bus_stop_index
         bsr_index = db.query(models.BusStopRoute).filter((models.BusStopRoute.bus_stop_id==bus_stop_obj.id) & (models.BusStopRoute.route_id==ROUTE.id)).first().bus_stop_index
         r.lpop(f"BusStopClient:{bus_stop_obj.id}:{bus_stop_obj.name}:{ROUTE.name}:{bsr_index}")
+        
 
 
         # CASE: Bus Stop Loop 
@@ -227,7 +234,7 @@ def eta(busInfo: schema.BusInfo, db: Session = Depends(get_db)):
                 right_segment = None
 
                 # Case when the Bus reaches the last BusStop: find left segment
-                if bus_stop_route.bus_stop_index == N_SEGMENTS - 1:
+                if bus_stop_route.bus_stop_index == N_SEGMENTS:
                     for segment in SEGMENTS:
                         if segment.end_stop.id == bus_stop_obj.id:
                             left_segment: models.Segment =  segment
@@ -253,7 +260,6 @@ def eta(busInfo: schema.BusInfo, db: Session = Depends(get_db)):
                             left_segment: models.Segment = segment
                         elif segment.start_stop.id == bus_stop_obj.id:
                             right_segment: models.Segment = segment
-                    
                     # Update segment on the left: consider later the case when the segment might not exist. For example, from bus-stop to bus-stop
                     r.hset(f"segment:{left_segment.id}", "last_modified", str(datetime.now()))
                     r.hset(f"segment:{left_segment.id}", "eta", avg_eta)

@@ -59,41 +59,35 @@ def add_bus_stops(file_path: str) -> bool:
     
 
 # Add check if the file extension is .csv
-def add_bus_stop_routes(file_path: str, ROUTE: str) -> bool:
+def add_bus_stop_route(file_path: str, ROUTE: str) -> bool:
     db = SessionLocal()
-    result = False
     try:
         with open(file_path, "r") as rf:
-            bus_stop_indexes = list(csv.reader(rf))
-            bus_stop_objs = db.query(BusStop).filter(BusStop.bus_stop_name==f"{ROUTE}").all()
+            bus_stops = list(csv.reader(rf))
 
             # for bus_stop in bus_stop_objs:
             #     print(bus_stop)
-            route_obj = db.query(Route).filter(Route.route_name==f"{ROUTE}").first()
-            route_id = route_obj.route_id
+            route_obj = db.query(Route).filter(Route.name==f"{ROUTE}").first()
+            route_id = route_obj.id
 
-            CONST = 100
-            line = [0 for i in range(CONST)]
+            for row in bus_stops:
+                try:
+                    bus_stop_obj: BusStop = db.query(BusStop).filter((BusStop.name==row[2]) & (BusStop.lon==row[-3]) & (BusStop.lat==row[-2])).first()
+                    bus_stop_index = row[-1]
 
-            for i, bus_stop in enumerate(bus_stop_objs):
-                for row in bus_stop_indexes:
-                    if row[2] == bus_stop.bus_stop_addr: # row[2] - bus-stop's address
-                        if line[int(row[-1])] == 1:      # row[-1] - bus-stop's index
-                            continue
+                    bus_stop_route: BusStopRoute = BusStopRoute(bus_stop_id=bus_stop_obj.id, route_id=route_id, bus_stop_index=bus_stop_index)
 
-                        new_bus_stop_route_obj = BusStopRoute(bus_stop_id=bus_stop.bus_stop_id, route_id=route_id,bus_stop_index=int(row[-1]))
-                        line[int(row[-1])] = 1
-
-                        db.add(new_bus_stop_route_obj)
-                        db.commit()
-                        db.refresh(new_bus_stop_route_obj)
-    except SQLAlchemyError as e:
-        print(f"{e}")
+                    db.add(bus_stop_route)
+                except Exception as e:
+                    db.rollback()
+                    print(f"Could not find BusStop object with give name: {e}")
+            db.commit()
+    except Exception as e1:
+        db.rollback()
+        print(f"Could not add bus_stop_route: {e1}")
     finally:
         db.close()
     
-    return result
-
 def read_bus_stops(bus_stop_name: str) -> list[BusStop]:
     db = SessionLocal()
     try:
@@ -105,46 +99,42 @@ def read_bus_stops(bus_stop_name: str) -> list[BusStop]:
 
     return bus_stops
 
-def add_segment(file_path:str):
+def add_segment(file_path:str) -> None:
     db = SessionLocal()
-    result = False
     try:
         with open(file_path, "r") as rf:
             reader = csv.reader(rf)
             for line in reader:
-                segment = Segment(segment_length=line[-2], segment_street=line[1],segment_bus_stop_a=line[2],segment_bus_stop_b=line[3])
+                segment = Segment(length=line[0], street=line[1],bus_stop_a=line[2],bus_stop_b=line[3])
                 db.add(segment)
-                db.commit()
-                db.refresh(segment)
-        reuslt = True
+            db.commit()
     except SQLAlchemyError as e:
-        print(f"{e}")
+        db.rollback()
+        print(f"Unexpected error: {e}")
     finally:    
         db.close()
-    
-    return result
 
-def add_route_segment(file_path: str, SEGMENT_ROUTE: str) -> bool:
+def add_route_segment(file_path: str, ROUTE: str) -> bool:
     db = SessionLocal()
     result = False
     try:
-        route = db.query(Route).filter(Route.route_name==SEGMENT_ROUTE).first()
-        route_id = route.route_id
-        segments = db.query(Segment).all()
+        route: Route = db.query(Route).filter(Route.name==ROUTE).first()
+        route_id = route.id
+        segments: list[Segment] = db.query(Segment).all()
 
         with open(file_path, "r") as rf:
             reader = list(csv.reader(rf))
 
             for segment in segments:
                 for line in reader:
-                    if segment.segment_bus_stop_a == line[2] and segment.segment_bus_stop_b == line[3]:
-                        route_segment = RouteSegment(route_id=route_id,segment_id = segment.segment_id, segment_index = line[-1])
+                    if segment.bus_stop_a == int(line[-3]) and segment.bus_stop_b == int(line[-2]):
+                        route_segment = RouteSegment(route_id=route_id,segment_id = segment.id, segment_index = line[-1])
                         db.add(route_segment)
-                        db.commit()
-                        db.refresh(route_segment)
-        result = True
+                        result = True
+            db.commit()
     except SQLAlchemyError as e:
-        print(f"{e}")
+        db.rollback()
+        print(f"Unexpected error: {e}")
     finally:
         db.close()
 
@@ -157,11 +147,11 @@ def add_point(point_objs: list) -> bool:
         for point_obj in point_objs:
             point = Point(route_name=point_obj.ROUTE, longitude=point_obj.lng, latitude=point_obj.lat, point_index=point_obj.point_index, segment_index=point_obj.segment_index)
             db.add(point)
-            db.commit()
-            db.refresh(point)
+        db.commit()
         result = True
     except SQLAlchemyError as e:
-        print(f"{e}")
+        db.rollback()
+        print(f"Unexpected error: {e}")
     finally:
         db.close()
     
@@ -170,11 +160,14 @@ def add_point(point_objs: list) -> bool:
 #================================================================================
 # EXECUTION:
 #================================================================================
+ROUTE = "14T"
 
 # add_bus_stops(f"data/bus_stops/{BUS_STOP_ROUTE}/bus_stops.csv")
 # add_bus_stop_routes(f"data/bus_stops/{BUS_STOP_ROUTE}/bus_stops.csv", ROUTE)
 
-# add_segment(f"data/segments/{SEGMENT_ROUTE}/segments.csv")
-# add_route_segment(f"data/segments/{SEGMENT_ROUTE}/segments.csv", f"{SEGMENT_ROUTE}")
-
+# add_segment(f"app/data/segments/{ROUTE}/segments.csv")
+# check = add_route_segment(f"app/data/segments/{ROUTE}/segments.csv", ROUTE)
+# print(check)
 # add_point(point_objs)
+
+# add_bus_stop_route(f"app/data/bus_stops/{ROUTE}/bus_stops.csv", ROUTE)

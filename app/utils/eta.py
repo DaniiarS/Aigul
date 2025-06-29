@@ -38,8 +38,8 @@ def search_segment(current: Coord, ROUTE:str) -> tuple[Segment, Point]:
     point = None
     DELTA = 15
     try:
-        ROUTE_ID = db.query(Route).filter(Route.name==ROUTE).first().id
-        segments = db.query(RouteSegment).filter(RouteSegment.route_id==ROUTE_ID).all()
+        ROUTE_ID = db.query(Route).filter(Route.name==ROUTE).first().id # 14T -> 76
+        segments = db.query(RouteSegment).filter(RouteSegment.route_id==ROUTE_ID).all() # all segments
 
         for route_segment in segments:
             points = db.query(Point).filter(Point.segment_id==route_segment.segment_id).all()

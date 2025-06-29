@@ -15,41 +15,74 @@ def printl(item_list: list):
     for item in item_list:
         print(item.bus_stop_index)
 
-def update_eta_one(bus_stop_id: int):
+@router.post("/{bus_stop_id}")
+def update_eta_one(bus_stop_id: int, db: Session = Depends(get_db)):
     """ 
-    Updates the ETA table at the certain bus stop. 
+    Updates the ETA table at the certain bus stop.
     It updates the expected time of arrival for all of the routes that goes through this bus stop.
     """
-    # For testing pruposes IDs and other variables are HARD CODED
     # Bus Stop Indexes may not be consistent, instead use segment indexes
     # Find out a method to obtain all the routes that go through the current bus stop
     # Iterate through routes that go via current bus stop and get the list of routes: [7, 8, 9, ... , 153]
 
-    BUS_STOP_CLIENT_KEY = f"BusStopClient:{bus_stop_id}:{7}:{24}"
-    BUS_STOP_INDEX = 24
-    db = SessionLocal()
-    end_segment_index = -1
+    # BUS_STOP_CLIENT_KEY = f"BusStopClient:{bus_stop_id}:{7}:{24}"
+    # BUS_STOP_INDEX = 24
+    eta = {}
+
     try:
-        bus_stop = db.query(models.BusStop).filter(models.BusStop.id==bus_stop_id).first()
-        bus_stops = db.query(models.BusStopRoute).filter(models.BusStopRoute.route_id == 5).all()
-        end_segment = db.query(models.Segment).filter((models.Segment.lat_b==str(bus_stop.lat)) & (models.Segment.lon_b==str(bus_stop.lon))).first()
-        print(end_segment)
-        end_segment_index = db.query(models.RouteSegment).filter((models.RouteSegment.route_id==5) & (models.RouteSegment.segment_id==end_segment.segment_id)).first().segment_index
-        print(end_segment_index)
-        bus_stops.sort(key=lambda item : item.bus_stop_index)
+        bus_stop: models.BusStop = db.query(models.BusStop).filter(models.BusStop.id==bus_stop_id).first()
+        routes: list[models.Route] = bus_stop.routes
+
+        for route in routes:
+            """ For each given route that passes through this BusStop find out the bus that is first in the queue and calculate eta """
+            bus_stop_index: int = db.query(models.BusStopRoute).filter((models.BusStopRoute.bus_stop_id==bus_stop.id) & (models.BusStopRoute.route_id==route.id)).first().bus_stop_index
+            BUS_STOP_CLIENT_KEY: str = f"BusStopClient:{bus_stop.id}:{bus_stop.name}:{route.name}:{bus_stop_index}"
+
+            if r.exists(BUS_STOP_CLIENT_KEY):
+                gov_num = r.lindex(BUS_STOP_CLIENT_KEY, 0)
+                eta_sum = 0
+                distance_sum = 0
+                
+                #============================================================================
+                # Compute eta: try to implement prefix sum to calcualte eta fast
+                #============================================================================
+                try:
+                    BUS: models.Bus = db.query(models.Bus).filter(models.Bus.gov_num==gov_num).first()
+                    if BUS:
+                        bus_index: str = int(r.hget(f"bus:{BUS.id}", "current_segment_index"))
+                        delta: int = bus_stop_index - bus_index
+
+                        if delta > 0:
+                            for i in range(delta-1):
+                                segment_id = None
+                                try:
+                                    # seems like inccorect logic -> work with RouteSegmnet
+                                    segment_id = db.query(models.RouteSegment).filter((models.RouteSegment.route_id==route.id) & (models.RouteSegment.segment_index==bus_stop_index-i)).first().segment_id
+                                except Exception as e1:
+                                    print(f"Error when trying to figure out a segment: {e1}")
+                                
+                                
+                                if segment_id:
+                                    eta_sum += float(r.hget(f"segment:{segment_id}", "eta"))
+                                    distance_sum += float(r.hget(f"segment:{segment_id}", "length"))
+                                else:
+                                    print("segment was not found")
+                                    break
+                        
+                            if eta_sum > 0:
+                                r.hset(f"BusStopClientETA:{bus_stop.id}", route.name, int(eta_sum//60))
+                                r.hset(f"BusStopClientDISTANCE:{bus_stop.id}", route.name, round(distance_sum/1000,2))
+                        else:
+                            # If Bus passes the BusStop we can clear the ETA
+                            if r.hexists(f"BusStopClientETA:{bus_stop_id}", route.name):
+                                r.hdel(f"BusStopClientETA:{bus_stop_id}", route.name)
+                                r.hdel(f"BusStopClientDISTANCE:{bus_stop_id}", route.name)
+
+                except Exception as e2:
+                    print(f"Error when trying to update eta for a bus: {e2}")
+
     except Exception as e:
-        print(f"{e}")
-    finally:
-        db.close()
-
-    current_segment_index = int(r.hget("bus:1", "current_segment_index"))
-    eta = 0
-    for i in range(end_segment_index-current_segment_index + 1):
-        eta += r.hget(f"segment:{current_segment_index + i}","eta")
-
-    # bus_client = r.hgetall("bus:1")
-    # print(bus_client)
-    # print(bus_client["current_segment_index"])
+        print(f"Here: {e}")
 
     return {f"{bus_stop_id}": eta}
 

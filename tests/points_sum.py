@@ -20,12 +20,12 @@ def ap_to_db(filtered_points: list[dict]):
 
     try:
         for point in filtered_points:
-            point_db = Point(lat=point["geometry"]["coordinates"][-1], lon=point["geometry"]["coordinates"][0], l_delta=point["properties"]["l"], l_sum=point["properties"]["l_sum"], index=point["properties"]["index"], segment_id=point["properties"]["segment_id"])
+            point_db = Point(lat=point["geometry"]["coordinates"][-1], lon=point["geometry"]["coordinates"][0], l_delta=point["properties"]["l"], l_sum=point["properties"]["l_sum"], index=point["properties"]["point_index"], segment_id=point["properties"]["segment_id"])
             db.add(point_db)
-            db.commit()
-            db.refresh(point_db)
+        db.commit()
     except Exception as e:
-        print(f"{e}")
+        db.rollback()
+        print(f"Unexpected error: {e}")
     finally:
         db.close()
 
