@@ -1,7 +1,6 @@
 import json
 
 from app.db.database import SessionLocal
-from app.db.models import Point
 # from tests.generate_geojson import assistant_points
 
 def filter_ap(file_path: str)-> list: # ap - assitant point
@@ -14,20 +13,6 @@ def filter_ap(file_path: str)-> list: # ap - assitant point
             if obj["properties"].get("assistant-point") is not None:
                 result.append(obj)
     return result
-
-def ap_to_db(filtered_points: list[dict]):
-    db = SessionLocal()
-
-    try:
-        for point in filtered_points:
-            point_db = Point(lat=point["geometry"]["coordinates"][-1], lon=point["geometry"]["coordinates"][0], l_delta=point["properties"]["l"], l_sum=point["properties"]["l_sum"], index=point["properties"]["point_index"], segment_id=point["properties"]["segment_id"])
-            db.add(point_db)
-        db.commit()
-    except Exception as e:
-        db.rollback()
-        print(f"Unexpected error: {e}")
-    finally:
-        db.close()
 
 # filtered_points = filter_ap("tests/distance-points.geojson")
 # filtered_points_coords = [[point["geometry"]["coordinates"][1], point["geometry"]["coordinates"][0]] for point in filtered_points]

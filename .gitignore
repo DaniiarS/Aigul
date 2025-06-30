@@ -10,3 +10,4 @@ __pycache__
 .vscode
 *.patch
 .DS_Store
+*.dump

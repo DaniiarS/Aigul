@@ -1,13 +1,12 @@
 from app.db.database import SessionLocal
-from app.db.models import BusStop, BusStopRoute, Route
+from app.db.models import BusStop, BusStopRoute, Route, Point, Segment
 from sqlalchemy.exc import SQLAlchemyError
+from sqlalchemy import exists
 
 from app.core.bus_stop import BusStopEntity
 from app.core.point import Coord
 from app.utils.eta import calc_distance
-
-from tests.points_sum import ap_to_db
-
+import sys
 
 import json
 import csv
@@ -74,6 +73,25 @@ def generate_bus_stops_geojson(ROUTE: str):
     First, BusStop markers are added to the map with blue color.
     Second, using those BusStop markers to follow the route, assistant-points are added between two BusStop markers.
     Finally, the goal is to extract the assistant-points leaving BusStop points. The following code implements this functionality.
+    Example geo_json:
+         "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "marker-color": "#0433ff",
+                "marker-size": "medium",
+                "marker-symbol": "circle-stroked"
+            },
+            "geometry": {
+                "coordinates": [
+                    "74.762537",
+                    "42.881171"
+                ],
+                "type": "Point"
+            },
+            "id": 0
+        }
+                    ]
 """
 def filter_assistant_points(file_path: str, SEGMENT_ID: str, index: int = 0) -> list[dict]:
     result = []
@@ -91,6 +109,22 @@ def filter_assistant_points(file_path: str, SEGMENT_ID: str, index: int = 0) -> 
                 result.append(obj)
     return result
 
+
+def ap_to_db(filtered_points: list[dict]):
+    db = SessionLocal()
+
+    try:
+        for point in filtered_points:
+            point_db = Point(lat=point["geometry"]["coordinates"][-1], lon=point["geometry"]["coordinates"][0], l_delta=point["properties"]["l"], l_sum=point["properties"]["l_sum"], index=point["properties"]["point_index"], segment_id=point["properties"]["segment_id"])
+            db.add(point_db)
+        db.commit()
+    except Exception as e:
+        db.rollback()
+        print(f"Unexpected error: {e}")
+    finally:
+        db.close()
+
+
 """ We need information about assistant-points and about the segment in which assistant-points are located.
     We have to know the following information: segment's length, assistant-points distance on the route starting from the BusStop, and distance between two assistant points(current, and point on the left).
     The following code calculates the required distances and sets indexes to the assistant points within a segment.
@@ -98,7 +132,7 @@ def filter_assistant_points(file_path: str, SEGMENT_ID: str, index: int = 0) -> 
 def filter_line_strings(file_path: str, index: int = 0) -> list[dict]:
     result = dict()
     result["line_strings"] = []
-
+    
     with open(file_path, "r") as rf:
         geo_json: dict = json.load(rf)
         objects: list[dict] = geo_json["features"]
@@ -107,22 +141,29 @@ def filter_line_strings(file_path: str, index: int = 0) -> list[dict]:
         pref_length = 0
         for obj in objects:
             if obj["geometry"]["type"] ==  "LineString":
+                # Read lat and lon of LineString's edges
                 lat1 = obj["geometry"]["coordinates"][0][1]
                 lon1 = obj["geometry"]["coordinates"][0][0]
 
                 lat2 = obj["geometry"]["coordinates"][1][1]
                 lon2 = obj["geometry"]["coordinates"][1][0]
                 
+                # Calculate the length of the LineString
                 length = calc_distance(Coord(lat=lat1, lon=lon1), Coord(lat=lat2, lon=lon2))
                 pref_length += length
-
+                
+                # Create a dict wiht LineStrings data
                 line_string = {
                     "index": index,
                     "length": length,
                     "pref_length": round(pref_length, 2)
                 }
+
+                # Append it to the list where the all LineStrings are stored
                 result["line_strings"].append(line_string)
                 index += 1
+        
+        # Store separately the length of the whole Segment(which is the sum of LineStrings lengths)
         result["pref_length"] = pref_length
     return result
 
@@ -135,7 +176,7 @@ def set_l_sum(assistant_points: list[dict], filtered_line_strings: list[dict], l
                 l_sum += ls["length"]
                 
                 point["properties"]["l"] = ls["length"]
-                point["properties"]["l_sum"] = round(l_sum,2)
+                point["properties"]["l_sum"] = ls["pref_length"]
     
     return assistant_points
 
@@ -153,55 +194,88 @@ def printl(array: list) -> None:
     for item in array:
         print(item)
 
-# # the last long segment is left -> segment id is 38
-ROUTE = "14T"
-# SEGMENT_INDEX = 0
+def create_segment(file: str, segment_index: int, bus_stops: list[list]) -> list[str]:
+    # file: assistant_points-raw-{ROUTE}-{segment_index}.geojson
+    line_strings = filter_line_strings(file) # {"pref_length": S, "line_strings": [{}, {}, {}, ..., {}] }
 
-# bus_stops = []
-# with open(f"app/data/bus_stops/{ROUTE}/bus_stops.csv", "r") as rf:
-#     reader = list(csv.reader(rf))
-#     bus_stops = reader
-# print(bus_stops)
+    # find two bus_stops that from segment(current_segment)
+    bus_stop_a_lon, bus_stop_a_lat = bus_stops[segment_index][-3], bus_stops[segment_index][-2]
+    bus_stop_b_lon, bus_stop_b_lat = bus_stops[segment_index + 1][-3], bus_stops[segment_index + 1][-2]
 
+    db = SessionLocal()
+    bus_stop_a = db.query(BusStop).filter((BusStop.lon==bus_stop_a_lon) & (BusStop.lat==bus_stop_a_lat)).first()
+    bus_stop_b = db.query(BusStop).filter((BusStop.lon==bus_stop_b_lon) & (BusStop.lat==bus_stop_b_lat)).first()
+    
+    # if segment is already exists -> return
+    if db.query(exists().where(Segment.bus_stop_a==bus_stop_a.id, Segment.bus_stop_b==bus_stop_b.id)).scalar():
+        return None
 
-# Calculate pref sum for each of the Segments, identify ids of the edge buses(a and b) and create a list with Segment data to insert to db.
-# result = []
-# db = SessionLocal()
-# for SEGMENT_INDEX in range(27):
-#     try:
-#         if SEGMENT_INDEX == 15 or SEGMENT_INDEX == 16:
-#             continue
-#         bus_stop_a: BusStop = db.query(BusStop).filter((BusStop.lon==bus_stops[SEGMENT_INDEX][-3]) & (BusStop.lat==bus_stops[SEGMENT_INDEX][-2])).first()
-#         bus_stop_b: BusStop = db.query(BusStop).filter((BusStop.lon==bus_stops[SEGMENT_INDEX+1][-3]) & (BusStop.lat==bus_stops[SEGMENT_INDEX+1][-2])).first()
-#         # assistant_points = filter_assistant_points(f"app/data/points/{ROUTE}/assistant_points/assistant-points-raw-{ROUTE}-{SEGMENT_INDEX}.geojson", SEGMENT_INDEX)
-#         # printl(assistant_points)
+    # else -> create a list with data to create a Segment entry
+    bus_stop_a_name = bus_stops[segment_index][2]
+    bus_stop_b_name = bus_stops[segment_index + 1][2]
 
-#         filtered_line_strings = filter_line_strings(f"app/data/points/{ROUTE}/assistant_points/assistant-points-raw-{ROUTE}-{SEGMENT_INDEX}.geojson")
-#         # print(filtered_line_strings["pref_length"])
+    segment_length = line_strings["pref_length"]
+    segment_street = bus_stop_a_name + " -- " + bus_stop_b_name
 
-#         result.append([round(filtered_line_strings["pref_length"],2), f"{bus_stop_a.name} - {bus_stop_b.name}", bus_stop_a.id, bus_stop_b.id])
-#     except Exception as e:
-#         print(f"Unexpected errpr: {e}")
+    # Segment entry ["234.8", "street - antoher_street", "10", "40"]
+    result_segment = {
+        "length": segment_length, 
+        "street": segment_street, 
+        "bus_stop_a": bus_stop_a.id, 
+        "bus_stop_b": bus_stop_b.id
+        }
+    return result_segment, line_strings
 
-count = 0
-for i in range(27):
-    if i == 15 or i == 16:
-        continue
-    fl = filter_line_strings(f"app/data/points/{ROUTE}/assistant_points/assistant-points-raw-{ROUTE}-{i}.geojson")
-    ap = filter_assistant_points(f"app/data/points/{ROUTE}/assistant_points/assistant-points-raw-{ROUTE}-{i}.geojson", 42 + count)
-    res = set_l_sum(ap, fl)
-    count += 1
-    ap_to_db(res)
+def geojson_to_route(ROUTE: str):
+    # Read bus_stops.csv
+    bus_stops = []
+    with open(f"app/data/bus_stops/{ROUTE}/bus_stops.csv", "r") as rf:
+        reader = list(csv.reader(rf))
+        bus_stops = reader
 
-# Create csv file with Segment data for ROUTE's route
-# with open(f"app/data/segments/{ROUTE}/segments.csv", "w") as wf:
-#     writer = csv.writer(wf)x
-#     writer.writerows(result)
+    N_SEGMENTS = len(bus_stops) - 1
+    db = SessionLocal()
 
-# result = set_l_sum(assistant_points, filtered_line_strings)
-# # printl(result)
+    # Make sure files exist: because for loop runs for each file with the i-th segment_index
+    for segment_index in range(N_SEGMENTS):
+        file = f"app/data/points/{ROUTE}/assistant_points/assistant-points-raw-{ROUTE}-{segment_index}.geojson"
 
-# ap_to_db(result)
+        segment, line_strings = create_segment(file, segment_index,bus_stops) # returns None the segment(and its assistant-points) exist in the db
+        # If segment exists continue
+        if segment is None:
+            continue
 
-# ROUTE = "14T"
-# generate_bus_stops_geojson(ROUTE)
+        # Else create a new segment and add assistant-points
+        new_segment = Segment(length=segment["length"], street=segment["street"], bus_stop_a=segment["bus_stop_a"], bus_stop_b=segment["bus_stop_b"])
+
+        # Add a new Segment to the db
+        try:
+            db.add(new_segment)
+            db.commit()
+        except Exception as e:
+            db.rollback()
+            print(f"Could not add a new segment: {e}")
+        finally:
+            db.close()
+        
+        # Get the id of the new segment
+        new_segment_id: int = db.query(Segment).filter((Segment.bus_stop_a==int(segment["bus_stop_a"])) & (Segment.bus_stop_b==int(segment["bus_stop_b"]))).first().id
+
+        # Calculate "l" and "l_sum" for assistant-points using line_strings, and add it to db
+        # {"pref_length": S, "line_strings": [{}, {}, {}, ..., {}] }
+        assistant_points = filter_assistant_points(file, new_segment_id) # { ... } - assistant points
+        set_l_sum(assistant_points,line_strings)
+        ap_to_db(assistant_points)
+
+#==============================================================================================================
+# EXECUTION:
+#==============================================================================================================
+
+# STEPS:
+# 1. Create bus_stop_route(use bus_stops.csv from the data folder)
+# 2. Create segment(using bus_stop_route and line_strings to identify the length of the segment)
+# 3. Create(add) assistant-points to the db
+# 4. Create route_segment
+
+ROUTE = sys.argv[1]
+geojson_to_route(ROUTE)

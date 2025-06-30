@@ -42,7 +42,7 @@ def update_eta_one(bus_stop_id: int, db: Session = Depends(get_db)):
                 gov_num = r.lindex(BUS_STOP_CLIENT_KEY, 0)
                 eta_sum = 0
                 distance_sum = 0
-                
+            
                 #============================================================================
                 # Compute eta: try to implement prefix sum to calcualte eta fast
                 #============================================================================
@@ -51,6 +51,7 @@ def update_eta_one(bus_stop_id: int, db: Session = Depends(get_db)):
                     if BUS:
                         bus_index: str = int(r.hget(f"bus:{BUS.id}", "current_segment_index"))
                         delta: int = bus_stop_index - bus_index
+                        print(delta)
 
                         if delta > 0:
                             for i in range(delta-1):
@@ -72,14 +73,14 @@ def update_eta_one(bus_stop_id: int, db: Session = Depends(get_db)):
                             if eta_sum > 0:
                                 r.hset(f"BusStopClientETA:{bus_stop.id}", route.name, int(eta_sum//60))
                                 r.hset(f"BusStopClientDISTANCE:{bus_stop.id}", route.name, round(distance_sum/1000,2))
-                        else:
-                            # If Bus passes the BusStop we can clear the ETA
-                            if r.hexists(f"BusStopClientETA:{bus_stop_id}", route.name):
-                                r.hdel(f"BusStopClientETA:{bus_stop_id}", route.name)
-                                r.hdel(f"BusStopClientDISTANCE:{bus_stop_id}", route.name)
-
                 except Exception as e2:
                     print(f"Error when trying to update eta for a bus: {e2}")
+            else: # COMMENT: Need to check later carefully
+                print("EBTERED ELSE", BUS_STOP_CLIENT_KEY, r.exists(BUS_STOP_CLIENT_KEY))
+                # If Bus passes the BusStop we can clear the ETA(which means it is not in the queue)
+                if not r.exists(BUS_STOP_CLIENT_KEY):
+                    r.hdel(f"BusStopClientETA:{bus_stop_id}", route.name)
+                    r.hdel(f"BusStopClientDISTANCE:{bus_stop_id}", route.name)
 
     except Exception as e:
         print(f"Here: {e}")

@@ -57,7 +57,7 @@ def add_bus_stops(file_path: str) -> bool:
     
     return result
     
-
+# NOTE: with SessionLocal() as session:
 # Add check if the file extension is .csv
 def add_bus_stop_route(file_path: str, ROUTE: str) -> bool:
     db = SessionLocal()
@@ -67,7 +67,7 @@ def add_bus_stop_route(file_path: str, ROUTE: str) -> bool:
 
             # for bus_stop in bus_stop_objs:
             #     print(bus_stop)
-            route_obj = db.query(Route).filter(Route.name==f"{ROUTE}").first()
+            route_obj: Route = db.query(Route).filter(Route.name==f"{ROUTE}").first()
             route_id = route_obj.id
 
             for row in bus_stops:
@@ -99,14 +99,18 @@ def read_bus_stops(bus_stop_name: str) -> list[BusStop]:
 
     return bus_stops
 
+# Implements INSERT segment command: reades the csv file with ordered data and insrets those values to the db
+# file_path: leads to the segment.csv file in the data folder
 def add_segment(file_path:str) -> None:
     db = SessionLocal()
     try:
         with open(file_path, "r") as rf:
             reader = csv.reader(rf)
+
             for line in reader:
                 segment = Segment(length=line[0], street=line[1],bus_stop_a=line[2],bus_stop_b=line[3])
                 db.add(segment)
+                
             db.commit()
     except SQLAlchemyError as e:
         db.rollback()
@@ -160,10 +164,10 @@ def add_point(point_objs: list) -> bool:
 #================================================================================
 # EXECUTION:
 #================================================================================
-ROUTE = "14T"
+ROUTE = "40"
 
 # add_bus_stops(f"data/bus_stops/{BUS_STOP_ROUTE}/bus_stops.csv")
-# add_bus_stop_routes(f"data/bus_stops/{BUS_STOP_ROUTE}/bus_stops.csv", ROUTE)
+# add_bus_stop_route(f"app/data/bus_stops/{ROUTE}/bus_stops.csv", ROUTE)
 
 # add_segment(f"app/data/segments/{ROUTE}/segments.csv")
 # check = add_route_segment(f"app/data/segments/{ROUTE}/segments.csv", ROUTE)

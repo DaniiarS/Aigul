@@ -12,4 +12,4 @@ data = {
 while True:
     response = requests.post(url=url, json=data)
     print(response)
-    time.sleep(12)
+    time.sleep(2)

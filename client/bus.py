@@ -38,4 +38,4 @@ for coord in coords:
     requests.post(url_2, json=data)
     # print(response.status_code)
     print(response.text)
-    time.sleep(10)
+    time.sleep(1)
