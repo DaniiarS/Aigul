@@ -75,7 +75,7 @@ def eta(busInfo: schema.BusInfo, db: Session = Depends(get_db)):
     #=========================================================================================================
     # PRE-INITIALIZATION REDIS:
     #=========================================================================================================
-    ALLOWED_SPEED = 25 * 1000 / 3600
+    ALLOWED_SPEED = 15 * 1000 / 3600
     DATETIME_FORMAT: str = "%Y-%m-%d %H:%M:%S.%f"
     CURRENT_SEGMENT = None
     BUS = None

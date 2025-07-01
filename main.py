@@ -1,13 +1,33 @@
 from fastapi import FastAPI
+from fastapi import Depends
+from fastapi.middleware.cors import CORSMiddleware
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.triggers.interval import IntervalTrigger
 
+from sqlalchemy.orm import Session
+
+import datetime
+import time
+import asyncio
+
 import app.db.database as database
+from app.db import models
+from app.db.database import SessionLocal
 from app.db.redis_client import r
 from app.api.endpoints import bus, bus_stop, route, segment, map
 
 app = FastAPI()
 scheduler = BackgroundScheduler()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # or ["http://localhost:3000"] for security
+    allow_credentials=True,
+    allow_methods=["*"],  # Allow POST, OPTIONS, etc.
+    allow_headers=["*"],  # Allow custom headers like Content-Type
+)
+
+
 
 # =========================================================================================
 # GET and POST End-Points: bus_stop, bus, route, segment. Please refer to app/api/endpoints
@@ -31,9 +51,26 @@ database.Base.metadata.create_all(database.Engine)
 # Start Page
 #==========================================================================================
 
-# @app.on_event("startup")
-# def set_table():
-#     r.rpush("BusStopClient:23:7:24",)
+async def sanitizer():
+    bus_stop_id = 23
+    db = SessionLocal()
+    while True:
+        try:
+            print(f"[{datetime.datetime.now()}] Running periodic task...")
+            BusStopClient = db.query(models.BusStop).filter(models.BusStop.id==bus_stop_id).first()
+            # print((f"BusStopClient:{BusStopClient.routes}"))
+            if r.exists(f"BusStopClient:{BusStopClient.id}:{BusStopClient.name}:14T:15"):
+                print("Hello")
+        except Exception as e:
+            print(f"Error in sanitor: {e}")
+        finally:
+            db.close()
+        await asyncio.sleep(2)
+
+@app.on_event("startup")
+def set_table():
+    print("Server started")
+    asyncio.create_task(sanitizer)
 
 @app.get("/")
 def home():

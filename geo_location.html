@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Send Location</title>
+</head>
+<body>
+    <h2>Getting your location...</h2>
+    <script>
+        navigator.geolocation.getCurrentPosition(function(position) {
+
+            const data = {
+                id: "4",
+                lat: position.coords.latitude,
+                lon: position.coords.longitude,
+                speed: 20.4
+            };
+
+            fetch("http://localhost:8000/segment/update-segment-eta", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            }).then(response => {
+                document.body.innerHTML = "<h3>Location sent successfully!</h3>";
+            });
+
+
+
+            // Second request
+            fetch("http://127.0.0.1:8000/segment/update-coordinates", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            });
+        }, function(error) {
+            document.body.innerHTML = "<h3>Error: " + error.message + "</h3>";
+        });
+    </script>
+</body>
+</html>

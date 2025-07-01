@@ -36,7 +36,7 @@ def search_segment(current: Coord, ROUTE:str) -> tuple[Segment, Point]:
     db = SessionLocal()
     segment = None
     point = None
-    DELTA = 15
+    DELTA = 35
     try:
         ROUTE_ID = db.query(Route).filter(Route.name==ROUTE).first().id # 14T -> 76
         segments = db.query(RouteSegment).filter(RouteSegment.route_id==ROUTE_ID).all() # all segments
@@ -62,7 +62,7 @@ def is_bus_stop(current: Coord, ROUTE: str) -> tuple[bool,BusStop, BusStopRoute]
     found = False
     target_bus_stop = None
     target_bus_stop_route = None
-    DELTA = 30
+    DELTA = 50
     try:
         ROUTE_ID: int = db.query(Route).filter(Route.name==ROUTE).first().id
         # Check this logic: maybe it is better to search in BusStopRoute

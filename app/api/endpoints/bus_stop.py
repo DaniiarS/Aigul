@@ -76,7 +76,6 @@ def update_eta_one(bus_stop_id: int, db: Session = Depends(get_db)):
                 except Exception as e2:
                     print(f"Error when trying to update eta for a bus: {e2}")
             else: # COMMENT: Need to check later carefully
-                print("EBTERED ELSE", BUS_STOP_CLIENT_KEY, r.exists(BUS_STOP_CLIENT_KEY))
                 # If Bus passes the BusStop we can clear the ETA(which means it is not in the queue)
                 if not r.exists(BUS_STOP_CLIENT_KEY):
                     r.hdel(f"BusStopClientETA:{bus_stop_id}", route.name)
