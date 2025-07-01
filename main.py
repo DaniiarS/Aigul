@@ -45,7 +45,7 @@ app.include_router(map.router, prefix="/map", tags=["Map"])
 # And we are calling this function here, because it does not re-create the table if it already exist.
 # If one wants to re-create the table, then use -> Base.metadata.drop_all(Engine)
 # In the future, when the application is ready fo the production -> use Alembic, which is a "git" of databases
-database.Base.metadata.create_all(database.Engine)
+database.Base.metadata.create_all(database.Engine)  # TODO: replace with Alembic
 
 #==========================================================================================
 # Start Page
