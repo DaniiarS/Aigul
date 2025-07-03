@@ -51,26 +51,59 @@ database.Base.metadata.create_all(database.Engine)  # TODO: replace with Alembic
 # Start Page
 #==========================================================================================
 
+def printl(array: list):
+    for obj in array:
+        print(obj)
+
+def pop_all_routes(ROUTE: str):
+    pass
+
 async def sanitizer():
-    bus_stop_id = 23
     db = SessionLocal()
+    bus_stop_routes: models.BusStop = db.query(models.BusStopRoute).all()
+    db.close()
+
     while True:
-        try:
-            print(f"[{datetime.datetime.now()}] Running periodic task...")
-            BusStopClient = db.query(models.BusStop).filter(models.BusStop.id==bus_stop_id).first()
-            # print((f"BusStopClient:{BusStopClient.routes}"))
-            if r.exists(f"BusStopClient:{BusStopClient.id}:{BusStopClient.name}:14T:15"):
-                print("Hello")
-        except Exception as e:
-            print(f"Error in sanitor: {e}")
-        finally:
-            db.close()
-        await asyncio.sleep(2)
+
+        bus_stops = [bsr.bus_stop_id for bsr in bus_stop_routes]
+        printl(bus_stops)
+        for bus_stop_id in bus_stops:
+
+            pattern = f"BusStopClient:{bus_stop_id}:*"
+            try:
+                print(f"[{datetime.datetime.now()}] Running periodic task...")            
+                # Find all redis-keys that match the pattern
+                keys = list(r.scan_iter(pattern))
+                print(keys)
+                # for key in keys: iterates through each route in BusStopClient(same as for route in routes)
+                for key in keys:
+                    if key:
+                        if r.exists(key):
+                            # Using the gov_num of the Bus find its id
+                            db = SessionLocal()
+                            gov_num = r.lindex(key, 0)
+                            Bus: models.Bus = db.query(models.Bus).filter(models.Bus.gov_num==gov_num).first()
+                            bus_id: int  = Bus.id
+                            db.close()
+                            # get the current segment index and compare it with BusStopClient index
+                            if r.exists(f"bus:{bus_id}"):
+                                bus_index, bus_stop_index = int(r.hget(f"bus:{bus_id}", "current_segment_index")), int(key.split(":")[-1])
+                                delta = bus_stop_index - bus_index
+
+                                if delta < 0:
+                                    r.lpop(key)
+                            else: # If bus doesn't exist
+                                r.lpop(key)
+            except Exception as e:
+                print(f"Error in sanitor: {e}")
+            finally:
+                db.close()
+        await asyncio.sleep(5)
 
 @app.on_event("startup")
 def set_table():
     print("Server started")
-    asyncio.create_task(sanitizer)
+    asyncio.create_task(sanitizer())
 
 @app.get("/")
 def home():

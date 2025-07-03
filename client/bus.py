@@ -26,7 +26,7 @@ finally:
     db.close()
 
 
-coords = filter_test_points(f"tests/test_update_segment_eta/test-points-raw-{bus.route_name}-all.geojson")
+coords = filter_test_points(f"tests/test_update_segment_eta/test-points-raw-{bus.route_name}-bus_stops-{bus_id}.geojson")
 
 for coord in coords:
     R_BUS_NAME = f"bus:{bus_id}"
@@ -59,4 +59,4 @@ for coord in coords:
     requests.post(url_2, json=data)
     # print(response.status_code)
     print(response.text)
-    time.sleep(1)
+    time.sleep(5)
