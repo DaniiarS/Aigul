@@ -53,7 +53,8 @@ def update_eta_one(bus_stop_id: int, db: Session = Depends(get_db)):
                         delta: int = bus_stop_index - bus_index
                         print(delta)
 
-                        if delta > 0:
+                        if delta > 1:
+                            print("HERE")
                             for i in range(delta-1):
                                 segment_id = None
                                 try:
@@ -61,18 +62,31 @@ def update_eta_one(bus_stop_id: int, db: Session = Depends(get_db)):
                                     segment_id = db.query(models.RouteSegment).filter((models.RouteSegment.route_id==route.id) & (models.RouteSegment.segment_index==bus_stop_index-i)).first().segment_id
                                 except Exception as e1:
                                     print(f"Error when trying to figure out a segment: {e1}")
-                                
-                                
+                            
                                 if segment_id:
                                     eta_sum += float(r.hget(f"segment:{segment_id}", "eta"))
                                     distance_sum += float(r.hget(f"segment:{segment_id}", "length"))
                                 else:
                                     print("segment was not found")
                                     break
-                        
-                            if eta_sum > 0:
-                                r.hset(f"BusStopClientETA:{bus_stop.id}", route.name, int(eta_sum//60))
-                                r.hset(f"BusStopClientDISTANCE:{bus_stop.id}", route.name, round(distance_sum/1000,2))
+                        elif delta == 1:
+                            # Special case: when the current BusStop is the edge of the Segment on which the Bus currently is.
+                            # Instead of just returning the total ETA of the Segment, or the total distance of the Segment
+                            # Calculate the factual distance between the Bus and BusStopClient
+                            segment_id = None
+                            try:
+                                segment_id = db.query(models.RouteSegment).filter((models.RouteSegment.route_id==route.id) & (models.RouteSegment.segment_index==bus_stop_index - 1)).first().segment_id
+                            except Exception as e2:
+                                print(f"Error when trying to find a segment(BusStopClient): {e2}")
+
+                            # Calculate percantage eta: distance_drived/total_distance * segment_eta
+                            eta_sum = int(float(r.hget(f"bus:{BUS.id}", "current_distance")) / float(r.hget(f"segment:{segment_id}", "length")) * float(r.hget(f"segment:{segment_id}", "eta")))
+                            # Calculate delta between the current point and the edge of the Segment: total_segment_distance - distance_drived(within the Segment)
+                            distance_sum = round(float(r.hget(f"segment:{segment_id}", "length")) - float(r.hget(f"bus:{BUS.id}", "current_distance")), 2)
+
+                        if eta_sum > 0:
+                            r.hset(f"BusStopClientETA:{bus_stop.id}", route.name, int(eta_sum//60))
+                            r.hset(f"BusStopClientDISTANCE:{bus_stop.id}", route.name, round(distance_sum/1000,2))
                 except Exception as e2:
                     print(f"Error when trying to update eta for a bus: {e2}")
             else: # COMMENT: Need to check later carefully

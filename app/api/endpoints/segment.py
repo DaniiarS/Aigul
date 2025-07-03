@@ -102,7 +102,7 @@ def eta(busInfo: schema.BusInfo, db: Session = Depends(get_db)):
         CURRENT_SEGMENT_INDEX = db.query(models.RouteSegment).filter((models.RouteSegment.segment_id == CURRENT_SEGMENT.id) & (models.RouteSegment.route_id==ROUTE.id)).first().segment_index # Index of the current segment
 
     except Exception as e1:
-        print(f"In Data Initialization: {e1}")
+        print(f"Error In Data Initialization: {e1}")
 
     #=========================================================================================================
     # INITIALIZATION REDIS:
@@ -126,7 +126,8 @@ def eta(busInfo: schema.BusInfo, db: Session = Depends(get_db)):
             "last_segment_index": CURRENT_SEGMENT_INDEX,
             "last_segment_name": CURRENT_SEGMENT.street,
             "current_segment_index": CURRENT_SEGMENT_INDEX,
-            "current_segment_name": CURRENT_SEGMENT.street
+            "current_segment_name": CURRENT_SEGMENT.street,
+            "current_distance": CURRENT_POINT.l_sum
         }
 
         r.hset(R_BUS_NAME,mapping=data)
@@ -156,7 +157,8 @@ def eta(busInfo: schema.BusInfo, db: Session = Depends(get_db)):
             "last_modified": str(datetime.now()),
             "current_segment_index": CURRENT_SEGMENT_INDEX,
             "current_segment_name": CURRENT_SEGMENT.street,
-            "route": ROUTE.name
+            "route": ROUTE.name,
+            "current_distance": CURRENT_POINT.l_sum
         }
         r.hset(R_BUS_NAME, mapping=updated_data)
 
@@ -215,7 +217,7 @@ def eta(busInfo: schema.BusInfo, db: Session = Depends(get_db)):
         # The bus hasn't left the bus stop yet, but another request was made -> eta shouldn't be updated
         # Update only once at first visit
 
-        # If the Bus visits the BusStop the first time-> Calculate the ETA for the previous segment
+        # CASE: Bus visits the BusStop the first time-> Calculate the ETA for the previous segment
         if r.lindex(f"{R_BUS_NAME}:bus_stop_flags", int(bus_stop_route.bus_stop_index)) == "0":
 
             # Pre-calculate average eta
@@ -233,7 +235,7 @@ def eta(busInfo: schema.BusInfo, db: Session = Depends(get_db)):
                 left_segment = None
                 right_segment = None
 
-                # Case when the Bus reaches the last BusStop: find left segment
+                # CASE: the Bus reaches the last BusStop: find left segment
                 if bus_stop_route.bus_stop_index == N_SEGMENTS:
                     for segment in SEGMENTS:
                         if segment.end_stop.id == bus_stop_obj.id:
