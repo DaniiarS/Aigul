@@ -3,6 +3,7 @@ from app.api.schemas import schema
 from app.db.database import get_db
 from app.utils.eta import search_segment, is_bus_stop
 from app.core.point import Coord
+from app.utils.gps_filter import filter_point
 
 from fastapi import Depends, HTTPException, APIRouter
 from fastapi import WebSocket
@@ -70,7 +71,46 @@ async def websocket_endpoint(websocket: WebSocket):
 
 
 @router.post("/update-segment-eta")
-def eta(busInfo: schema.BusInfo, db: Session = Depends(get_db)):
+def eta(
+    busInfo: schema.BusInfo,
+    use_gps_filter: bool = False,  # toggles distance/speed gate + EMA
+    db: Session = Depends(get_db),
+):
+
+    # --------------------------------------------------------------------------
+    # Step 0 – clean the raw GPS fix BEFORE any heavy processing
+    # --------------------------------------------------------------------------
+    # Retrieve previous accepted location from Redis (if any) to be able to apply
+    # gross-error rejection and EMA smoothing.
+    R_BUS_NAME = f"bus:{busInfo.id}"
+
+    if use_gps_filter:
+        prev_lat = prev_lon = prev_time_str = None
+        if r.exists(R_BUS_NAME):
+            try:
+                prev_lat = float(r.hget(R_BUS_NAME, "lat"))
+                prev_lon = float(r.hget(R_BUS_NAME, "lon"))
+                prev_time_str = r.hget(R_BUS_NAME, "last_modified")  # may be None
+            except Exception:
+                # If anything goes wrong we simply treat this as the very first fix.
+                prev_lat = prev_lon = prev_time_str = None
+
+        smoothed_lat, smoothed_lon, accepted = filter_point(
+            busInfo.lat,
+            busInfo.lon,
+            prev_lat,
+            prev_lon,
+            prev_time_str,
+        )
+
+        # Outlier rejected – we return early without touching the state so that the
+        # system remains consistent.
+        if not accepted:
+            return {"message": "gps_outlier_rejected"}
+
+        # Inject the filtered values back so downstream logic works with clean data.
+        busInfo.lat = smoothed_lat
+        busInfo.lon = smoothed_lon
 
     #=========================================================================================================
     # PRE-INITIALIZATION REDIS:

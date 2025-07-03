@@ -27,7 +27,7 @@ class Bus(Base):
     bus_stops = relationship("BusStop", secondary="bus_stop_bus", back_populates="buses")
     
 
-class Route(Base): # Done
+class Route(Base): # Done  # NOTE: should we connect Route with other tables via foreign keys?
     __tablename__ = "route"
 
     id = Column(Integer, primary_key=True, index=True)
